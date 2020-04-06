@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistracijaFormaComponent } from './components/registracija-forma/registracija-forma.component';
 import { PrijavaFormaComponent } from './components/prijava-forma/prijava-forma.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistracijaFormaComponent,
-    PrijavaFormaComponent
+    PrijavaFormaComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
