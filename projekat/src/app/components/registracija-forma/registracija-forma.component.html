@@ -1,0 +1,60 @@
+<div class="container" >
+    <h1>Registrujte se unosom sledećih podataka</h1>
+    <form  [formGroup]="registracijaForma" > <!--(ngSubmit)="onSubmit()" -->
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="email">E-mail</label>
+                <input type="text" id="email" class="form-control" formControlName="email">
+               <!-- <div *ngIf="courseForm.controls.courseName.invalid">
+                    Please enter course name
+                </div>-->
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="lozinka">Lozinka</label>
+                <input type="password" id="lozinka" class="form-control" formControlName="lozinka">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="lozinka2">Ponovite lozinku</label>
+                <input type="password" id="lozinka2" class="form-control" formControlName="lozinka2">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="ime">Ime</label>
+                <input type="text" id="ime" class="form-control" formControlName="ime">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="prezime">Prezime</label>
+                <input type="text" id="prezime" class="form-control" formControlName="prezime">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="grad">Grad</label>
+                <input type="text" id="grad" class="form-control" formControlName="grad">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="telefon">Telefon</label>
+                <input type="text" id="telefon" class="form-control" formControlName="telefon">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <button class="btn btn-success" type="submit">Registrujte se</button> <!--[disabled]="!courseForm.valid" -->
+            </div>
+            <div class="col-1">
+                <button class="btn btn-primary" (click)="onClear()" type="button">Obrisi</button> 
+            </div>
+        </div>
+    </form>
+
+</div>
