@@ -1,0 +1,30 @@
+<div class="container" >
+    <h1>Stranica za dodavanje rent-a-car servisa</h1>
+    <form  [formGroup]="dodajRentCarForma" > <!--(ngSubmit)="onSubmit()" -->
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="naziv">Naziv</label>
+                <input type="text" id="naziv" class="form-control" formControlName="naziv">
+               <!-- <div *ngIf="courseForm.controls.courseName.invalid">
+                    Please enter course name
+                </div>-->
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="adresa">Adresa</label>
+                <input type="text" id="adresa" class="form-control" formControlName="adresa">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <button class="btn btn-success" type="submit">Registruj</button> <!--[disabled]="!courseForm.valid" -->
+            </div>
+            <div class="col-1">
+                <button class="btn btn-primary" (click)="onClear()" type="button">Obrisi</button> 
+            </div>
+        </div>
+    </form>
+
+</div>

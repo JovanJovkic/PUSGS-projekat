@@ -7,13 +7,19 @@ import { AppComponent } from './app.component';
 import { RegistracijaFormaComponent } from './components/registracija-forma/registracija-forma.component';
 import { PrijavaFormaComponent } from './components/prijava-forma/prijava-forma.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { AdminSistemProfilComponent } from './components/admin-sistem-profil/admin-sistem-profil.component';
+import { DodajAkompFormaComponent } from './components/dodaj-akomp-forma/dodaj-akomp-forma.component';
+import { DodajRecarFormaComponent } from './components/dodaj-recar-forma/dodaj-recar-forma.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistracijaFormaComponent,
     PrijavaFormaComponent,
-    NavbarComponent
+    NavbarComponent,
+    AdminSistemProfilComponent,
+    DodajAkompFormaComponent,
+    DodajRecarFormaComponent
   ],
   imports: [
     BrowserModule,
