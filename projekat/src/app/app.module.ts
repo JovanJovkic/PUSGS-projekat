@@ -10,6 +10,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AdminSistemProfilComponent } from './components/admin-sistem-profil/admin-sistem-profil.component';
 import { DodajAkompFormaComponent } from './components/dodaj-akomp-forma/dodaj-akomp-forma.component';
 import { DodajRecarFormaComponent } from './components/dodaj-recar-forma/dodaj-recar-forma.component';
+import { AvioPocetnaComponent } from './components/avio-pocetna/avio-pocetna.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DodajRecarFormaComponent } from './components/dodaj-recar-forma/dodaj-r
     NavbarComponent,
     AdminSistemProfilComponent,
     DodajAkompFormaComponent,
-    DodajRecarFormaComponent
+    DodajRecarFormaComponent,
+    AvioPocetnaComponent
   ],
   imports: [
     BrowserModule,

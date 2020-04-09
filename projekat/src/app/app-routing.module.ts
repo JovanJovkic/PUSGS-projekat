@@ -6,6 +6,7 @@ import { AdminSistemProfilComponent } from './components/admin-sistem-profil/adm
 import { DodajAkompFormaComponent } from './components/dodaj-akomp-forma/dodaj-akomp-forma.component';
 import { DodajRecarFormaComponent } from './components/dodaj-recar-forma/dodaj-recar-forma.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { AvioPocetnaComponent} from './components/avio-pocetna/avio-pocetna.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: "admin-rent",
     component: DodajRecarFormaComponent
+  },
+  {
+    path: "avio",
+    component: AvioPocetnaComponent
   },
 ];
 
