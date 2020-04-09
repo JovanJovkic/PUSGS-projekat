@@ -1,0 +1,27 @@
+<div class="container" >
+    <h1>RENT-A-CAR</h1>
+
+<p>U tabeli su prikazi svi rent-a-car servsi, odaberite koji Vam najviše odgovara. Srećan put!</p>
+
+<table border="1" class="table">
+    <tr>
+        <th>
+            Naziv
+        </th>
+        <th>
+            Adresa
+        </th>
+        <th>
+            Ocena
+        </th>
+    </tr>
+    <tr *ngFor="let ser of allRentACarServis">
+            <td>{{ser.naziv}}</td>
+            <td>{{ser.adresa}}</td>
+            <td>{{ser.ocena}}</td>
+           <!-- <ngb-rating [(rate)]="ser.ocena"></ngb-rating> --> 
+    </tr>
+ 
+</table>
+
+</div>

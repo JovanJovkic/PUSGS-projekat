@@ -11,6 +11,7 @@ import { AdminSistemProfilComponent } from './components/admin-sistem-profil/adm
 import { DodajAkompFormaComponent } from './components/dodaj-akomp-forma/dodaj-akomp-forma.component';
 import { DodajRecarFormaComponent } from './components/dodaj-recar-forma/dodaj-recar-forma.component';
 import { AvioPocetnaComponent } from './components/avio-pocetna/avio-pocetna.component';
+import { RentPocetnaComponent } from './components/rent-pocetna/rent-pocetna.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AvioPocetnaComponent } from './components/avio-pocetna/avio-pocetna.com
     AdminSistemProfilComponent,
     DodajAkompFormaComponent,
     DodajRecarFormaComponent,
-    AvioPocetnaComponent
+    AvioPocetnaComponent,
+    RentPocetnaComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { DodajAkompFormaComponent } from './components/dodaj-akomp-forma/dodaj-a
 import { DodajRecarFormaComponent } from './components/dodaj-recar-forma/dodaj-recar-forma.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AvioPocetnaComponent} from './components/avio-pocetna/avio-pocetna.component';
+import { RentPocetnaComponent} from './components/rent-pocetna/rent-pocetna.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: "avio",
     component: AvioPocetnaComponent
+  },
+  {
+    path: "ren-a-car",
+    component: RentPocetnaComponent
   },
 ];
 
