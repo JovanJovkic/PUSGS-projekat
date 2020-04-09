@@ -12,6 +12,7 @@ import { DodajAkompFormaComponent } from './components/dodaj-akomp-forma/dodaj-a
 import { DodajRecarFormaComponent } from './components/dodaj-recar-forma/dodaj-recar-forma.component';
 import { AvioPocetnaComponent } from './components/avio-pocetna/avio-pocetna.component';
 import { RentPocetnaComponent } from './components/rent-pocetna/rent-pocetna.component';
+import { RentProfilComponent } from './components/rent-profil/rent-profil.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { RentPocetnaComponent } from './components/rent-pocetna/rent-pocetna.com
     DodajAkompFormaComponent,
     DodajRecarFormaComponent,
     AvioPocetnaComponent,
-    RentPocetnaComponent
+    RentPocetnaComponent,
+    RentProfilComponent
   ],
   imports: [
     BrowserModule,

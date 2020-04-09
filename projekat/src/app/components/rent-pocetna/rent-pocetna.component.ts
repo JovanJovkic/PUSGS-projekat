@@ -22,11 +22,6 @@ export class RentPocetnaComponent implements OnInit {
 
   loadRentServis(): void {
     this.allRentACarServis = this.rentACarService.loadRentACar();
-    
-    this.allRentACarServis.forEach(element => {
-      console.log(element.naziv);
-    });
-    
   }
 
 }
