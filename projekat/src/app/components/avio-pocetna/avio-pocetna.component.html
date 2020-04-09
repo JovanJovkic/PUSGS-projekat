@@ -1,4 +1,3 @@
-<p>avio-pocetna works!</p>
 <div class="container" >
     <h1>Profil avio kompanije</h1>
     <form  [formGroup]="avioPocetnaForma" >
@@ -19,36 +18,51 @@
             <p>Trenutno nema učitanih informacija o aviokompaniji</p>
         </div>
         <div [hidden]="allAvion.length === 0"></div>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Naziv aviokompanije</th>
-                    <th scope="col">Adresa kompanije</th>
-                    <th scope="col">Promotivni opis aviokompanije</th>
-                    <th scope="col">Destinacije na kojim posluje aviokompanija</th>
-                    <th scope="col">Letovi aviokompanije</th>
-                    <th scope="col">Spisak karata sa popustom za brzu registraciju aviokompanije</th>
-                    <th scope="col">Kongiguracija segmenata i mesta aviokompanije</th>
-                    <th scope="col">Cenovnik aviokompanije</th>
-                    <th scope="col">Informacije o prtljagu aviokompanije</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let avion of allAvion">
-                    <td>{{avion.nazivAvioKompanije}}</td>
-                    <td>{{avion.adresa}}</td>
-                    <td>{{avion.promotivniOpis}}</td>
-                    <td>{{avion.letovi}}</td>
-                    <td>{{avion.spisakKarataSaPopustomZaBrzuRez}}</td>
-                    <td>{{avion.konfigSegMesta}}</td>
-                    <td>{{avion.cenovnik}}</td>
-                    <td>{{avion.infoPrtljag}}</td>
-                    <td>
-                        <button class="btn btn-success" data-toggle="modal" data-target="#avionEdit" (click)="editAvioModal(avion)">Izmena</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <table class="table table-hover" border='4px' bgcolor=#F98D76>
+          <thead>
+              <tr>
+                  <th scope="col">Naziv aviokompanije</th>
+                  <td *ngFor="let avion of allAvion">{{avion.nazivAvioKompanije}}</td>
+              </tr>
+              <tr>
+                  <th scope="col">Adresa kompanije</th>
+                  <td *ngFor="let avion of allAvion">{{avion.adresa}}</td>
+              </tr>
+              <tr>
+                  <th scope="col">Promotivni opis aviokompanije</th>
+                  <td *ngFor="let avion of allAvion">{{avion.promotivniOpis}}</td>
+              </tr>
+              <tr>
+                  <th scope="col">Destinacije na kojim posluje aviokompanija</th>
+                  <td *ngFor="let avion of allAvion">{{avion.destNaKojimPosluje}}</td>
+              </tr>
+              <tr>
+                  <th scope="col">Letovi aviokompanije</th>
+                  <td *ngFor="let avion of allAvion">{{avion.letovi}}</td>
+              </tr>
+              <tr>
+                 <th scope="col">Spisak karata sa popustom za brzu registraciju aviokompanije</th>
+                 <td *ngFor="let avion of allAvion">{{avion.spisakKarataSaPopustomZaBrzuRez}}</td>
+              </tr>
+              <tr>
+                 <th scope="col">Kongiguracija segmenata i mesta aviokompanije</th>
+                 <td *ngFor="let avion of allAvion">{{avion.konfigSegMesta}}</td>
+              </tr>
+              <tr>
+                 <th scope="col">Cenovnik aviokompanije</th>
+                 <td *ngFor="let avion of allAvion">{{avion.cenovnik}}</td>
+              </tr>
+              <tr>
+                 <th scope="col">Informacije o prtljagu aviokompanije</th>
+                 <td *ngFor="let avion of allAvion">{{avion.infoPrtljag}}</td>
+              </tr>
+              <tr *ngFor="let avion of allAvion">
+                <td>
+                  <button class="btn btn-success" data-toggle="modal" data-target="#avionEdit" (click)="editAvioModal(avion)">Izmena</button>
+                </td> 
+            </tr>
+          </thead>
+      </table>
     </form>
 
 </div>
@@ -66,56 +80,56 @@
           <div class="tab-content">
             <form class="form">
               <div class="form-group row">
-                <label for="lat" class="col-sm-4 col-form-label">Naziv aviokompanije</label>
-                <div class="col-sm-8">
+                <label for="lat" class="col-sm-3 col-form-label">Naziv aviokompanije</label>
+                <div class="col-sm-6">
                     <input type="text" class="form-control" id="nazivAvioKompanije" placeholder="Unesite naziv aviokompanije" min="0" max="100">
                 </div>
               </div>
               <div class="form-group row">
-                <label for="lat" class="col-sm-4 col-form-label">Adresa aviokompanije</label>
-                <div class="col-sm-8">
+                <label for="lat" class="col-sm-3 col-form-label">Adresa aviokompanije</label>
+                <div class="col-sm-6">
                     <input type="text" class="form-control" id="adresa" placeholder="Unesite adresu aviokompanije" min="0" max="100">
                 </div>
               </div>
               <div class="form-group row">
-                <label for="lat" class="col-sm-4 col-form-label">Promotivni opis aviokompanije</label>
-                <div class="col-sm-8">
+                <label for="lat" class="col-sm-3 col-form-label">Promotivni opis aviokompanije</label>
+                <div class="col-sm-6">
                     <input type="text" class="form-control" id="promotivniOpis" placeholder="Unesite promotivni opis aviokompanije" min="0" max="100">
                 </div>
               </div>
               <div class="form-group row">
-                <label for="lat" class="col-sm-4 col-form-label">Destinacije na kojim posluje aviokompanija</label>
-                <div class="col-sm-8">
+                <label for="lat" class="col-sm-3 col-form-label">Destinacije na kojim posluje aviokompanija</label>
+                <div class="col-sm-6">
                     <input type="text" class="form-control" id="destNaKojimPosluje" placeholder="Unesite destinacije na kojim posluje aviokompanija" min="0" max="100">
                 </div>
               </div>
               <div class="form-group row">
-                <label for="lat" class="col-sm-4 col-form-label">Letovi aviokompanije</label>
-                <div class="col-sm-8">
+                <label for="lat" class="col-sm-3 col-form-label">Letovi aviokompanije</label>
+                <div class="col-sm-6">
                     <input type="text" class="form-control" id="letovi" placeholder="Unesite letove aviokompanije" min="0" max="100">
                 </div>
               </div>
               <div class="form-group row">
-                <label for="lat" class="col-sm-4 col-form-label">Spisak karata sa popustom za brzu registraciju aviokompanije</label>
-                <div class="col-sm-8">
+                <label for="lat" class="col-sm-3 col-form-label">Spisak karata sa popustom za brzu registraciju aviokompanije</label>
+                <div class="col-sm-6">
                     <input type="text" class="form-control" id="spisakKarataSaPopustomZaBrzuRez" placeholder="Unesite spisak karata sa popustom za brzu registraciju aviokompanije" min="0" max="100">
                 </div>
               </div>
               <div class="form-group row">
-                <label for="lat" class="col-sm-4 col-form-label">Kongiguracija segmenata i mesta aviokompanije</label>
-                <div class="col-sm-8">
+                <label for="lat" class="col-sm-3 col-form-label">Kongiguracija segmenata i mesta aviokompanije</label>
+                <div class="col-sm-6">
                     <input type="text" class="form-control" id="konfigSegMesta" placeholder="Unesite kongiguraciju segmenata i mesta aviokompanije" min="0" max="100">
                 </div>
               </div>
               <div class="form-group row">
-                <label for="lat" class="col-sm-4 col-form-label">Cenovnik aviokompanije</label>
-                <div class="col-sm-8">
+                <label for="lat" class="col-sm-3 col-form-label">Cenovnik aviokompanije</label>
+                <div class="col-sm-6">
                     <input type="text" class="form-control" id="cenovnik" placeholder="Unesite cenovnik aviokompanije" min="0" max="100">
                 </div>
               </div>
               <div class="form-group row">
-                <label for="lat" class="col-sm-4 col-form-label">Informacije o prtljagu aviokompanije</label>
-                <div class="col-sm-8">
+                <label for="lat" class="col-sm-3 col-form-label">Informacije o prtljagu aviokompanije</label>
+                <div class="col-sm-6">
                     <input type="text" class="form-control" id="infoPrtljag" placeholder="Unesite informacije o prtljagu aviokompanije" min="0" max="100">
                 </div>
               </div>
