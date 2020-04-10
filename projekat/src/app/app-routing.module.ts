@@ -8,6 +8,7 @@ import { DodajRecarFormaComponent } from './components/dodaj-recar-forma/dodaj-r
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AvioPocetnaComponent} from './components/avio-pocetna/avio-pocetna.component';
 import { RentPocetnaComponent} from './components/rent-pocetna/rent-pocetna.component';
+import { RentProfilComponent} from './components/rent-profil/rent-profil.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
@@ -46,7 +47,10 @@ const routes: Routes = [
   },
   {
     path: "ren-a-car",
-    component: RentPocetnaComponent
+    children: [
+      { path: "", component: RentPocetnaComponent },
+      { path: ":id/detalji", component: RentProfilComponent },
+    ]
   },
 ];
 

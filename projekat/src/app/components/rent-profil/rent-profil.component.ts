@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RentACarProfilService } from 'src/app/services/rent-a-car-profil.service';
-import { RentACarProfil } from 'src/app/entities/rentacarProfil';
+import { RentACarService } from 'src/app/services/rent-a-car.service';
+import { RentACarServis } from 'src/app/entities/rentacar';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-rent-profil',
@@ -9,11 +10,13 @@ import { RentACarProfil } from 'src/app/entities/rentacarProfil';
 })
 export class RentProfilComponent implements OnInit {
 
-  allProfiles: Array<RentACarProfil>;
-
+  allProfiles: Array<RentACarServis>;
+  profil:RentACarServis;
+  id: number;
   
-  constructor(private rentACarServis: RentACarProfilService) { 
-    this.allProfiles = new Array<RentACarProfil>();
+  constructor(private rentACarServis: RentACarService,private route: ActivatedRoute) { 
+    this.allProfiles = new Array<RentACarServis>();
+    route.params.subscribe(params => { this.id = params['id']; });
   }
 
   ngOnInit(): void {
@@ -21,7 +24,13 @@ export class RentProfilComponent implements OnInit {
   }
 
   loadRentProfile(): void {
-    this.allProfiles = this.rentACarServis.loadRentACarProfil();
+    this.allProfiles = this.rentACarServis.loadRentACar();
+    this.allProfiles.forEach(element => {
+      if(element.id==this.id)
+      {
+        this.profil=element;
+      }
+    });
   }
 
 }

@@ -20,6 +20,12 @@
             <td>{{ser.adresa}}</td>
             <td>{{ser.ocena}}</td>
            <!-- <ngb-rating [(rate)]="ser.ocena"></ngb-rating> --> 
+           <td>
+            <!-- Prenos id-ja kao parametra putanje komponenti -->
+            <button class="btn btn-success" routerLink="/ren-a-car/{{ser.id}}/detalji">
+                Detalji
+            </button>
+        </td>
     </tr>
  
 </table>
