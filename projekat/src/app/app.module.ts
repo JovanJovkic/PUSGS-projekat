@@ -14,6 +14,7 @@ import { AvioPocetnaComponent } from './components/avio-pocetna/avio-pocetna.com
 import { RentPocetnaComponent } from './components/rent-pocetna/rent-pocetna.component';
 import { RentProfilComponent } from './components/rent-profil/rent-profil.component';
 import { HomepageFormaComponent } from './components/homepage-forma/homepage-forma.component';
+import { RentAdminProfilComponent } from './components/rent-admin-profil/rent-admin-profil.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HomepageFormaComponent } from './components/homepage-forma/homepage-for
     AvioPocetnaComponent,
     RentPocetnaComponent,
     RentProfilComponent,
-    HomepageFormaComponent
+    HomepageFormaComponent,
+    RentAdminProfilComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,45 @@
+<div class="container">
+    <h1>Profil rent-a-car administratora</h1>
+    <table class=" table table-danger" border="1" *ngFor="let item of allRentACarServis">
+        <tr>
+            <th>Naziv</th>
+            <th>Adresa</th>
+            <th>Promotivni opis</th>
+            <th>Spisak vozila</th>
+        </tr>
+        <tr>
+            <td>{{item.naziv}}</td>
+            <td>{{item.adresa}}</td>
+            <td>{{item.promotivniOpis}}</td>
+            <td>
+                <table>
+                    <tr>
+                        <th>Naziv</th>
+                        <th>Marka</th>
+                        <th>Model</th>
+                        <th>Godina proizvodnje</th>
+                        <th>Broj sedista</th>
+                        <th>Tip vozila</th>
+                    </tr>
+                    <tr *ngFor="let voz of item.vozila">
+                        <td>{{voz.naziv}}</td>  
+                        <td>{{voz.marka}}</td> 
+                        <td>{{voz.model}}</td> 
+                        <td>{{voz.godinaProizvodnje}}</td> 
+                        <td>{{voz.brojSedista}}</td>  
+                        <td>{{voz.tipVozila}}</td>  
+                        <td>
+                            <button class="btn btn-success">Obrisi</button>
+                        </td>  
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <div class="btn-group-vertical">
+                <button class="btn btn-success">Izmeni</button>
+                <button class="btn btn-success">Dodaj vozilo</button>
+            </div>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -10,6 +10,7 @@ import { AvioPocetnaComponent} from './components/avio-pocetna/avio-pocetna.comp
 import { RentPocetnaComponent} from './components/rent-pocetna/rent-pocetna.component';
 import { RentProfilComponent} from './components/rent-profil/rent-profil.component';
 import { HomepageFormaComponent } from './components/homepage-forma/homepage-forma.component';
+import { RentAdminProfilComponent } from './components/rent-admin-profil/rent-admin-profil.component';
 import { AppComponent } from './app.component';
 
 
@@ -57,6 +58,10 @@ const routes: Routes = [
   {
     path: "homepage-forma",
     component: HomepageFormaComponent,
+  },
+  {
+    path: "profilRent",
+    component: RentAdminProfilComponent,
   },
 ];
 

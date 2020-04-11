@@ -3,6 +3,22 @@
 
 <p>U tabeli su prikazi svi rent-a-car servsi, odaberite koji Vam najviše odgovara. Srećan put!</p>
 
+    <form>
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="naziv">Naziv servisa ili lokacija filijale</label>
+                <input type="text" id="naziv" class="form-control" formControlName="naziv">
+            </div>
+            <div class="col-sm-6 form-group">
+                <label for="vremPeriod">Vremenski period</label>
+                <input type="text" id="vremPeriod" class="form-control" formControlName="vremPeriod">
+            </div>
+            <div class="col-sm-6 form-group">
+                <button class="btn btn-success" type="button">Pretrazi</button> 
+            </div>
+        </div>
+    </form>
+
 <table border="1" class="table">
     <tr>
         <th>

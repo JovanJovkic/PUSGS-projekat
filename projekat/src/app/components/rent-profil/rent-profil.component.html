@@ -4,6 +4,25 @@
     <h4>{{profil.promotivniOpis}}</h4>
     <h3>Ocena: {{profil.ocena}}</h3>    
 
+    <h3>Spisak vozila koja su u ponudi: </h3>
+    <table class="table" border="1">
+        <tr>
+            <th>Naziv</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Godina proizvodnje</th>
+            <th>Broj sedišta</th>
+            <th>Tip vozila</th>
+        </tr>
+        <tr *ngFor="let item of profil.vozila">
+            <td>{{item.naziv}}</td>
+            <td>{{item.marka}}</td>
+            <td>{{item.model}}</td>
+            <td>{{item.godinaProizvodnje}}</td>
+            <td>{{item.brojSedista}}</td>
+            <td>{{item.tipVozila}}</td>
+        </tr>
+    </table>
     <!-- spisak vozila -->
     <!-- spisak filijala -->
     
