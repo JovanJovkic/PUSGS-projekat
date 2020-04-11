@@ -9,7 +9,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AvioPocetnaComponent} from './components/avio-pocetna/avio-pocetna.component';
 import { RentPocetnaComponent} from './components/rent-pocetna/rent-pocetna.component';
 import { RentProfilComponent} from './components/rent-profil/rent-profil.component';
+import { HomepageFormaComponent } from './components/homepage-forma/homepage-forma.component';
 import { AppComponent } from './app.component';
+
 
 const routes: Routes = [
   {
@@ -51,6 +53,10 @@ const routes: Routes = [
       { path: "", component: RentPocetnaComponent },
       { path: ":id/detalji", component: RentProfilComponent },
     ]
+  },
+  {
+    path: "homepage-forma",
+    component: HomepageFormaComponent,
   },
 ];
 
