@@ -12,6 +12,7 @@ import { RentProfilComponent} from './components/rent-profil/rent-profil.compone
 import { HomepageFormaComponent } from './components/homepage-forma/homepage-forma.component';
 import { RentAdminProfilComponent } from './components/rent-admin-profil/rent-admin-profil.component';
 import {AviokompanijePocetnaComponent} from './components/aviokompanije-pocetna/aviokompanije-pocetna.component'
+import {ProfilKorisnikaComponent} from './components/profil-korisnika/profil-korisnika.component'
 import { AppComponent } from './app.component';
 
 
@@ -58,7 +59,10 @@ const routes: Routes = [
   },
   {
     path: "homepage-forma",
-    component: HomepageFormaComponent,
+    children:[
+      { path: "", component: HomepageFormaComponent},
+      { path: "profilKorisnika", component: ProfilKorisnikaComponent},
+      ]
   },
   {
     path: "profilRent",
