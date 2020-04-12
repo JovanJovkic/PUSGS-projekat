@@ -9,7 +9,7 @@ export class AvionService {
   constructor() { }
 
   loadAvion() {
-    console.log('Učitavanje studenata...');
+    console.log('Učitavanje aviona...');
     return this.mockedAvio();
   }
 

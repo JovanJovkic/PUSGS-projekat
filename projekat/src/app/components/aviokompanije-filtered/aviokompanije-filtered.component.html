@@ -1,0 +1,20 @@
+<hr/>
+<h5 style="text-align: center;">Rezultati filtriranja po zadatim parametrima</h5>
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Naziv</th>
+            <th scope="col">Grad</th>
+            <th scope="col">Cena</th>
+            <th scope="col">Detalji</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let aircompany of filteredAirCompanies">
+            <td>{{aircompany.nazivAvioKompanije}}</td>
+            <td>{{aircompany.gradAvioKompanije}}</td>
+            <td>{{aircompany.cenaKarte}}$</td>
+            <td> <button class="btn btn-success" routerLink="/avio">Profil</button></td>
+        </tr>
+    </tbody>
+</table>

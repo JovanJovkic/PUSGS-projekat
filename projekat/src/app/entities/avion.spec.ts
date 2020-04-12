@@ -1,6 +1,6 @@
 import { Avion } from './avion';
 
-describe('Student', () => {
+describe('Avio', () => {
   it('should create an instance', () => {
     expect(new Avion()).toBeTruthy();
   });

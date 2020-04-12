@@ -43,10 +43,10 @@ export class AvioPocetnaComponent implements OnInit {
     let konfigSegMesta = (<HTMLInputElement> document.getElementById("konfigSegMesta")).value;
     let cenovnik = (<HTMLInputElement> document.getElementById("cenovnik")).value;
     let infoPrtljag = (<HTMLInputElement> document.getElementById("infoPrtljag")).value;
-    this.updateStudent(nazivAvioKompanije, adresa, promotivniOpis, letovi, destNaKojimPosluje, spisakKarataSaPopustomZaBrzuRez, konfigSegMesta, cenovnik, infoPrtljag);
+    this.updateAvio(nazivAvioKompanije, adresa, promotivniOpis, letovi, destNaKojimPosluje, spisakKarataSaPopustomZaBrzuRez, konfigSegMesta, cenovnik, infoPrtljag);
   }
 
-  updateStudent(nazivAvioKompanije: string, adresa: string, promotivniOpis:string, destNaKojimPosluje:string, letovi:string, spisakKarataSaPopustomZaBrzuRez: string, konfigSegMesta:string, cenovnik: string, infoPrtljag: string  ): void {
+  updateAvio(nazivAvioKompanije: string, adresa: string, promotivniOpis:string, destNaKojimPosluje:string, letovi:string, spisakKarataSaPopustomZaBrzuRez: string, konfigSegMesta:string, cenovnik: string, infoPrtljag: string  ): void {
     let index = this.allAvion.indexOf(this.avionToEdit);
     this.allAvion[index].nazivAvioKompanije = nazivAvioKompanije;
     this.allAvion[index].adresa = adresa;
