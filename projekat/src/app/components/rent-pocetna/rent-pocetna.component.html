@@ -3,8 +3,7 @@
 
 <p>U tabeli su prikazi svi rent-a-car servsi, odaberite koji Vam najviše odgovara. Srećan put!</p>
 
-    <form>
-        <div class="row">
+       <!--
             <div class="col-sm-6 form-group">
                 <label for="naziv">Naziv servisa ili lokacija filijale</label>
                 <input type="text" id="naziv" class="form-control" formControlName="naziv">
@@ -16,34 +15,32 @@
             <div class="col-sm-6 form-group">
                 <button class="btn btn-success" type="button">Pretrazi</button> 
             </div>
-        </div>
-    </form>
+       -->
 
-<table border="1" class="table">
-    <tr>
-        <th>
-            Naziv
-        </th>
-        <th>
-            Adresa
-        </th>
-        <th>
-            Ocena
-        </th>
-    </tr>
-    <tr *ngFor="let ser of allRentACarServis">
-            <td>{{ser.naziv}}</td>
-            <td>{{ser.adresa}}</td>
-            <td>{{ser.ocena}}</td>
-           <!-- <ngb-rating [(rate)]="ser.ocena"></ngb-rating> --> 
-           <td>
-            <!-- Prenos id-ja kao parametra putanje komponenti -->
-            <button class="btn btn-success" routerLink="/ren-a-car/{{ser.id}}/detalji">
-                Detalji
-            </button>
-        </td>
-    </tr>
- 
-</table>
+       <div class="form-row">
+        <div class="col-md-4">
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="material-icons"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Naziv servisa ili lokacija filijale" id="nazivFilter">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="material-icons"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Vremenski period" id="vremeFilter">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <button type="button" class="btn btn-primary" style="margin-left: 30px" (click)="filterRentACar()">Filtriraj</button>
+            <button type="button" class="btn btn-secondary" style="margin-left: 15px" (click)="resetFilter()">Resetuj</button>
+        </div>
+    </div>
+
+ <app-rent-filtered [allRentACarServisFilter]="filteredRentACarServis"></app-rent-filtered> 
 
 </div>

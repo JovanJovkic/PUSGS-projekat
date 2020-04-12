@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { RentACarServis } from '../entities/rentacar';
 import { Vozilo } from '../entities/vozilo';
+import { AbstractFilterParam } from 'src/app/entities/abstract-filter-param/abstract-filter-param';
+import { StringFilterParam } from 'src/app/entities/string-filter-param/string-filter-param';
+import { NumberFilterParam } from 'src/app/entities/number-filter-param/number-filter-param';
 
 @Injectable({
   providedIn: 'root'
@@ -51,5 +54,38 @@ export class RentACarService {
     allAvion.push(ak3);
 
     return allAvion;
+  }
+
+  filterRentCarServise(allRentACar: RentACarServis[], filterParams: AbstractFilterParam[]): RentACarServis[] {
+    let filteredRentACar = new Array<RentACarServis>();
+    for (const item of allRentACar) {
+      let addAirCompany = true;
+      for (const filterParam of filterParams) {
+        if (this.checkNazivFilter(item, filterParam)) {
+          addAirCompany = false;
+            break;
+        }
+        /*
+        if (this.checkVremeFilter(item, filterParam)) {
+          addAirCompany = false;
+          break;
+        }*/
+      }
+
+      if (addAirCompany)
+      filteredRentACar.push(item);
+    }
+
+    return filteredRentACar;
+  }
+
+  checkNazivFilter(rent: RentACarServis, filterParam: AbstractFilterParam): boolean {
+    //console.log(filterParam instanceof StringFilterParam && filterParam.getFilterParamName() === 'nazivFilter' && !rent.naziv.toLowerCase().includes(filterParam.getFilterParamValue().toLowerCase()));
+    return filterParam instanceof StringFilterParam && filterParam.getFilterParamName() === 'nazivFilter' && !rent.naziv.toLowerCase().includes(filterParam.getFilterParamValue().toLowerCase());
+  }
+
+  checkVremeFilter(rent: RentACarServis, filterParam: AbstractFilterParam): boolean {
+    //return filterParam instanceof NumberFilterParam && filterParam.getFilterParamName() === 'vremeFilter' && (aircompany.cenaKarte > filterParam.getFilterParamValue());
+    return true;
   }
 }

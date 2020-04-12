@@ -1,0 +1,30 @@
+<div class="container" >
+
+    <table border="1" class="table">
+        <tr>
+            <th>
+                Naziv
+            </th>
+            <th>
+                Adresa
+            </th>
+            <th>
+                Ocena
+            </th>
+        </tr>
+        <tr *ngFor="let ser of allRentACarServisFilter">
+                <td>{{ser.naziv}}</td>
+                <td>{{ser.adresa}}</td>
+                <td>{{ser.ocena}}</td>
+               <!-- <ngb-rating [(rate)]="ser.ocena"></ngb-rating> --> 
+               <td>
+                <!-- Prenos id-ja kao parametra putanje komponenti -->
+                <button class="btn btn-success" routerLink="/ren-a-car/{{ser.id}}/detalji">
+                    Detalji
+                </button>
+            </td>
+        </tr>
+     
+    </table>
+
+</div>
