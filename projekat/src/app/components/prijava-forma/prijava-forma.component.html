@@ -1,13 +1,18 @@
 <div class="container" >
     <h1>Prijavite se unosom sledećih podataka</h1>
-    <form  [formGroup]="prijavaForma" > <!--(ngSubmit)="onSubmit()" -->
+    <form  [formGroup]="prijavaForma" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label for="email">E-mail</label>
                 <input type="text" id="email" class="form-control" formControlName="email">
-               <!-- <div *ngIf="courseForm.controls.courseName.invalid">
-                    Please enter course name
-                </div>-->
+                <div *ngIf="prijavaForma.controls.email.invalid">
+                    <div *ngIf="prijavaForma.controls.email.errors.maxlength">
+                        E-mail moze sadrzati maksimalno 30 karaktera
+                    </div>
+                    <div *ngIf="prijavaForma.controls.email.errors.required">
+                        Morate uneti e-mail
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -15,11 +20,19 @@
             <div class="col-sm-6 form-group">
                 <label for="lozinka">Lozinka</label>
                 <input type="password" id="lozinka" class="form-control" formControlName="lozinka">
+                <div *ngIf="prijavaForma.controls.lozinka.invalid">
+                    <div *ngIf="prijavaForma.controls.lozinka.errors.maxlength">
+                        Lozinka moze sadrzati maksimalno 20 karaktera
+                    </div>
+                    <div *ngIf="prijavaForma.controls.lozinka.errors.required">
+                        Morate uneti lozinku
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-3">
-                <button class="btn btn-success"  routerLink="/homepage-forma" type="submit">Prijavi se</button> <!--[disabled]="!courseForm.valid" -->
+                <button [disabled]="!prijavaForma.valid"  class="btn btn-success"  routerLink="/homepage-forma" type="submit">Prijavi se</button> <!--[disabled]="!courseForm.valid" -->
             </div>
             <div class="col-1">
                 <button class="btn btn-primary" (click)="onClear()" type="button">Obrisi</button> 

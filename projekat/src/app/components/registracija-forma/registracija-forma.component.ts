@@ -18,18 +18,23 @@ export class RegistracijaFormaComponent implements OnInit {
 
   private initForm() {
     this.registracijaForma = new FormGroup({
-      'email': new FormControl('', Validators.required),
-      'lozinka': new FormControl('', Validators.required),
-      'lozinka2': new FormControl('', [Validators.required]),
-      'ime': new FormControl('', Validators.required),
-      'prezime': new FormControl('', Validators.required),
-      'grad': new FormControl('', Validators.required),
-      'telefon': new FormControl('+381', Validators.required)
+      'email': new FormControl('Unesite e-mail adresu', [Validators.required, Validators.maxLength(30)]),
+      'lozinka': new FormControl('', [Validators.required, Validators.maxLength(20)]),
+      'lozinka2': new FormControl('', [Validators.required, Validators.maxLength(20)]),
+      'ime': new FormControl('', [Validators.required, Validators.maxLength(20)]),
+      'prezime': new FormControl('', [Validators.required, Validators.maxLength(20)]),
+      'grad': new FormControl('', [Validators.required, Validators.maxLength(20)]),
+      'telefon': new FormControl('+381', [Validators.required, Validators.maxLength(20)])
     });
   }
 
   onClear() {
     this.registracijaForma.reset();
+  }
+
+  onSubmit() {
+    console.log(this.registracijaForma.value);
+    console.log(this.registracijaForma);
   }
 
 }

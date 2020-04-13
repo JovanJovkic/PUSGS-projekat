@@ -5,9 +5,14 @@
             <div class="col-sm-6 form-group">
                 <label for="email">E-mail</label>
                 <input type="text" id="email" class="form-control" formControlName="email">
-               <!-- <div *ngIf="courseForm.controls.courseName.invalid">
-                    Please enter course name
-                </div>-->
+                <div *ngIf="registracijaForma.controls.email.invalid">
+                    <div *ngIf="registracijaForma.controls.email.errors.maxlength">
+                        E-mail moze sadrzati maksimalno 30 karaktera
+                    </div>
+                    <div *ngIf="registracijaForma.controls.email.errors.required">
+                        Morate uneti e-mail
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -15,41 +20,89 @@
             <div class="col-sm-6 form-group">
                 <label for="lozinka">Lozinka</label>
                 <input type="password" id="lozinka" class="form-control" formControlName="lozinka">
+                <div *ngIf="registracijaForma.controls.lozinka.invalid">
+                    <div *ngIf="registracijaForma.controls.lozinka.errors.maxlength">
+                        Lozinka moze sadrzati maksimalno 20 karaktera
+                    </div>
+                    <div *ngIf="registracijaForma.controls.lozinka.errors.required">
+                        Morate uneti lozinku
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label for="lozinka2">Ponovite lozinku</label>
                 <input type="password" id="lozinka2" class="form-control" formControlName="lozinka2">
+                <div *ngIf="registracijaForma.controls.lozinka2.invalid">
+                    <div *ngIf="registracijaForma.controls.lozinka2.errors.maxlength">
+                        Lozinka moze sadrzati maksimalno 20 karaktera
+                    </div>
+                    <div *ngIf="registracijaForma.controls.lozinka2.errors.required">
+                        Morate uneti lozinku
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label for="ime">Ime</label>
                 <input type="text" id="ime" class="form-control" formControlName="ime">
+                <div *ngIf="registracijaForma.controls.ime.invalid">
+                    <div *ngIf="registracijaForma.controls.ime.errors.maxlength">
+                        Ime moze sadrzati maksimalno 20 karaktera
+                    </div>
+                    <div *ngIf="registracijaForma.controls.ime.errors.required">
+                        Morate uneti ime
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label for="prezime">Prezime</label>
                 <input type="text" id="prezime" class="form-control" formControlName="prezime">
+                <div *ngIf="registracijaForma.controls.prezime.invalid">
+                    <div *ngIf="registracijaForma.controls.prezime.errors.maxlength">
+                        Prezime moze sadrzati maksimalno 20 karaktera
+                    </div>
+                    <div *ngIf="registracijaForma.controls.prezime.errors.required">
+                        Morate uneti prezime
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label for="grad">Grad</label>
                 <input type="text" id="grad" class="form-control" formControlName="grad">
+                <div *ngIf="registracijaForma.controls.grad.invalid">
+                    <div *ngIf="registracijaForma.controls.grad.errors.maxlength">
+                        Grad moze sadrzati maksimalno 20 karaktera
+                    </div>
+                    <div *ngIf="registracijaForma.controls.grad.errors.required">
+                        Morate uneti grad
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label for="telefon">Telefon</label>
                 <input type="text" id="telefon" class="form-control" formControlName="telefon">
+                <div *ngIf="registracijaForma.controls.telefon.invalid">
+                    <div *ngIf="registracijaForma.controls.telefon.errors.maxlength">
+                        Telefon moze sadrzati maksimalno 20 karaktera
+                    </div>
+                    <div *ngIf="registracijaForma.controls.telefon.errors.required">
+                        Morate uneti telefon
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-3">
-                <button class="btn btn-success" routerLink="/homepage-forma" type="submit">Registrujte se</button> <!--[disabled]="!courseForm.valid" -->
+                <button class="btn btn-success" [disabled]="!registracijaForma.valid" routerLink="/homepage-forma" type="submit">Registrujte se</button> <!--[disabled]="!courseForm.valid" -->
             </div>
             <div class="col-1">
                 <button class="btn btn-primary" (click)="onClear()" type="button">Obrisi</button> 
