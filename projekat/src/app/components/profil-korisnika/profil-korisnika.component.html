@@ -1,1 +1,126 @@
-<p>profil-korisnika works!</p>
+<div class="container" >
+    <h1>Profil korisnika</h1>
+    <form  [formGroup]="korisnikPocetnaForma" >
+      <table>
+        <tr>
+            <td>
+                Klikom na dugme desno, u tabeli će se prikazati informacije o korisniku
+            </td>
+            <td>
+                <button class="btn btn-success" style="margin-left: 15px;" (click)="loadKorisnik()">Učitaj</button>
+            </td>
+        </tr>
+    </table>
+    
+    <br/>
+    
+    <div [hidden]="allKorisnik.length !== 0">
+        <p>Trenutno nema učitanih informacija o korisniku</p>
+    </div>
+    <div [hidden]="allKorisnik.length === 0"></div>
+        
+        <table class="table table-hover" border='4px' bgcolor=#F98D76>
+          <thead>
+              <tr>
+                  <th scope="col">E-mail: </th>
+                  <td *ngFor="let korisnik of allKorisnik">{{korisnik.email}}</td>
+              </tr>
+              <tr>
+                  <th scope="col">Lozinka: </th>
+                  <td *ngFor="let korisnik of allKorisnik">{{korisnik.lozinka}}</td>
+              </tr>
+              <tr>
+                  <th scope="col">Ime: </th>
+                  <td *ngFor="let korisnik of allKorisnik">{{korisnik.ime}}</td>
+              </tr>
+              <tr>
+                  <th scope="col">Prezime: </th>
+                  <td *ngFor="let korisnik of allKorisnik">{{korisnik.prezime}}</td>
+              </tr>
+              <tr>
+                  <th scope="col">Grad: </th>
+                  <td *ngFor="let korisnik of allKorisnik">{{korisnik.grad}}</td>
+              </tr>
+              <tr>
+                 <th scope="col">Telefon: </th>
+                 <td *ngFor="let korisnik of allKorisnik">{{korisnik.telefon}}</td>
+              </tr>
+              <tr>
+                 <th scope="col">Prijatelji: </th>
+                 <td *ngFor="let korisnik of allKorisnik">{{korisnik.prijatelji}}</td>
+              </tr>
+              <tr *ngFor="let korisnik of allKorisnik">
+                <td>
+                  <button class="btn btn-success" data-toggle="modal" data-target="#korisnikEdit" (click)="editKorisnikModal(korisnik)">Izmena</button>
+                </td> 
+            </tr>
+          </thead>
+      </table>
+    </form>
+  
+  </div>
+  
+  <div class="modal fade" id="korisnikEdit" tabindex="-1" role="dialog" aria-labelledby="korisnikEdit" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="korisnikEdit">Izmena podataka o korisniku</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="tab-content">
+            <form class="form">
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">E-mail: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="email" placeholder="Unesite e-mail " min="0" max="100">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Lozinka: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="lozinka" placeholder="Unesite lozinku" min="0" max="100">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Ime: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="ime" placeholder="ime" min="0" max="100">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Prezime: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="prezime" placeholder="Unesite prezime" min="0" max="100">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Grad: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="grad" placeholder="Unesite grad" min="0" max="100">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Telefon: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="telefon" placeholder="Unesite telefon" min="0" max="100">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Prijatelji: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="prijatelji" placeholder="Unesite prijatelje" min="0" max="100">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="editKorisnikInfo()">Sačuvaj izmene</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
