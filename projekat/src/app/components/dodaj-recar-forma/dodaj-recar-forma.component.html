@@ -5,9 +5,14 @@
             <div class="col-sm-6 form-group">
                 <label for="naziv">Naziv</label>
                 <input type="text" id="naziv" class="form-control" formControlName="naziv">
-               <!-- <div *ngIf="courseForm.controls.courseName.invalid">
-                    Please enter course name
-                </div>-->
+                <div *ngIf="dodajRentCarForma.controls.naziv.invalid">
+                    <div *ngIf="dodajRentCarForma.controls.naziv.errors.maxlength">
+                        Naziv moze sadrzati maksimalno 30 karaktera
+                    </div>
+                    <div *ngIf="dodajRentCarForma.controls.naziv.errors.required">
+                        Morate uneti naziv
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -15,11 +20,19 @@
             <div class="col-sm-6 form-group">
                 <label for="adresa">Adresa</label>
                 <input type="text" id="adresa" class="form-control" formControlName="adresa">
+                <div *ngIf="dodajRentCarForma.controls.adresa.invalid">
+                    <div *ngIf="dodajRentCarForma.controls.adresa.errors.maxlength">
+                        Adresa moze sadrzati maksimalno 30 karaktera
+                    </div>
+                    <div *ngIf="dodajRentCarForma.controls.adresa.errors.required">
+                        Morate uneti adresa
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-3">
-                <button class="btn btn-success" type="submit">Registruj</button> <!--[disabled]="!courseForm.valid" -->
+                <button class="btn btn-success" [disabled]="!dodajRentCarForma.valid" type="submit">Registruj</button> <!--[disabled]="!courseForm.valid" -->
             </div>
             <div class="col-1">
                 <button class="btn btn-primary" (click)="onClear()" type="button">Obrisi</button> 

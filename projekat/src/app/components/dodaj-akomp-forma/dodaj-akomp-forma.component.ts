@@ -18,13 +18,19 @@ export class DodajAkompFormaComponent implements OnInit {
 
   private initForm() {
     this.dodajAvioKompForma = new FormGroup({
-      'naziv': new FormControl('', Validators.required),
-      'adresa': new FormControl('', Validators.required),
+      'naziv': new FormControl('', [Validators.required, Validators.maxLength(20)]),
+      'adresa': new FormControl('', [Validators.required, Validators.maxLength(20)]),
     });
   }
 
   onClear() {
     this.dodajAvioKompForma.reset();
   }
+
+  onSubmit() {
+    console.log(this.dodajAvioKompForma.value);
+    console.log(this.dodajAvioKompForma);
+  }
+
 
 }

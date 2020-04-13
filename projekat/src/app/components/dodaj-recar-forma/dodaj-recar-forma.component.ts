@@ -18,12 +18,17 @@ export class DodajRecarFormaComponent implements OnInit {
 
   private initForm() {
     this.dodajRentCarForma = new FormGroup({
-      'naziv': new FormControl('', Validators.required),
-      'adresa': new FormControl('', Validators.required),
+      'naziv': new FormControl('', [Validators.required, Validators.maxLength(30)]),
+      'adresa': new FormControl('', [Validators.required, Validators.maxLength(30)]),
     });
   }
 
   onClear() {
     this.dodajRentCarForma.reset();
+  }
+
+  onSubmit() {
+    console.log(this.dodajRentCarForma.value);
+    console.log(this.dodajRentCarForma);
   }
 }
