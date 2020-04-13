@@ -19,6 +19,7 @@ import { AviokompanijePocetnaComponent } from './components/aviokompanije-pocetn
 import { AviokompanijeFilteredComponent } from './components/aviokompanije-filtered/aviokompanije-filtered.component';
 import { ProfilKorisnikaComponent } from './components/profil-korisnika/profil-korisnika.component';
 import { RentFilteredComponent } from './components/rent-filtered/rent-filtered.component';
+import { AviokompAdminProfilComponent } from './components/aviokomp-admin-profil/aviokomp-admin-profil.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { RentFilteredComponent } from './components/rent-filtered/rent-filtered.
     AviokompanijePocetnaComponent,
     AviokompanijeFilteredComponent,
     ProfilKorisnikaComponent,
-    RentFilteredComponent
+    RentFilteredComponent,
+    AviokompAdminProfilComponent
   ],
   imports: [
     BrowserModule,
