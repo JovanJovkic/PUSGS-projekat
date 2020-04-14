@@ -18,7 +18,7 @@ export class PrijavaFormaComponent implements OnInit {
 
   private initForm() {
     this.prijavaForma = new FormGroup({
-      'email': new FormControl('Unesite e-mail adresu', [Validators.required, Validators.maxLength(30)]),
+      'email': new FormControl('Unesite e-mail adresu', [Validators.required, Validators.maxLength(30),Validators.email]),
       'lozinka': new FormControl('', [Validators.required, Validators.maxLength(15)]),
     });
   }

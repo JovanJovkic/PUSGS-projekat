@@ -15,6 +15,9 @@
                     <div *ngIf="registracijaForma.controls.email.errors.required" class="text-danger">
                         Morate uneti e-mail
                     </div>
+                    <div *ngIf="registracijaForma.controls.email.errors.email" class="text-danger">
+                        Morate uneti validan e-mail
+                    </div>
                 </div>
             </div>
 

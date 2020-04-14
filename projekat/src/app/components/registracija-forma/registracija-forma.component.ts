@@ -18,7 +18,7 @@ export class RegistracijaFormaComponent implements OnInit {
 
   private initForm() {
     this.registracijaForma = new FormGroup({
-      'email': new FormControl('Unesite e-mail adresu', [Validators.required, Validators.maxLength(30)]),
+      'email': new FormControl('Unesite e-mail adresu', [Validators.required, Validators.maxLength(30),Validators.email]),
       'lozinka': new FormControl('', [Validators.required, Validators.maxLength(20)]),
       'lozinka2': new FormControl('', [Validators.required, Validators.maxLength(20)]),
       'ime': new FormControl('', [Validators.required, Validators.maxLength(20)]),
