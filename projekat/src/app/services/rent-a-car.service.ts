@@ -21,11 +21,11 @@ export class RentACarService {
   mockedRentACar(): Array<RentACarServis> {
     let allRentACarServis = new Array<RentACarServis>();
 
-    const ak1 = new RentACarServis(1,'Rent a car servis 1', 'Novi Beograd', 'servis za rent-a-car', 5);
-    const ak2 = new RentACarServis(2,'Rent a car servis 2', 'Novi Sad', 'servis za rent-a-car', 5);
-    const ak3 = new RentACarServis(3,'Rent a car servis 3', 'Loznica', 'servis za rent-a-car', 3);
-    const ak4 = new RentACarServis(4,'Rent a car servis 4', 'Nis', 'servis za rent-a-car', 5);
-    const ak5 = new RentACarServis(5,'Rent a car servis 5', 'Beograd', 'servis za rent-a-car', 4);
+    const ak1 = new RentACarServis(1,'Balkan', 'Jurija Gagarina 25, Novi Beograd', 'Najpovoljniji rent-a-car servis u gradu', 5);
+    const ak2 = new RentACarServis(2,'Novi Sad - rentAcar', 'Bulevar Oslobodjenja 123, Novi Sad', 'Servis za rent-a-car sa najnovijim modelima vozila', 5);
+    const ak3 = new RentACarServis(3,'Europa', 'Jovana Dučica 22, Loznica', 'Servis po vašoj meri', 3);
+    const ak4 = new RentACarServis(4,'Novi', 'Ive Andrića 25, Nis', 'servis za rent-a-car', 5);
+    const ak5 = new RentACarServis(5,'Servis BG', 'Karadjordjeva 254, Beograd', 'Posedujemo najnovija vozila', 4);
 
     ak1.vozila = this.mockedVozilo();
     ak2.vozila = this.mockedVozilo();
