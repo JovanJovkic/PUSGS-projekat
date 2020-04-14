@@ -1,5 +1,8 @@
 <div class="container" >
-    <h1>Prijavite se unosom sledećih podataka</h1>
+    <br/><br/>
+    <p class="text-center h1">Stranica za prijavljivanje</p>
+    <br/>
+    <h3>Prijavite se unosom sledećih podataka</h3>
     <form  [formGroup]="prijavaForma" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="col-sm-6 form-group ">
@@ -7,10 +10,10 @@
              
                 <input type="text" id="email" class="form-control" formControlName="email">
                 <div *ngIf="prijavaForma.controls.email.invalid">
-                    <div *ngIf="prijavaForma.controls.email.errors.maxlength">
-                        E-mail moze sadrzati maksimalno 30 karaktera
+                    <div *ngIf="prijavaForma.controls.email.errors.maxlength" class="text-danger">
+                        E-mail može sadržati maksimalno 30 karaktera
                     </div>
-                    <div *ngIf="prijavaForma.controls.email.errors.required">
+                    <div *ngIf="prijavaForma.controls.email.errors.required" class="text-danger">
                         Morate uneti e-mail
                     </div>
                 </div>
@@ -23,10 +26,10 @@
                
                 <input type="password" id="lozinka" class="form-control" formControlName="lozinka">
                 <div *ngIf="prijavaForma.controls.lozinka.invalid">
-                    <div *ngIf="prijavaForma.controls.lozinka.errors.maxlength">
-                        Lozinka moze sadrzati maksimalno 20 karaktera
+                    <div *ngIf="prijavaForma.controls.lozinka.errors.maxlength" class="text-danger">
+                        Lozinka može sadržati maksimalno 20 karaktera
                     </div>
-                    <div *ngIf="prijavaForma.controls.lozinka.errors.required">
+                    <div *ngIf="prijavaForma.controls.lozinka.errors.required" class="text-danger">
                         Morate uneti lozinku
                     </div>
                 </div>
@@ -40,7 +43,7 @@
                 <button [disabled]="!prijavaForma.valid"  class="btn btn-success"  routerLink="/homepage-forma" type="submit">Prijavi se</button> <!--[disabled]="!courseForm.valid" -->
             </div>
             <div class="col-1">
-                <button class="btn btn-primary" (click)="onClear()" type="button">Obrisi</button> 
+                <button class="btn btn-primary" (click)="onClear()" type="button">Obriši</button> 
             </div>
         </div>
     </form>

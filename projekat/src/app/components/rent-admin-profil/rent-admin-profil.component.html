@@ -1,36 +1,41 @@
 <div class="container">
-    <h1>Profil rent-a-car administratora</h1>
-    
-    <table class=" table table-danger" border="1" *ngFor="let item of allRentACarServis">
+    <br/>
+    <p class="text-center h1">Profil rent-a-car administratora</p>
+    <br/>
+    <table class=" table table-secondary" border="1" *ngFor="let item of allRentACarServis">
+        <thead class="thead-dark">
         <tr>
-            <th>Naziv</th>
-            <th>Adresa</th>
-            <th>Promotivni opis</th>
-            <th>Spisak vozila</th>
+            <th class="text-center">Naziv</th>
+            <th class="text-center">Adresa</th>
+            <th class="text-center">Promotivni opis</th>
+            <th class="text-center">Spisak vozila</th>                   
+            <th>  </th>
         </tr>
+        </thead>
+        <tbody>
         <tr>
-            <td>{{item.naziv}}</td>
-            <td>{{item.adresa}}</td>
-            <td>{{item.promotivniOpis}}</td>
+            <td class="text-center">{{item.naziv}}</td>
+            <td class="text-center">{{item.adresa}}</td>
+            <td class="text-center">{{item.promotivniOpis}}</td>
             <td>
                 <table>
                     <tr>
-                        <th>Naziv</th>
-                        <th>Marka</th>
-                        <th>Model</th>
-                        <th>Godina proizvodnje</th>
-                        <th>Broj sedista</th>
-                        <th>Tip vozila</th>
+                        <th class="text-center">Naziv</th>
+                        <th class="text-center">Marka</th>
+                        <th class="text-center">Model</th>
+                        <th class="text-center">Godina proizvodnje</th>
+                        <th class="text-center">Broj sedišta</th>
+                        <th class="text-center">Tip vozila</th>
                     </tr>
                     <tr *ngFor="let voz of item.vozila">
-                        <td>{{voz.naziv}}</td>  
-                        <td>{{voz.marka}}</td> 
-                        <td>{{voz.model}}</td> 
-                        <td>{{voz.godinaProizvodnje}}</td> 
-                        <td>{{voz.brojSedista}}</td>  
-                        <td>{{voz.tipVozila}}</td>  
+                        <td class="text-center">{{voz.naziv}}</td>  
+                        <td class="text-center">{{voz.marka}}</td> 
+                        <td class="text-center">{{voz.model}}</td> 
+                        <td class="text-center">{{voz.godinaProizvodnje}}</td> 
+                        <td class="text-center">{{voz.brojSedista}}</td>  
+                        <td class="text-center">{{voz.tipVozila}}</td>  
                         <td class="btn-group-vertical">
-                            <button class="btn btn-success">Obrisi</button>
+                            <button class="btn btn-success">Obriši</button>
                             <button class="btn btn-success">Izmeni</button>
                         </td>  
                     </tr>
@@ -38,10 +43,15 @@
             </td>
             <td>
                 <div class="btn-group-vertical">
+                    <br/>
                     <button class="btn btn-success">Izmeni</button>
+                    <br/>
                     <button class="btn btn-success">Dodaj vozilo</button>
+                    <br/>
+                    <button class="btn btn-success">Dodaj filijalu</button>
                 </div>
             </td>
         </tr>
+        </tbody>
     </table>
 </div>

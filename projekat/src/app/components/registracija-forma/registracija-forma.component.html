@@ -1,15 +1,18 @@
 <div class="container" >
-    <h1>Registrujte se unosom sledećih podataka</h1>
+    <br/><br/>
+    <p class="text-center h1">Stranica za registraciju</p>
+    <br/>
+    <h3>Registrujte se unosom sledećih podataka</h3>
     <form  [formGroup]="registracijaForma" > <!--(ngSubmit)="onSubmit()" -->
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label for="email">E-mail</label>
                 <input type="text" id="email" class="form-control" formControlName="email">
                 <div *ngIf="registracijaForma.controls.email.invalid">
-                    <div *ngIf="registracijaForma.controls.email.errors.maxlength">
-                        E-mail moze sadrzati maksimalno 30 karaktera
+                    <div *ngIf="registracijaForma.controls.email.errors.maxlength" class="text-danger">
+                        E-mail može sadržati maksimalno 30 karaktera
                     </div>
-                    <div *ngIf="registracijaForma.controls.email.errors.required">
+                    <div *ngIf="registracijaForma.controls.email.errors.required" class="text-danger">
                         Morate uneti e-mail
                     </div>
                 </div>
@@ -21,10 +24,10 @@
                 <label for="lozinka">Lozinka</label>
                 <input type="password" id="lozinka" class="form-control" formControlName="lozinka">
                 <div *ngIf="registracijaForma.controls.lozinka.invalid">
-                    <div *ngIf="registracijaForma.controls.lozinka.errors.maxlength">
-                        Lozinka moze sadrzati maksimalno 20 karaktera
+                    <div *ngIf="registracijaForma.controls.lozinka.errors.maxlength" class="text-danger">
+                        Lozinka može sadržati maksimalno 20 karaktera
                     </div>
-                    <div *ngIf="registracijaForma.controls.lozinka.errors.required">
+                    <div *ngIf="registracijaForma.controls.lozinka.errors.required" class="text-danger">
                         Morate uneti lozinku
                     </div>
                 </div>
@@ -35,10 +38,10 @@
                 <label for="lozinka2">Ponovite lozinku</label>
                 <input type="password" id="lozinka2" class="form-control" formControlName="lozinka2">
                 <div *ngIf="registracijaForma.controls.lozinka2.invalid">
-                    <div *ngIf="registracijaForma.controls.lozinka2.errors.maxlength">
-                        Lozinka moze sadrzati maksimalno 20 karaktera
+                    <div *ngIf="registracijaForma.controls.lozinka2.errors.maxlength" class="text-danger">
+                        Lozinka može sadržati maksimalno 20 karaktera
                     </div>
-                    <div *ngIf="registracijaForma.controls.lozinka2.errors.required">
+                    <div *ngIf="registracijaForma.controls.lozinka2.errors.required" class="text-danger">
                         Morate uneti lozinku
                     </div>
                 </div>
@@ -49,10 +52,10 @@
                 <label for="ime">Ime</label>
                 <input type="text" id="ime" class="form-control" formControlName="ime">
                 <div *ngIf="registracijaForma.controls.ime.invalid">
-                    <div *ngIf="registracijaForma.controls.ime.errors.maxlength">
-                        Ime moze sadrzati maksimalno 20 karaktera
+                    <div *ngIf="registracijaForma.controls.ime.errors.maxlength" class="text-danger">
+                        Ime može sadržati maksimalno 20 karaktera
                     </div>
-                    <div *ngIf="registracijaForma.controls.ime.errors.required">
+                    <div *ngIf="registracijaForma.controls.ime.errors.required" class="text-danger">
                         Morate uneti ime
                     </div>
                 </div>
@@ -63,10 +66,10 @@
                 <label for="prezime">Prezime</label>
                 <input type="text" id="prezime" class="form-control" formControlName="prezime">
                 <div *ngIf="registracijaForma.controls.prezime.invalid">
-                    <div *ngIf="registracijaForma.controls.prezime.errors.maxlength">
-                        Prezime moze sadrzati maksimalno 20 karaktera
+                    <div *ngIf="registracijaForma.controls.prezime.errors.maxlength" class="text-danger">
+                        Prezime može sadržati maksimalno 20 karaktera
                     </div>
-                    <div *ngIf="registracijaForma.controls.prezime.errors.required">
+                    <div *ngIf="registracijaForma.controls.prezime.errors.required" class="text-danger">
                         Morate uneti prezime
                     </div>
                 </div>
@@ -77,10 +80,10 @@
                 <label for="grad">Grad</label>
                 <input type="text" id="grad" class="form-control" formControlName="grad">
                 <div *ngIf="registracijaForma.controls.grad.invalid">
-                    <div *ngIf="registracijaForma.controls.grad.errors.maxlength">
-                        Grad moze sadrzati maksimalno 20 karaktera
+                    <div *ngIf="registracijaForma.controls.grad.errors.maxlength" class="text-danger">
+                        Grad može sadrvati maksimalno 20 karaktera
                     </div>
-                    <div *ngIf="registracijaForma.controls.grad.errors.required">
+                    <div *ngIf="registracijaForma.controls.grad.errors.required" class="text-danger">
                         Morate uneti grad
                     </div>
                 </div>
@@ -91,10 +94,10 @@
                 <label for="telefon">Telefon</label>
                 <input type="text" id="telefon" class="form-control" formControlName="telefon">
                 <div *ngIf="registracijaForma.controls.telefon.invalid">
-                    <div *ngIf="registracijaForma.controls.telefon.errors.maxlength">
-                        Telefon moze sadrzati maksimalno 20 karaktera
+                    <div *ngIf="registracijaForma.controls.telefon.errors.maxlength" class="text-danger">
+                        Telefon može sadržati maksimalno 20 karaktera
                     </div>
-                    <div *ngIf="registracijaForma.controls.telefon.errors.required">
+                    <div *ngIf="registracijaForma.controls.telefon.errors.required" class="text-danger">
                         Morate uneti telefon
                     </div>
                 </div>
@@ -105,7 +108,7 @@
                 <button class="btn btn-success" [disabled]="!registracijaForma.valid" routerLink="/homepage-forma" type="submit">Registrujte se</button> <!--[disabled]="!courseForm.valid" -->
             </div>
             <div class="col-1">
-                <button class="btn btn-primary" (click)="onClear()" type="button">Obrisi</button> 
+                <button class="btn btn-primary" (click)="onClear()" type="button">Obriši</button> 
             </div>
         </div>
     </form>

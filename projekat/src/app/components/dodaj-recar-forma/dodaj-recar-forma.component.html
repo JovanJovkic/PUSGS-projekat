@@ -1,15 +1,17 @@
 <div class="container" >
-    <h1>Stranica za dodavanje rent-a-car servisa</h1>
+    <br/><br/>
+    <p class="text-center h1">Stranica za dodavanje rent-a-car servisa</p>
+    <br/>
     <form  [formGroup]="dodajRentCarForma" > <!--(ngSubmit)="onSubmit()" -->
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label for="naziv">Naziv</label>
                 <input type="text" id="naziv" class="form-control" formControlName="naziv">
                 <div *ngIf="dodajRentCarForma.controls.naziv.invalid">
-                    <div *ngIf="dodajRentCarForma.controls.naziv.errors.maxlength">
-                        Naziv moze sadrzati maksimalno 30 karaktera
+                    <div *ngIf="dodajRentCarForma.controls.naziv.errors.maxlength" class="text-danger">
+                        Naziv može sadržati maksimalno 30 karaktera
                     </div>
-                    <div *ngIf="dodajRentCarForma.controls.naziv.errors.required">
+                    <div *ngIf="dodajRentCarForma.controls.naziv.errors.required" class="text-danger">
                         Morate uneti naziv
                     </div>
                 </div>
@@ -21,11 +23,11 @@
                 <label for="adresa">Adresa</label>
                 <input type="text" id="adresa" class="form-control" formControlName="adresa">
                 <div *ngIf="dodajRentCarForma.controls.adresa.invalid">
-                    <div *ngIf="dodajRentCarForma.controls.adresa.errors.maxlength">
-                        Adresa moze sadrzati maksimalno 30 karaktera
+                    <div *ngIf="dodajRentCarForma.controls.adresa.errors.maxlength" class="text-danger">
+                        Adresa može sadržati maksimalno 30 karaktera
                     </div>
-                    <div *ngIf="dodajRentCarForma.controls.adresa.errors.required">
-                        Morate uneti adresa
+                    <div *ngIf="dodajRentCarForma.controls.adresa.errors.required" class="text-danger">
+                        Morate uneti adresu
                     </div>
                 </div>
             </div>
@@ -35,7 +37,7 @@
                 <button class="btn btn-success" [disabled]="!dodajRentCarForma.valid" type="submit">Registruj</button> <!--[disabled]="!courseForm.valid" -->
             </div>
             <div class="col-1">
-                <button class="btn btn-primary" (click)="onClear()" type="button">Obrisi</button> 
+                <button class="btn btn-primary" (click)="onClear()" type="button">Obriši</button> 
             </div>
         </div>
     </form>
