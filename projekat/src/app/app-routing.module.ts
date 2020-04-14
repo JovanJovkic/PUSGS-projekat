@@ -14,6 +14,7 @@ import { RentAdminProfilComponent } from './components/rent-admin-profil/rent-ad
 import {AviokompanijePocetnaComponent} from './components/aviokompanije-pocetna/aviokompanije-pocetna.component'
 import {ProfilKorisnikaComponent} from './components/profil-korisnika/profil-korisnika.component'
 import {AviokompAdminProfilComponent} from './components/aviokomp-admin-profil/aviokomp-admin-profil.component'
+import { AvioProfilComponent} from './components/avio-profil/avio-profil.component';
 import { AppComponent } from './app.component';
 
 
@@ -71,7 +72,10 @@ const routes: Routes = [
   },
   {
     path: "avio-kompanija-pocetna",
-    component: AviokompanijePocetnaComponent,
+    children: [
+      { path: "", component: AviokompanijePocetnaComponent },
+      { path: ":id/profilKompanije", component: AvioProfilComponent },
+    ]
   },
   {
     path: "profilAdminAvio",

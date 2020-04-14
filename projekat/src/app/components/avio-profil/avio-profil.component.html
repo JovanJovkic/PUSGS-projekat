@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>Profil avio-kompanije {{profil.nazivAvioKompanije}}</h1>
+
+
+    <br/> <br/>
+
+    <h3>Spisak destinacija koja su u ponudi: </h3>
+
+    <table class="table" border="1">
+        <tr>
+            <th>Datum i vreme sletanja</th>
+            <th>Datum i vreme poletanja</th>
+            <th>Vreme putovanja</th>
+            <th>Dužina putovanja</th>
+            <th>Broj presedanja</th>
+            <th>Lokacije presedanja</th>
+            <th>Cena karte</th>
+        </tr>
+        <tr *ngFor="let item of profil.destinacija">
+            <td>{{item.datumVremeSletanja}}</td>
+            <td>{{item.datumVremePoletanja}}</td>
+            <td>{{item.vremePutovanja}}</td>
+            <td>{{item.duzinaPutovanja}}</td>
+            <td>{{item.brojPresedanja}}</td>
+            <td>{{item.lokacijaPresedanja}}</td>
+            <td>{{item.cenaKarte}}</td>
+            <td><button class="btn btn-success">Rezerviši</button></td>
+        </tr>
+    </table>
+    
+</div>
