@@ -20,9 +20,8 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {
-    path: "",
-    redirectTo: "/pocetna",
-    pathMatch: 'full'
+    path: "pocetna",
+    component: NavbarComponent
   },
   {
     path: "prijava",
