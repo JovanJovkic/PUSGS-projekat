@@ -14,13 +14,14 @@
     
     <br/>
     
+    <!--
     <div [hidden]="allKorisnik.length !== 0">
         <p>Trenutno nema učitanih informacija o korisniku</p>
     </div>
     <div [hidden]="allKorisnik.length === 0"></div>
-        
-        <table class="table table-hover" border='4px' bgcolor="#b8d9c1">
-          <thead>
+    -->
+        <table class="table" border='12px' bgcolor="#b8d9c1">
+          <thead class="thead-light"> 
               <tr>
                   <th scope="col">E-mail: </th>
                   <td *ngFor="let korisnik of allKorisnik">{{korisnik.email}}</td>
@@ -50,9 +51,10 @@
                  <td *ngFor="let korisnik of allKorisnik">{{korisnik.prijatelji}}</td>
               </tr>
               <tr *ngFor="let korisnik of allKorisnik">
-                <td>
+                <th>
                   <button class="btn btn-success" data-toggle="modal" data-target="#korisnikEdit" (click)="editKorisnikModal(korisnik)">Izmena</button>
-                </td> 
+                </th>
+                <td></td> 
             </tr>
           </thead>
       </table>

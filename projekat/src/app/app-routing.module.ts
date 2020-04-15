@@ -63,6 +63,8 @@ const routes: Routes = [
     children:[
       { path: "", component: HomepageFormaComponent},
       { path: "profilKorisnika", component: ProfilKorisnikaComponent},
+      { path: "avio-kompanija-pocetna", component: AviokompanijePocetnaComponent},
+      { path: "ren-a-car", component: RentPocetnaComponent},
       ]
   },
   {

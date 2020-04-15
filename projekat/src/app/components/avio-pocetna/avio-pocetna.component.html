@@ -13,19 +13,21 @@
         </table>
         
         <br/>
-        
+        <!--
         <div [hidden]="allAvion.length !== 0">
             <p>Trenutno nema učitanih informacija o aviokompaniji</p>
         </div>
+        
         <div [hidden]="allAvion.length === 0"></div>
-        <table class="table table-hover" border='4px' bgcolor="#b8d9c1">
-          <thead>
+        -->
+        <table class="table" border='12px' bgcolor="#b8d9c1">
+          <thead class="thead-light">
               <tr>
-                  <th scope="col">Naziv aviokompanije</th>
+                  <th class="table-active" scope="col">Naziv aviokompanije</th>
                   <td *ngFor="let avion of allAvion">{{avion.nazivAvioKompanije}}</td>
               </tr>
               <tr>
-                  <th scope="col">Adresa kompanije</th>
+                  <th class="table-active" scope="col">Adresa kompanije</th>
                   <td *ngFor="let avion of allAvion">{{avion.adresa}}</td>
               </tr>
               <tr>
@@ -57,10 +59,11 @@
                  <td *ngFor="let avion of allAvion">{{avion.infoPrtljag}}</td>
               </tr>
               <tr *ngFor="let avion of allAvion">
-                <td>
+                <th>
                   <button class="btn btn-success" data-toggle="modal" data-target="#avionEdit" (click)="editAvioModal(avion)">Izmena</button>
-                </td> 
-            </tr>
+                </th>
+                <td></td> 
+             </tr>
           </thead>
       </table>
     </form>

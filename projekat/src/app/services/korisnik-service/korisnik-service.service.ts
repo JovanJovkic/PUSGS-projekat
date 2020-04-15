@@ -16,7 +16,7 @@ export class KorisnikServiceService {
   mockedAvio(): Array<Korisnik> {
     let allKorisnik = new Array<Korisnik>();
 
-    const korisnik1 = new Korisnik('abc@gmail.com', 'abc', 'Abc', 'Abc', 'Novi Sad','Prijatelji');
+    const korisnik1 = new Korisnik('admin@uns.ac.rs', 'admin', 'Petar', 'Petrović', 'Novi Sad', '021 433-377','5 - prijatelja');
 
     allKorisnik.push(korisnik1);
 

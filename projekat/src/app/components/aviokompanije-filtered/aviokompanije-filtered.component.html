@@ -5,7 +5,7 @@
         <tr>
             <th>Naziv</th>
             <th>Grad</th>
-            <th>Cena</th>
+            <th>Cena najjeftinije karte</th>
             <th>Detalji</th>
         </tr>
     </thead>
@@ -13,7 +13,7 @@
         <tr *ngFor="let aircompany of filteredAirCompanies">
             <td>{{aircompany.nazivAvioKompanije}}</td>
             <td>{{aircompany.gradAvioKompanije}}</td>
-            <td>{{aircompany.cenaKarte}}$</td>
+            <td>{{aircompany.cenaKarte}}rsd</td>
             <td> <button class="btn btn-success" routerLink="/avio-kompanija-pocetna/{{aircompany.id}}/profilKompanije">Detalji</button></td>
         </tr>
     </tbody>

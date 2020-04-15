@@ -19,7 +19,7 @@ export class ProfilKorisnikaComponent implements OnInit {
   constructor(private korisnikService: KorisnikServiceService) {
     //alert("Upravo se pozvao konstruktor komponente Avion");
     this.allKorisnik = new Array<Korisnik>();
-    this.korisnikToEdit = new Korisnik("", "", "", "", "", "");
+    this.korisnikToEdit = new Korisnik("", "", "", "", "", "", "");
   }
 
   ngOnInit(): void {
@@ -40,17 +40,19 @@ export class ProfilKorisnikaComponent implements OnInit {
     let ime = (<HTMLInputElement> document.getElementById("ime")).value;
     let prezime = (<HTMLInputElement> document.getElementById("prezime")).value;
     let grad = (<HTMLInputElement> document.getElementById("grad")).value;
+    let telefon = (<HTMLInputElement> document.getElementById("telefon")).value;
     let prijatelji = (<HTMLInputElement> document.getElementById("prijatelji")).value;
-    this.updateKorisnik(email, lozinka, ime, prezime, grad, prijatelji);
+    this.updateKorisnik(email, lozinka, ime, prezime, grad, telefon, prijatelji);
   }
 
-  updateKorisnik(email: string, lozinka: string, ime:string, prezime:string, grad:string, prijatelji: string ): void {
+  updateKorisnik(email: string, lozinka: string, ime:string, prezime:string, grad:string, telefon: string, prijatelji: string ): void {
     let index = this.allKorisnik.indexOf(this.korisnikToEdit);
     this.allKorisnik[index].email = email;
     this.allKorisnik[index].lozinka = lozinka;
     this.allKorisnik[index].ime = ime;
     this.allKorisnik[index].prezime = prezime;
     this.allKorisnik[index].grad = grad;
+    this.allKorisnik[index].telefon = telefon;
     this.allKorisnik[index].prijatelji = prijatelji;
     alert('Vaša izmena je sačuvana!');
   }
