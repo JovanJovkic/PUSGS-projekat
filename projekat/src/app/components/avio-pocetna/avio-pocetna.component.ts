@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Avion } from 'src/app/entities/avion';
-import { AvionService } from 'src/app/services/avion.service';
+import { Avion } from 'src/app/entities/avion/avion';
+import { AvionService } from 'src/app/services/avion/avion.service';
 
 @Component({
   selector: 'app-avio-pocetna',

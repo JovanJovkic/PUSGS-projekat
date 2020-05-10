@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RentACarService } from 'src/app/services/rent-a-car.service';
-import { RentACarServis } from 'src/app/entities/rentacar';
+import { RentACarService } from 'src/app/services/rent-a-car/rent-a-car.service';
+import { RentACarServis } from 'src/app/entities/rentacar/rentacar';
 
 @Component({
   selector: 'app-rent-admin-profil',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RentACarService } from 'src/app/services/rent-a-car.service';
-import { RentACarServis } from 'src/app/entities/rentacar';
+import { RentACarService } from 'src/app/services/rent-a-car/rent-a-car.service';
+import { RentACarServis } from 'src/app/entities/rentacar/rentacar';
 import { AbstractFilterParam } from 'src/app/entities/abstract-filter-param/abstract-filter-param';
 import { StringFilterParam } from 'src/app/entities/string-filter-param/string-filter-param';
 import { NumberFilterParam } from 'src/app/entities/number-filter-param/number-filter-param';

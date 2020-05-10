@@ -1,5 +1,5 @@
 import { NumberValueAccessor } from '@angular/forms';
-import { Vozilo } from './vozilo';
+import { Vozilo } from '../vozilo/vozilo';
 
 export class RentACarServis {
     id: number;

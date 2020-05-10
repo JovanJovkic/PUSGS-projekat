@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { RentACarServis } from '../entities/rentacar';
-import { Vozilo } from '../entities/vozilo';
+import { RentACarServis } from '../../entities/rentacar/rentacar';
+import { Vozilo } from '../../entities/vozilo/vozilo';
 import { AbstractFilterParam } from 'src/app/entities/abstract-filter-param/abstract-filter-param';
 import { StringFilterParam } from 'src/app/entities/string-filter-param/string-filter-param';
 import { NumberFilterParam } from 'src/app/entities/number-filter-param/number-filter-param';

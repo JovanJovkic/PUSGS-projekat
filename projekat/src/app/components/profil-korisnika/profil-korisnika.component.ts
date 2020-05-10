@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Korisnik } from 'src/app/entities/korisnik/korisnik';
-import { AvionService } from 'src/app/services/avion.service';
+import { AvionService } from 'src/app/services/avion/avion.service';
 import { KorisnikServiceService } from 'src/app/services/korisnik-service/korisnik-service.service';
 
 @Component({
