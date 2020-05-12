@@ -16,5 +16,7 @@ namespace WebApplication1.Models
             : base(options)
         {
         }
+
+        public DbSet<Korisnik> Korisnici { get; set; }
     }
 }
