@@ -69,7 +69,7 @@ namespace WebApplication1.Controllers
 
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetBooks", new { id = korisnik.Id }, korisnik);
+            return CreatedAtAction("GetKorisnik", new { id = korisnik.Id }, korisnik);
         }
 
         [Route("UpdateKorisnik")]
