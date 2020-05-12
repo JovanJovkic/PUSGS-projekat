@@ -73,7 +73,7 @@ namespace WebApplication1.Controllers
         }
 
         [Route("UpdateKorisnik")]
-        public async Task<IActionResult> UpdateBook(Korisnik korisnik)
+        public async Task<IActionResult> UpdateKorisnik(Korisnik korisnik)
         {
             _context.Entry(korisnik).State = EntityState.Modified;
 
