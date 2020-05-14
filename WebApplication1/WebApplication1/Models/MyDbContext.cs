@@ -22,5 +22,7 @@ namespace WebApplication1.Models
         public DbSet<Vozilo> Vozila { get; set; }
 
         public DbSet<RentACarServis> RentACarServisi { get; set; }
+
+        public DbSet<Destinacija> Destinacije { get; set; }
     }
 }
