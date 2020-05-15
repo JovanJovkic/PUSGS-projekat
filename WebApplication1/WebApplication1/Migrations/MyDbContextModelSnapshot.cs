@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebApplication1.Models;
+using WebApplication1.Data;
 
 namespace WebApplication1.Migrations
 {
@@ -17,42 +17,6 @@ namespace WebApplication1.Migrations
                 .HasAnnotation("ProductVersion", "3.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("WebApplication1.Models.Destinacija", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("NazivDestinacije")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("brojPresedanja")
-                        .HasColumnType("int");
-
-                    b.Property<string>("cenaKarte")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("datumVremePoletanja")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("datumVremeSletanja")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("duzinaPutovanja")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("lokacijaPresedanja")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("vremePutovanja")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Destinacije");
-                });
 
             modelBuilder.Entity("WebApplication1.Models.Korisnik", b =>
                 {

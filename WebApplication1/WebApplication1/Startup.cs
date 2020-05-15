@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WebApplication1.Models;
+using WebApplication1.Data;
 
 namespace WebApplication1
 {
@@ -34,6 +34,8 @@ namespace WebApplication1
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 
