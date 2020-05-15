@@ -49,17 +49,17 @@ export class AircompaniesService {
   }
 
   checkAirCompaniesMaxPerDayPriceFilter(aircompany: AirCompanies, filterParam: AbstractFilterParam): boolean {
-    return filterParam instanceof NumberFilterParam && filterParam.getFilterParamName() === 'airCompanyMaxPerDayPriceFilter' && (aircompany.cenaKarte > filterParam.getFilterParamValue());
+    return filterParam instanceof NumberFilterParam && filterParam.getFilterParamName() === 'airCompanyMaxPerDayPriceFilter' && (aircompany.cenaKarte < filterParam.getFilterParamValue());
   }
 
   mockedAirCompanies(): Array<AirCompanies> {
     let allCompanies = new Array<AirCompanies>();
 
-    const aircom1 = new AirCompanies(1, 'AirSerbia','Beograd', 19000);
-    const aircom2 = new AirCompanies(2, 'QatarAirways', 'Doha', 27000);
-    const aircom3 = new AirCompanies(3, 'WizzAir', 'Budapest', 8200);
-    const aircom4 = new AirCompanies(4, 'RyanAir', 'Dublin', 5900);
-    const aircom5 = new AirCompanies(5, 'Emirates', 'Dubai', 45300);
+    const aircom1 = new AirCompanies(1, 'AirSerbia','Beograd', 3);
+    const aircom2 = new AirCompanies(2, 'QatarAirways', 'Doha', 5);
+    const aircom3 = new AirCompanies(3, 'WizzAir', 'Budapest', 4);
+    const aircom4 = new AirCompanies(4, 'RyanAir', 'Dublin', 2);
+    const aircom5 = new AirCompanies(5, 'Emirates', 'Dubai', 4);
     
     aircom1.destinacija = this.mockedDestinacija();
     aircom1.destinacija = this.mockedDestinacija();

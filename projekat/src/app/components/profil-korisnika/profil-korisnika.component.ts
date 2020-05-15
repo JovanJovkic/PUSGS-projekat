@@ -23,6 +23,7 @@ export class ProfilKorisnikaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadKorisnik();
     //alert("Upravo se pozvala OnInit metoda komponente Avion");
   }
 
@@ -47,14 +48,47 @@ export class ProfilKorisnikaComponent implements OnInit {
 
   updateKorisnik(email: string, lozinka: string, ime:string, prezime:string, grad:string, telefon: string, prijatelji: string ): void {
     let index = this.allKorisnik.indexOf(this.korisnikToEdit);
-    this.allKorisnik[index].email = email;
-    this.allKorisnik[index].lozinka = lozinka;
-    this.allKorisnik[index].ime = ime;
-    this.allKorisnik[index].prezime = prezime;
-    this.allKorisnik[index].grad = grad;
-    this.allKorisnik[index].telefon = telefon;
-    this.allKorisnik[index].prijatelji = prijatelji;
-    alert('Vaša izmena je sačuvana!');
+    let promena: boolean = false;
+    if(email != "")
+    {
+      this.allKorisnik[index].email = email;
+      promena = true;
+    }
+    if(lozinka != "")
+    {
+      this.allKorisnik[index].lozinka = lozinka;
+      promena = true;
+    }
+    if(ime != "")
+    {
+      this.allKorisnik[index].ime = ime;
+      promena = true;
+    }
+    if(prezime != "")
+    {
+      this.allKorisnik[index].prezime = prezime;
+      promena = true;
+    }
+    if(grad != "")
+    {
+      this.allKorisnik[index].grad = grad;
+      promena = true;
+    }
+    if(telefon != "")
+    {
+      this.allKorisnik[index].telefon = telefon;
+      promena = true;
+    }
+    if(prijatelji != "")
+    {
+      this.allKorisnik[index].prijatelji = prijatelji;
+      promena = true;
+    }
+
+    if(promena == true)
+    {
+      alert('Vaša izmena je sačuvana!');
+    }
   }
 
 }

@@ -22,6 +22,7 @@ export class AvioPocetnaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadAvion();
     //alert("Upravo se pozvala OnInit metoda komponente Avion");
   }
 
@@ -48,16 +49,57 @@ export class AvioPocetnaComponent implements OnInit {
 
   updateAvio(nazivAvioKompanije: string, adresa: string, promotivniOpis:string, destNaKojimPosluje:string, letovi:string, spisakKarataSaPopustomZaBrzuRez: string, konfigSegMesta:string, cenovnik: string, infoPrtljag: string  ): void {
     let index = this.allAvion.indexOf(this.avionToEdit);
-    this.allAvion[index].nazivAvioKompanije = nazivAvioKompanije;
-    this.allAvion[index].adresa = adresa;
-    this.allAvion[index].promotivniOpis = promotivniOpis;
-    this.allAvion[index].destNaKojimPosluje = destNaKojimPosluje;
-    this.allAvion[index].letovi = letovi;
-    this.allAvion[index].spisakKarataSaPopustomZaBrzuRez = spisakKarataSaPopustomZaBrzuRez;
-    this.allAvion[index].konfigSegMesta = konfigSegMesta;
-    this.allAvion[index].cenovnik = cenovnik;
-    this.allAvion[index].infoPrtljag = infoPrtljag;
-    alert('Vaša izmena je sačuvana!');
+    let promena: boolean = false;
+    if(nazivAvioKompanije != "")
+    {
+      this.allAvion[index].nazivAvioKompanije = nazivAvioKompanije;
+      promena = true;
+    }
+    if(adresa != "")
+    {
+      this.allAvion[index].adresa = adresa;
+      promena = true;
+    }
+    if(promotivniOpis != "")
+    {
+      this.allAvion[index].promotivniOpis = promotivniOpis;
+      promena = true;
+    }
+    if(destNaKojimPosluje != "")
+    {
+      this.allAvion[index].destNaKojimPosluje = destNaKojimPosluje;
+      promena = true;
+    }
+    if(letovi != "")
+    {
+      this.allAvion[index].letovi = letovi;
+      promena = true;
+    }
+    if(spisakKarataSaPopustomZaBrzuRez != "")
+    {
+      this.allAvion[index].spisakKarataSaPopustomZaBrzuRez = spisakKarataSaPopustomZaBrzuRez;
+      promena = true;
+    }
+    if(konfigSegMesta != "")
+    {
+      this.allAvion[index].konfigSegMesta = konfigSegMesta;
+      promena = true;
+    }
+    if(cenovnik != "")
+    {
+      this.allAvion[index].cenovnik = cenovnik;
+      promena = true;
+    }
+    if(infoPrtljag != "")
+    {
+      this.allAvion[index].infoPrtljag = infoPrtljag;
+      promena = true;
+    }
+    
+    if(promena == true)
+    {
+      alert('Vaša izmena je sačuvana!');
+    }
   }
 
 }
