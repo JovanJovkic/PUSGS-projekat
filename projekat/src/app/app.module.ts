@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +23,9 @@ import { ProfilKorisnikaComponent } from './components/profil-korisnika/profil-k
 import { RentFilteredComponent } from './components/rent-filtered/rent-filtered.component';
 import { AviokompAdminProfilComponent } from './components/aviokomp-admin-profil/aviokomp-admin-profil.component';
 import { AvioProfilComponent } from './components/avio-profil/avio-profil.component';
+import { UserService } from './services/korisnik-service/user.service';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { TokenInterceptor } from './auth/tokenInterceptor';
 
 @NgModule({
   declarations: [
@@ -47,9 +52,25 @@ import { AvioProfilComponent } from './components/avio-profil/avio-profil.compon
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    ToastrModule.forRoot({
+      progressBar: true
+    }),
   ],
-  providers: [],
+  providers: [
+    UserService, 
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+      },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

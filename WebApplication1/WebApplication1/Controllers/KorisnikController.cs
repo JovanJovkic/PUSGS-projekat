@@ -56,7 +56,7 @@ namespace WebApplication1.Controllers
             return korisnici;
         }
 
-        private bool KorisnikExists(int id)
+        private bool KorisnikExists(string id)
         {
             return _context.Korisnici.Any(e => e.Id == id);
         }
