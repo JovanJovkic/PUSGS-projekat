@@ -26,6 +26,7 @@ import { AvioProfilComponent } from './components/avio-profil/avio-profil.compon
 import { UserService } from './services/korisnik-service/user.service';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { TokenInterceptor } from './auth/tokenInterceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { TokenInterceptor } from './auth/tokenInterceptor';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

@@ -293,8 +293,6 @@ C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\
 C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.dll
 C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
 C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Embedded.dll
-C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Marko\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\WebApplication1.StaticWebAssets.xml
 C:\Users\Marko\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.Google.dll
 C:\Users\Marko\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
@@ -328,3 +326,5 @@ C:\Users\Marko\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\
 C:\Users\Marko\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Marko\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Marko\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.MvcApplicationPartsAssemblyInfo.cache

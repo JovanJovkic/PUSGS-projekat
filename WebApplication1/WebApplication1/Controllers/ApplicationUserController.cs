@@ -40,6 +40,7 @@ namespace WebApplication1.Controllers
         //POST : /api/ApplicationUser/Register
         public async Task<Object> Register(ApplicationUserModel model)
         {
+            model.UserName = model.Email;
             var applicationUser = new Korisnik()
             {
                 UserName = model.UserName,
@@ -49,7 +50,9 @@ namespace WebApplication1.Controllers
 
             try
             {
+                
                 var result = await _userManager.CreateAsync(applicationUser, model.Lozinka);
+                
                 return Ok(result);
             }
             catch (Exception ex)

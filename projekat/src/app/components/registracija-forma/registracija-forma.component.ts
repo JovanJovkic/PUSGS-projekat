@@ -29,13 +29,12 @@ export class RegistracijaFormaComponent implements OnInit {
   */
 
   onSubmit() {
-    console.log('evee1');
       this.service.register().subscribe(
       (res: any) => {
-        console.log('evee21');
         if (res.succeeded) {
           this.service.formModel.reset();
           this.toastr.success('New user created!', 'Registration successful.');
+          console.log('Uspesno ste registrovali');
         } else {
           res.errors.forEach(element => {
             switch (element.code) {
