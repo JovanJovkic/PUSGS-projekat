@@ -46,7 +46,7 @@ export class UserService {
     };
     return this.http.post(this.BaseURI + '/ApplicationUser/Register', body);
   }
-/*
+
   login(formData) {
     return this.http.post(this.BaseURI + '/ApplicationUser/Login', formData);
   }
@@ -57,5 +57,5 @@ export class UserService {
 
   getUserProfile() {
     return this.http.get(this.BaseURI + '/UserProfile/GetUserProfile');
-  }*/
+  }
 }

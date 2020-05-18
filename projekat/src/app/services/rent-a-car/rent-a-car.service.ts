@@ -4,13 +4,29 @@ import { Vozilo } from '../../entities/vozilo/vozilo';
 import { AbstractFilterParam } from 'src/app/entities/abstract-filter-param/abstract-filter-param';
 import { StringFilterParam } from 'src/app/entities/string-filter-param/string-filter-param';
 import { NumberFilterParam } from 'src/app/entities/number-filter-param/number-filter-param';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RentACarService {
 
-  constructor() { }
+  constructor(private fb: FormBuilder, private http: HttpClient) { }
+  readonly BaseURI = 'https://localhost:44308/api';
+
+  formModel = this.fb.group({
+    naziv: [''],
+    adresa: ['']
+  });
+
+  dodaj() {
+    var body = {
+      Naziv: this.formModel.value.naziv,
+      Adresa: this.formModel.value.adresa,
+    };
+    return this.http.post(this.BaseURI + '/RentACarServis/AddRentACarServis', body);
+  }
 
   loadRentACar() {
     console.log('Učitavanje rent-a-car servisa...');

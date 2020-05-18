@@ -45,7 +45,8 @@ namespace WebApplication1.Controllers
             {
                 UserName = model.UserName,
                 Email = model.Email,
-                //FullName = model.FullName
+                //FullName = model.FullName,
+                Uloga = TipKorisnika.Registrovani
             };
 
             try
@@ -75,10 +76,10 @@ namespace WebApplication1.Controllers
                     Subject = new ClaimsIdentity(new Claim[]
                     {
                         new Claim("UserID",user.Id.ToString()),
-                        new Claim("Roles", "admin")
+                        new Claim("Roles", user.Uloga.ToString())
                     }),
                     Expires = DateTime.UtcNow.AddDays(1),
-                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSettings.JWT_Secret)), SecurityAlgorithms.HmacSha256Signature)
+                   // SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSettings.JWT_Secret)), SecurityAlgorithms.HmacSha256Signature)
                 };
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var securityToken = tokenHandler.CreateToken(tokenDescriptor);

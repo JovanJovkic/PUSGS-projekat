@@ -27,6 +27,24 @@ import { UserService } from './services/korisnik-service/user.service';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { TokenInterceptor } from './auth/tokenInterceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CookieService } from 'ngx-cookie-service';
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, AuthService } from 'angular-6-social-login';
+
+export function socialConfigs() {  
+  const config = new AuthServiceConfig(  
+    [  
+      {  
+        id: FacebookLoginProvider.PROVIDER_ID,  
+        provider: new FacebookLoginProvider('app -id')  
+      },  
+      {  
+        id: GoogleLoginProvider.PROVIDER_ID,  
+        provider: new GoogleLoginProvider('')  
+      }  
+    ]  
+  );  
+  return config;  
+}  
 
 @NgModule({
   declarations: [
@@ -61,6 +79,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     }),
   ],
   providers: [
+    CookieService,
     UserService, 
     {
     provide: HTTP_INTERCEPTORS,
@@ -72,6 +91,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       useClass: TokenInterceptor,
       multi: true,
       },
+    /*AuthService,  
+    {  
+      provide: AuthServiceConfig,  
+      useFactory: socialConfigs,  
+    }  */
   ],
   bootstrap: [AppComponent]
 })

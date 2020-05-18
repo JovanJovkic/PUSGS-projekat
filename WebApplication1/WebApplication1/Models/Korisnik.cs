@@ -32,5 +32,7 @@ namespace WebApplication1.Models
         //public string Grad { get; set; }
 
         //public string Telefon { get; set; }
+
+        public TipKorisnika Uloga { get; set; }
     }
 }

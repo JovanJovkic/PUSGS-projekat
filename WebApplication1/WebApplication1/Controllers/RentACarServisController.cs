@@ -63,14 +63,16 @@ namespace WebApplication1.Controllers
 
         [HttpPost]
         [Route("AddRentACarServis")]
-        public async Task<ActionResult<RentACarServis>> AddRentACarServis(RentACarServis servis)
+        public async Task<IActionResult> AddRentACarServis(RentACarServis servis)
         {
 
             _context.RentACarServisi.Add(servis);
-
+    
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRentACarServis", new { id = servis.Id }, servis);
+            var result = _context.Entry(servis).Entity;
+           
+            return Ok(result);
         }
 
         [Route("UpdateRentACarServis")]
