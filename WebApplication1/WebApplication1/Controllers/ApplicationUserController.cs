@@ -46,7 +46,7 @@ namespace WebApplication1.Controllers
                 UserName = model.UserName,
                 Email = model.Email,
                 //FullName = model.FullName,
-                Uloga = TipKorisnika.Registrovani
+                //Uloga = TipKorisnika.Registrovani
             };
 
             try

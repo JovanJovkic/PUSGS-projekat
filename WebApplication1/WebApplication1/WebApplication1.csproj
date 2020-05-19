@@ -7,6 +7,10 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200517012543_aviokompanija.cs" />
     <Compile Remove="Migrations\20200517012543_aviokompanija.Designer.cs" />
+    <Compile Remove="Migrations\20200519121844_uloga.cs" />
+    <Compile Remove="Migrations\20200519121844_uloga.Designer.cs" />
+    <Compile Remove="Migrations\20200519122554_ulogaKorisnika.cs" />
+    <Compile Remove="Migrations\20200519122554_ulogaKorisnika.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
