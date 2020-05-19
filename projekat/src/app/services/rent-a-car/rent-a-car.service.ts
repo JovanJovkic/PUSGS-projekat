@@ -17,14 +17,17 @@ export class RentACarService {
 
   formModel = this.fb.group({
     naziv: [''],
-    adresa: ['']
+    adresa: [''],
+    admin: [''],
   });
 
   dodaj() {
     var body = {
       Naziv: this.formModel.value.naziv,
       Adresa: this.formModel.value.adresa,
+      Admin: this.formModel.value.admin
     };
+    console.log(body);
     return this.http.post(this.BaseURI + '/RentACarServis/AddRentACarServis', body);
   }
 
@@ -103,5 +106,10 @@ export class RentACarService {
   checkVremeFilter(rent: RentACarServis, filterParam: AbstractFilterParam): boolean {
     //return filterParam instanceof NumberFilterParam && filterParam.getFilterParamName() === 'vremeFilter' && (aircompany.cenaKarte > filterParam.getFilterParamValue());
     return true;
+  }
+
+  ucitajAdmineRent()
+  {
+    return this.http.get('https://localhost:44308/api' + '/ApplicationUser/GetAdminRent');
   }
 }

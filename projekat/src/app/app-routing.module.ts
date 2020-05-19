@@ -16,6 +16,7 @@ import {ProfilKorisnikaComponent} from './components/profil-korisnika/profil-kor
 import {AviokompAdminProfilComponent} from './components/aviokomp-admin-profil/aviokomp-admin-profil.component'
 import { AvioProfilComponent} from './components/avio-profil/avio-profil.component';
 import { AppComponent } from './app.component';
+import { RegistracijaAdminComponent } from './components/registracija-admin/registracija-admin.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: "registracija",
     component: RegistracijaFormaComponent
+  },
+  {
+    path: "registracijaAdmin",
+    component: RegistracijaAdminComponent
   },
   {
     path: "pocetna",

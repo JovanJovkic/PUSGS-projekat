@@ -16,5 +16,7 @@ namespace WebApplication1.Models
         public string Telefon { get; set; }
 
         public string Grad { get; set; }
+
+        public string Uloga { get; set; }
     }
 }

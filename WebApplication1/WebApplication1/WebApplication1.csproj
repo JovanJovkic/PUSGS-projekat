@@ -7,10 +7,26 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200517012543_aviokompanija.cs" />
     <Compile Remove="Migrations\20200517012543_aviokompanija.Designer.cs" />
+    <Compile Remove="Migrations\20200517140710_aviokompanija.cs" />
+    <Compile Remove="Migrations\20200517140710_aviokompanija.Designer.cs" />
     <Compile Remove="Migrations\20200519121844_uloga.cs" />
     <Compile Remove="Migrations\20200519121844_uloga.Designer.cs" />
     <Compile Remove="Migrations\20200519122554_ulogaKorisnika.cs" />
     <Compile Remove="Migrations\20200519122554_ulogaKorisnika.Designer.cs" />
+    <Compile Remove="Migrations\20200519134711_aviokomp.cs" />
+    <Compile Remove="Migrations\20200519134711_aviokomp.Designer.cs" />
+    <Compile Remove="Migrations\20200519134828_k.cs" />
+    <Compile Remove="Migrations\20200519134828_k.Designer.cs" />
+    <Compile Remove="Migrations\20200519135917_air.cs" />
+    <Compile Remove="Migrations\20200519135917_air.Designer.cs" />
+    <Compile Remove="Migrations\20200519140123_brisanje.cs" />
+    <Compile Remove="Migrations\20200519140123_brisanje.Designer.cs" />
+    <Compile Remove="Migrations\20200519140635_avio2.cs" />
+    <Compile Remove="Migrations\20200519140635_avio2.Designer.cs" />
+    <Compile Remove="Migrations\20200519141733_avio.cs" />
+    <Compile Remove="Migrations\20200519141733_avio.Designer.cs" />
+    <Compile Remove="Migrations\20200519142229_avio.cs" />
+    <Compile Remove="Migrations\20200519142229_avio.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

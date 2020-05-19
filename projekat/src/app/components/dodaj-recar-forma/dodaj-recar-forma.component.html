@@ -32,6 +32,20 @@
                
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="admin">Admin</label>
+                <select id="admin" class="form-control" formControlName="admin">
+                        <option *ngFor="let item of listItems" [value]="item" >{{item}}</option>
+                </select>
+                    <div *ngIf="service.formModel.get('admin').touched && service.formModel.get('admin').errors?.required" class="text-danger">
+                        Morate odabrati admina
+                    </div>
+               
+            </div>
+        </div>
+        
         <div class="row">
             <div class="col-3">
                 <button class="btn btn-success" [disabled]="!service.formModel.valid" type="submit">Registruj</button> <!--[disabled]="!courseForm.valid" -->

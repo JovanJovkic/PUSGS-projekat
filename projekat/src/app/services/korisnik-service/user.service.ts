@@ -16,6 +16,7 @@ export class UserService {
     prezime: [''],
     grad: [''],
     telefon: [''],
+    uloga: [''],
     Passwords: this.fb.group({
         lozinka: ['', [Validators.required, Validators.minLength(4)]],
         lozinka2: ['', Validators.required]
@@ -47,6 +48,28 @@ export class UserService {
     return this.http.post(this.BaseURI + '/ApplicationUser/Register', body);
   }
 
+  registerAdmin() {
+    var body = {
+      Email: this.formModel.value.email,
+      Ime: this.formModel.value.ime,
+      Prezime: this.formModel.value.prezime,
+      Grad: this.formModel.value.grad,
+      Telefon: this.formModel.value.telefon,
+      Lozinka: this.formModel.value.Passwords.lozinka,
+      Uloga: ""
+    };
+    if(this.formModel.value.uloga=="adminAvio")
+    {
+      body.Uloga = "AdminAvioKompanije";
+    }
+    else
+    {
+      body.Uloga = "AdminRentACarServisa";
+    }
+
+    return this.http.post(this.BaseURI + '/ApplicationUser/RegisterAdmin', body);
+  }
+
   login(formData) {
     return this.http.post(this.BaseURI + '/ApplicationUser/Login', formData);
   }
@@ -58,4 +81,6 @@ export class UserService {
   getUserProfile() {
     return this.http.get(this.BaseURI + '/UserProfile/GetUserProfile');
   }
+
+
 }

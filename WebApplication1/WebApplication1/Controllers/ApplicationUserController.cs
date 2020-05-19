@@ -46,7 +46,7 @@ namespace WebApplication1.Controllers
                 UserName = model.UserName,
                 Email = model.Email,
                 //FullName = model.FullName,
-                //Uloga = TipKorisnika.Registrovani
+                Uloga = TipKorisnika.Registrovani
             };
 
             try
@@ -139,6 +139,77 @@ namespace WebApplication1.Controllers
             var googleApiTokenInfo = JsonConvert.DeserializeObject<GoogleApiTokenInfo>(response);
 
             return true;
+        }
+
+        [HttpPost]
+        [Route("RegisterAdmin")]
+        //POST : /api/ApplicationUser/RegisterAdmin
+        public async Task<Object> RegisterAdmin(ApplicationUserModel model)
+        {
+            model.UserName = model.Email;
+            var applicationUser = new Korisnik()
+            {
+                UserName = model.UserName,
+                Email = model.Email,
+                //FullName = model.FullName,
+                //Uloga = TipKorisnika.Registrovani
+            };
+
+            if(model.Uloga == "AdminAvioKompanije")
+            {
+                applicationUser.Uloga = TipKorisnika.AdminAvioKompanije;
+            }
+            else
+            {
+                applicationUser.Uloga = TipKorisnika.AdminRentACarServisa;
+            }
+
+            try
+            {
+
+                var result = await _userManager.CreateAsync(applicationUser, model.Lozinka);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        [HttpGet]
+        [Route("GetAdminAvio")]
+        public async Task<ActionResult<IEnumerable<Korisnik>>> GetAdminAvio()
+        {
+            List<Korisnik> lista = _userManager.Users.ToList();
+
+            foreach (Korisnik item in lista.ToList())
+            {
+                if(item.Uloga!=TipKorisnika.AdminAvioKompanije)
+                {
+                    lista.Remove(item);
+                }
+            }
+
+            return lista;
+        }
+
+        [HttpGet]
+        [Route("GetAdminRent")]
+        public async Task<ActionResult<IEnumerable<Korisnik>>> GetAdminRent()
+        {
+            List<Korisnik> lista = _userManager.Users.ToList();
+
+            foreach (Korisnik item in lista.ToList())
+            {
+                if (item.Uloga != TipKorisnika.AdminRentACarServisa)
+                {
+                    lista.Remove(item);
+                }
+            }
+
+            return lista;
         }
     }
 }

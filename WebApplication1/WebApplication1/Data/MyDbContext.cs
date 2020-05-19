@@ -18,7 +18,7 @@ namespace WebApplication1.Data
         {
         }
 
-        public DbSet<Korisnik> Korisnici { get; set; }
+        //public DbSet<Korisnik> Korisnici { get; set; }
 
         public DbSet<Vozilo> Vozila { get; set; }
 
@@ -26,6 +26,6 @@ namespace WebApplication1.Data
 
         public DbSet<Destinacija> Destinacije { get; set; }
 
-        public DbSet<AirCompany> AvioKompanije { get; set; }
+         public DbSet<AirCompany> AvioKompanije { get; set; }
     }
 }

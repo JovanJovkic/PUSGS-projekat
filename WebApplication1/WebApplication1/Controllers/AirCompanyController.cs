@@ -8,94 +8,94 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
 using WebApplication1.Models;
 
-namespace WebApplication1.Controllers
-{
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AirCompanyController : ControllerBase
-    {
-        private readonly MyDbContext _context;
+//namespace WebApplication1.Controllers
+//{
+//    [Route("api/[controller]")]
+//    [ApiController]
+//    public class AirCompanyController : ControllerBase
+//    {
+//        private readonly MyDbContext _context;
 
-        public AirCompanyController(MyDbContext context)
-        {
-            _context = context;
-        }
+//        public AirCompanyController(MyDbContext context)
+//        {
+//            _context = context;
+//        }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<AirCompany>>> GetAviokompanije()
-        {
-            return await _context.AvioKompanije.ToListAsync();
-        }
+//        [HttpGet]
+//        public async Task<ActionResult<IEnumerable<AirCompany>>> GetAviokompanije()
+//        {
+//            return await _context.AvioKompanije1.ToListAsync();
+//        }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<AirCompany>> GetAviokompanija(int id)
-        {
-            var aviokompanija = await _context.AvioKompanije.FindAsync(id);
+//        [HttpGet("{id}")]
+//        public async Task<ActionResult<AirCompany>> GetAviokompanija(int id)
+//        {
+//            var aviokompanija = await _context.AvioKompanije1.FindAsync(id);
 
-            if (aviokompanija == null)
-            {
-                return NotFound();
-            }
+//            if (aviokompanija == null)
+//            {
+//                return NotFound();
+//            }
 
-            return aviokompanija;
-        }
+//            return aviokompanija;
+//        }
 
-        [HttpDelete]
-        [Route("DeleteAviokompanija/{id}")]
-        public async Task<ActionResult<AirCompany>> DeleteAviokompanija(int id)
-        {
-            var aviokompanije = await _context.AvioKompanije.FindAsync(id);
-            if (aviokompanije == null)
-            {
-                return NotFound();
-            }
+//        [HttpDelete]
+//        [Route("DeleteAviokompanija/{id}")]
+//        public async Task<ActionResult<AirCompany>> DeleteAviokompanija(int id)
+//        {
+//            var aviokompanije = await _context.AvioKompanije1.FindAsync(id);
+//            if (aviokompanije == null)
+//            {
+//                return NotFound();
+//            }
 
-            _context.AvioKompanije.Remove(aviokompanije);
-            await _context.SaveChangesAsync();
+//            _context.AvioKompanije1.Remove(aviokompanije);
+//            await _context.SaveChangesAsync();
 
-            return aviokompanije;
-        }
+//            return aviokompanije;
+//        }
 
 
-        [HttpPost]
-        [Route("AddAviokompanija")]
-        public async Task<ActionResult<AirCompany>> AddAviokompanija(AirCompany aviokompanija)
-        {
+//        [HttpPost]
+//        [Route("AddAviokompanija")]
+//        public async Task<ActionResult<AirCompany>> AddAviokompanija(AirCompany aviokompanija)
+//        {
 
-            _context.AvioKompanije.Add(aviokompanija);
+//            _context.AvioKompanije1.Add(aviokompanija);
 
-            await _context.SaveChangesAsync();
+//            await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAviokompanija", new { id = aviokompanija.Id }, aviokompanija);
-        }
+//            return CreatedAtAction("GetAviokompanija", new { id = aviokompanija.Id }, aviokompanija);
+//        }
 
-        [Route("UpdateAviokompanija")]
-        public async Task<IActionResult> UpdateAviokompanija(AirCompany aviokompanija)
-        {
-            _context.Entry(aviokompanija).State = EntityState.Modified;
+//        [Route("UpdateAviokompanija")]
+//        public async Task<IActionResult> UpdateAviokompanija(AirCompany aviokompanija)
+//        {
+//            _context.Entry(aviokompanija).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AirCompanyExists(aviokompanija.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+//            try
+//            {
+//                await _context.SaveChangesAsync();
+//            }
+//            catch (DbUpdateConcurrencyException)
+//            {
+//                if (!AirCompanyExists(aviokompanija.Id))
+//                {
+//                    return NotFound();
+//                }
+//                else
+//                {
+//                    throw;
+//                }
+//            }
 
-            return NoContent();
-        }
+//            return NoContent();
+//        }
 
-        private bool AirCompanyExists(int id)
-        {
-            return _context.AvioKompanije.Any(e => e.Id == id);
-        }
-    }
-}
+//        private bool AirCompanyExists(int id)
+//        {
+//            return _context.AvioKompanije1.Any(e => e.Id == id);
+//        }
+//    }
+//}

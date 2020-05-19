@@ -10,31 +10,51 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DodajRecarFormaComponent implements OnInit {
 
-  //dodajRentCarForma: FormGroup;
+  public listItems: Array<string> = ['a'];
 
   constructor(public service: RentACarService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
    // this.initForm();
+   this.ucitajAdmine();
   }
-
-  /*
-  private initForm() {
-    this.dodajRentCarForma = new FormGroup({
-      'naziv': new FormControl('', [Validators.required, Validators.maxLength(30)]),
-      'adresa': new FormControl('', [Validators.required, Validators.maxLength(30)]),
-    });
-  }*/
 
   onClear() {
     this.service.formModel.reset();
   }
 
-  /*
-  onSubmit() {
-    console.log(this.dodajRentCarForma.value);
-    console.log(this.dodajRentCarForma);
-  }*/
+  ucitajAdmine(){
+    this.service.ucitajAdmineRent().subscribe(
+    (res: any) => {
+      if (res != null) {
+
+        console.log(res);
+
+        res.forEach(element => {
+
+          var s = element.userName;
+          this.listItems.push(s);
+          
+        });
+        
+       
+      } else {
+        res.errors.forEach(element => {
+          switch (element.code) {
+            default:
+              break;
+          }
+        });
+      }
+    },
+    err => {
+      console.log('greska');
+      console.log(err);
+    }
+    
+  );
+}
+
   onSubmit() {
     this.service.dodaj().subscribe(
     (res: any) => {

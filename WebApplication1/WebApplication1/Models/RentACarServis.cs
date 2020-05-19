@@ -16,5 +16,7 @@ namespace WebApplication1.Models
         public string Adresa { get; set; }
 
         public string PromotivniOpis { get; set; }
+
+        public string Admin { get; set; }
     }
 }

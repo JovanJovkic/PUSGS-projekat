@@ -29,6 +29,7 @@ import { TokenInterceptor } from './auth/tokenInterceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CookieService } from 'ngx-cookie-service';
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, AuthService } from 'angular-6-social-login';
+import { RegistracijaAdminComponent } from './components/registracija-admin/registracija-admin.component';
 
 export function socialConfigs() {  
   const config = new AuthServiceConfig(  
@@ -65,7 +66,8 @@ export function socialConfigs() {
     ProfilKorisnikaComponent,
     RentFilteredComponent,
     AviokompAdminProfilComponent,
-    AvioProfilComponent
+    AvioProfilComponent,
+    RegistracijaAdminComponent
   ],
   imports: [
     BrowserModule,

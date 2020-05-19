@@ -9,6 +9,7 @@ namespace WebApplication1.Models
     public class AirCompany
     {
         [Key]
+
         public int Id { get; set; }
 
         public string NazivAvioKompanije { get; set; }
@@ -16,5 +17,7 @@ namespace WebApplication1.Models
         public string GradAvioKompanije { get; set; }
 
         public string ProsecnaOcena { get; set; }
+
+        public string Admin { get; set; }
     }
 }
