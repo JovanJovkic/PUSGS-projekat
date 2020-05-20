@@ -62,9 +62,13 @@ export class UserService {
     {
       body.Uloga = "AdminAvioKompanije";
     }
-    else
+    else if((this.formModel.value.uloga=="adminRent"))
     {
       body.Uloga = "AdminRentACarServisa";
+    }
+    else
+    {
+      body.Uloga = "Administrator";
     }
 
     return this.http.post(this.BaseURI + '/ApplicationUser/RegisterAdmin', body);

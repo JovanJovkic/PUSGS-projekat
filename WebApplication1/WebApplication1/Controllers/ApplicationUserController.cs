@@ -159,9 +159,13 @@ namespace WebApplication1.Controllers
             {
                 applicationUser.Uloga = TipKorisnika.AdminAvioKompanije;
             }
-            else
+            else if(model.Uloga == "AdminRentACarServisa")
             {
                 applicationUser.Uloga = TipKorisnika.AdminRentACarServisa;
+            }
+            else
+            {
+                applicationUser.Uloga = TipKorisnika.Administrator;
             }
 
             try

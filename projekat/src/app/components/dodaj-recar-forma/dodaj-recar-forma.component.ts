@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DodajRecarFormaComponent implements OnInit {
 
-  public listItems: Array<string> = ['a'];
+  public listItems: Array<string> = [];
 
   constructor(public service: RentACarService, private toastr: ToastrService) { }
 

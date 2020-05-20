@@ -116,6 +116,7 @@
                <select class="form-control" formControlName="uloga">
                     <option value="adminAvio">Administrator avio kompanije</option>
                     <option value="adminRent">Administrator rent-a-car servisa</option>
+                    <option value="adminSist">Administrator sistema</option>
                </select>
                     <div *ngIf="service.formModel.get('uloga').touched && service.formModel.get('uloga').errors?.required" class="text-danger">
                         Morate odabrati ulogu

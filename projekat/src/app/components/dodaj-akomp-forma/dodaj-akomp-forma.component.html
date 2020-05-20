@@ -3,19 +3,19 @@
     <p class="text-center h1">Stranica za dodavanje avio kompanije</p>
     <br/>
     <p class="h3">Popunite sledeće podatke</p>
-    <form  [formGroup]="dodajAvioKompForma" > <!--(ngSubmit)="onSubmit()" -->
+    <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()"> <!--(ngSubmit)="onSubmit()" -->
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label for="naziv">Naziv</label>
                 <input type="text" id="naziv" class="form-control" formControlName="naziv">
-                <div *ngIf="dodajAvioKompForma.controls.naziv.invalid">
-                    <div *ngIf="dodajAvioKompForma.controls.naziv.errors.maxlength" class="text-danger">
-                        Naziv može sadržati maksimalno 20 karaktera
+              
+                    <div *ngIf="service.formModel.get('naziv').touched && service.formModel.get('naziv').errors?.maxlength" class="text-danger">
+                        E-mail može sadržati maksimalno 30 karaktera
                     </div>
-                    <div *ngIf="dodajAvioKompForma.controls.naziv.errors.required" class="text-danger">
+                    <div *ngIf="service.formModel.get('naziv').touched && service.formModel.get('naziv').errors?.required" class="text-danger">
                         Morate uneti naziv
                     </div>
-                </div>
+                
             </div>
 
         </div>
@@ -23,19 +23,33 @@
             <div class="col-sm-6 form-group">
                 <label for="adresa">Adresa</label>
                 <input type="text" id="adresa" class="form-control" formControlName="adresa">
-                <div *ngIf="dodajAvioKompForma.controls.adresa.invalid">
-                    <div *ngIf="dodajAvioKompForma.controls.adresa.errors.maxlength" class="text-danger">
-                        Adresa može sadržati maksimalno 20 karaktera
+               
+                    <div *ngIf="service.formModel.get('adresa').touched && service.formModel.get('adresa').errors?.maxlength" class="text-danger">
+                        Adresa može sadržati maksimalno 30 karaktera
                     </div>
-                    <div *ngIf="dodajAvioKompForma.controls.adresa.errors.required" class="text-danger">
+                    <div *ngIf="service.formModel.get('adresa').touched && service.formModel.get('adresa').errors?.required" class="text-danger">
                         Morate uneti adresu
                     </div>
-                </div>
+               
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label for="admin">Admin</label>
+                <select id="admin" class="form-control" formControlName="admin">
+                        <option *ngFor="let item of listItems" [value]="item" >{{item}}</option>
+                </select>
+                    <div *ngIf="service.formModel.get('admin').touched && service.formModel.get('admin').errors?.required" class="text-danger">
+                        Morate odabrati admina
+                    </div>
+               
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-3">
-                <button class="btn btn-success" [disabled]="!dodajAvioKompForma.valid" type="submit">Registruj</button> <!--[disabled]="!courseForm.valid" -->
+                <button class="btn btn-success" [disabled]="!service.formModel.valid" type="submit">Registruj</button> <!--[disabled]="!courseForm.valid" -->
             </div>
             <div class="col-1">
                 <button class="btn btn-primary" (click)="onClear()" type="button">Obriši</button> 

@@ -5,6 +5,8 @@ import { StringFilterParam } from 'src/app/entities/string-filter-param/string-f
 import { NumberFilterParam } from 'src/app/entities/number-filter-param/number-filter-param';
 import { FilterParam } from 'src/app/entities/filter-param/filter-param';
 import { Destinacija } from 'src/app/entities/destinacija/destinacija'
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 
 @Injectable({
@@ -12,7 +14,24 @@ import { Destinacija } from 'src/app/entities/destinacija/destinacija'
 })
 export class AircompaniesService {
 
-  constructor() { }
+  constructor(private fb: FormBuilder, private http: HttpClient) { }
+  readonly BaseURI = 'https://localhost:44308/api';
+
+  formModel = this.fb.group({
+    naziv: [''],
+    adresa: [''],
+    admin: [''],
+  });
+
+  dodaj() {
+    var body = {
+      Naziv: this.formModel.value.naziv,
+      Adresa: this.formModel.value.adresa,
+      Admin: this.formModel.value.admin
+    };
+    console.log(body);
+    return this.http.post(this.BaseURI + '/AirCompany/AddAviokompanija', body);
+  }
 
   loadAirCompanies() {
     console.log('Učitavanje avio-kompanija...');
@@ -90,6 +109,11 @@ export class AircompaniesService {
     allDestinacija.push(dest4);
 
     return allDestinacija;
+  }
+
+  ucitajAdmineAvio()
+  {
+    return this.http.get('https://localhost:44308/api' + '/ApplicationUser/GetAdminAvio');
   }
 }
 
