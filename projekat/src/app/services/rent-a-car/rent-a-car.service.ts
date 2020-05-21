@@ -6,6 +6,8 @@ import { StringFilterParam } from 'src/app/entities/string-filter-param/string-f
 import { NumberFilterParam } from 'src/app/entities/number-filter-param/number-filter-param';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+//import {map} from 'rxjs/add/operator/map';
+import {Observable,of, from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -111,5 +113,19 @@ export class RentACarService {
   ucitajAdmineRent()
   {
     return this.http.get('https://localhost:44308/api' + '/ApplicationUser/GetAdminRent');
+  }
+
+  ucitajRentACarServise()
+  {
+    let allRentACarServis = new Array<RentACarServis>();
+
+    var array = this.http.get<RentACarServis[]>(this.BaseURI + '/RentACarServis');
+
+    //this.http.get(this.BaseURI + '/RentACarServis').pipe(map((res: RentACarServis) => res.json()));
+
+    //allRentACarServis = Observable.create(observer => { this.http.get(this.BaseURI + '/RentACarServis').map(response => response.json(); })
+
+    return array;
+
   }
 }

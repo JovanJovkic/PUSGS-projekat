@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -214,6 +215,46 @@ namespace WebApplication1.Controllers
             }
 
             return lista;
+        }
+
+        public void PosaljiMejl(Korisnik k)
+        {
+            using (MailMessage mail = new MailMessage())
+            {
+                Task<string> code = _userManager.GenerateEmailConfirmationTokenAsync(k);
+                //string codeHtmlVersion = HttpUtility.UrlEncode(code);
+                string toMail = "https://localhost:44308/api/ApplicationUser/PotvrdiMejl?userId=" + k.Id + "&code=" + code;
+
+                mail.From = new MailAddress("webprojekatpusgs@gmail.com");
+                mail.To.Add(k.Email);
+                mail.Subject = "PUSGS projekat";
+                mail.Body = "<h1>Da biste aktivirali Vas nalog, kliknite na sledeci link: </h1>";
+                mail.Body += toMail;
+                mail.IsBodyHtml = true;
+
+                using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                {
+                    smtp.Credentials = new System.Net.NetworkCredential("webprojekatpusgs@gmail.com", "ftn500web");
+                    smtp.EnableSsl = true;
+                    smtp.Send(mail);
+                }
+            }
+        }
+
+        [Route("PotvrdiMejl/{id}")]
+        public void PotvrdiMejl(string id,string code)
+        {
+            
+            List<Korisnik> lista = _userManager.Users.Where(user => user.Id == id).ToList();
+
+            //var result = _userManager.ConfirmEmailAsync(id, code);
+            if(lista.Count>0)
+            {
+                Korisnik korisnik = lista[0];
+                
+                _userManager.ConfirmEmailAsync(korisnik, code);
+            }
+            
         }
     }
 }

@@ -22,5 +22,7 @@ namespace WebApplication1.Models
         public int BrojSedista { get; set; }
 
         public string TipVozila { get; set; }
+
+        public RentACarServis RentACarServis { get; set; }
     }
 }

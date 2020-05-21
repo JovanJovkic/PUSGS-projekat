@@ -18,5 +18,7 @@ namespace WebApplication1.Models
         public string PromotivniOpis { get; set; }
 
         public string Admin { get; set; }
+
+        public ICollection<Vozilo> Vozila { get; set; }
     }
 }

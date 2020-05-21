@@ -19,7 +19,31 @@ export class RentAdminProfilComponent implements OnInit {
     this.loadRentServis();
   }
 
+  /*
   loadRentServis(): void {
     this.allRentACarServis = this.rentACarService.loadRentACar();
+     this.rentACarService.ucitajRentACarServise();
+  }*/
+
+  loadRentServis() {
+    this.rentACarService.ucitajRentACarServise().subscribe(
+    (res: any) => {
+      //console.log(res);
+      if (res != null ) {
+        var temp = res;
+        temp.forEach(element => {
+          console.log(element);
+          const ak5 = new RentACarServis(element.id,element.naziv,element.adresa,element.promotivniOpis, 4);
+          this.allRentACarServis.push(ak5);
+        });
+
+      } else {
+      }
+    },
+    err => {
+      console.log('greska');
+      console.log(err);
+    }
+    );
   }
 }
