@@ -23,6 +23,7 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RentACarServis>>> GetRentACarServisi()
         {
+            //_context.RentACarServisi.Include("Vozila").ToList();
             return await _context.RentACarServisi.ToListAsync();
         }
 

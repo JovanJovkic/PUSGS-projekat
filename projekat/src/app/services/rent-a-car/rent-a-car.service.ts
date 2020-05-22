@@ -33,6 +33,11 @@ export class RentACarService {
     return this.http.post(this.BaseURI + '/RentACarServis/AddRentACarServis', body);
   }
 
+  izmeniRentACarServis(servis: RentACarServis)
+  {
+    return this.http.post(this.BaseURI + '/RentACarServis/UpdateRentACarServis', servis);
+  }
+
   loadRentACar() {
     console.log('Učitavanje rent-a-car servisa...');
     return this.mockedRentACar();

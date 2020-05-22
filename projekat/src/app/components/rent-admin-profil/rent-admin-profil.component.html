@@ -44,9 +44,9 @@
             <td>
                 <div class="btn-group-vertical">
                     <br/>
-                    <button class="btn btn-success">Izmeni</button>
+                    <button class="btn btn-success" data-toggle="modal" data-target="#EditRentaCar" (click)="editRentACar(item)">Izmeni</button>
                     <br/>
-                    <button class="btn btn-success">Dodaj vozilo</button>
+                    <button class="btn btn-success" data-toggle="modal" data-target="#DodajVoziloForm" (click)="dodajVoziloZaRentACar(item)">Dodaj vozilo</button>
                     <br/>
                     <button class="btn btn-success">Dodaj filijalu</button>
                 </div>
@@ -55,3 +55,115 @@
         </tbody>
     </table>
 </div>
+
+<div class="modal fade" id="EditRentaCar" tabindex="-1" role="dialog" aria-labelledby="EditRentaCar" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="naslovEditEdit">Izmena podataka o rent-a-car servisu</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div  class="modal-body" *ngIf="servisToEdit">
+          <div class="tab-content">
+            <form class="form">
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Naziv: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="naziv" value="{{servisToEdit.naziv}}">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Adresa: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="adresa"  value="{{servisToEdit.adresa}}">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Promotivni opis: </label>
+                <div class="col-sm-6">
+                   <input type="text" class="form-control" id="opis"  value="{{servisToEdit.promotivniOpis}}">
+                </div>
+              </div>
+              
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="editRentACarInfo()">Sačuvaj izmene</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="modal fade" id="DodajVoziloForm" tabindex="-1" role="dialog" aria-labelledby="DodajVoziloForm" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="naslovEditEdit">Dodajte vozilo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div  class="modal-body">
+          <div class="tab-content">
+            <form class="form">
+
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Naziv: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="nazivVoz">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Marka: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="markaVoz">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Model: </label>
+                <div class="col-sm-6">
+                   <input type="text" class="form-control" id="modelVoz">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Godina proizvodnje: </label>
+                <div class="col-sm-6">
+                   <input type="number" class="form-control" id="godinaVoz" min="1900" max="2020">
+                </div>
+              </div>
+              
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Broj sedista: </label>
+                <div class="col-sm-6">
+                   <input type="number" class="form-control" id="brojSedVoz" min="1" max="50">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Tip vozila: </label>
+                <div class="col-sm-6">
+                   <input type="text" class="form-control" id="tipVoz">
+                </div>
+              </div>
+              
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="dodajVoziloInfo()">Sačuvaj izmene</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
