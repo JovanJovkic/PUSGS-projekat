@@ -6,6 +6,7 @@ import { Vozilo } from 'src/app/entities/vozilo/vozilo';
 import { AbstractFilterParam } from 'src/app/entities/abstract-filter-param/abstract-filter-param';
 import { StringFilterParam } from 'src/app/entities/string-filter-param/string-filter-param';
 import { NumberFilterParam } from 'src/app/entities/number-filter-param/number-filter-param';
+import { VoziloService } from 'src/app/services/vozilo/vozilo.service';
 
 @Component({
   selector: 'app-rent-profil',
@@ -21,15 +22,18 @@ export class RentProfilComponent implements OnInit {
   allVozila:Array<Vozilo>;
   filteredVozila:Array<Vozilo>;
   
-  constructor(private rentACarServis: RentACarService,private route: ActivatedRoute) { 
+  constructor(private rentACarServis: RentACarService,private route: ActivatedRoute,private voziloServis:VoziloService) { 
     this.allProfiles = new Array<RentACarServis>();
     route.params.subscribe(params => { this.id = params['id']; });
+    this.profil=new RentACarServis(0,"","","",0);
   }
 
   ngOnInit(): void {
-    this.loadRentProfile();
+    //this.loadRentProfile();
+    this.loadRentServis();
   }
 
+  /*
   loadRentProfile(): void {
     this.allProfiles = this.rentACarServis.loadRentACar();
     this.allProfiles.forEach(element => {
@@ -40,7 +44,7 @@ export class RentProfilComponent implements OnInit {
         this.filteredVozila = this.allVozila;
       }
     });
-  }
+  }*/
 
   filterVozila(): void {
     let filterParams = new Array<AbstractFilterParam>();
@@ -111,6 +115,52 @@ export class RentProfilComponent implements OnInit {
 
   resetFilter(): void {
     this.filteredVozila = this.allVozila;
+  }
+
+  loadRentServis() {
+    this.rentACarServis.ucitajOdredjeniRentACarServis(this.id).subscribe(
+    (res: any) => {
+      //console.log(res);
+      if (res != null ) {
+        var temp = res;
+        //temp.forEach(element => {
+          
+          const ak = new RentACarServis(temp.id,temp.naziv,temp.adresa,temp.promotivniOpis, 4);
+          console.log(temp);
+          
+          if(temp.vozila!=null)
+          {
+            if(temp.vozila.length!=0)
+            {
+              console.log(ak.vozila);
+              ak.vozila=temp.vozila;
+            }
+          }
+         
+          this.profil=ak;
+       // });
+
+        this.loadVozila();
+
+      } else {
+      }
+    },
+    err => {
+      console.log('greska');
+      console.log(err);
+    }
+    );
+  }
+
+  loadVozila()
+  {
+    this.voziloServis.ucitajVozilaZaRentACarOdredjeni(this.id).subscribe(
+      (res: any) => {
+        res.forEach(element => {
+              this.profil.vozila.push(element);
+          });
+      }
+      );
   }
 
 }

@@ -58,4 +58,9 @@ export class VoziloService {
     return array;
 
   }
+
+  ucitajVozilaZaRentACarOdredjeni(id:Number)
+  {
+    return this.http.get<Vozilo>(this.BaseURI + '/Vozila/GetVozilaZaOdredjeniServis/'+id);
+  }
 }

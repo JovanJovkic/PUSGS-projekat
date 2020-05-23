@@ -133,4 +133,9 @@ export class RentACarService {
     return array;
 
   }
+
+  ucitajOdredjeniRentACarServis(id:Number)
+  {
+     return this.http.get<RentACarServis>(this.BaseURI + '/RentACarServis/'+id);
+  }
 }

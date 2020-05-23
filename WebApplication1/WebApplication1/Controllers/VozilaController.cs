@@ -96,5 +96,20 @@ namespace WebApplication1.Controllers
 
             return NoContent();
         }
+
+        [HttpGet]
+        [Route("GetVozilaZaOdredjeniServis/{id}")]
+        public async Task<ActionResult<IEnumerable<Vozilo>>> GetVozilaZaOdredjeniServis(int id)
+        {
+            List<Vozilo> vozila = await _context.Vozila.Where(x => x.RentACarServisID == id).ToListAsync();
+
+            if (vozila == null)
+            {
+                return NotFound();
+            }
+
+
+            return vozila;
+        }
     }
 }
