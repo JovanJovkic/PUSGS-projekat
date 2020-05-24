@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Destinacija } from 'src/app/entities/destinacija/destinacija'
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 
 @Injectable({
@@ -7,13 +9,30 @@ import { Destinacija } from 'src/app/entities/destinacija/destinacija'
 })
 export class DestinacijaService {
 
-  constructor() { }
+  constructor(private fb: FormBuilder, private http: HttpClient) { }
+  readonly BaseURI = 'https://localhost:44308/api';
 
   loadDestinacija() {
     console.log('Učitavanje vozila...');
     return this.mockedDestinacija();
   }
 
+  dodajDestinaciju(item:Destinacija) {
+    var body = {
+      NazivDestinacije : item.nazivDestinacije,
+      DatumVremeSletanja : item.datumVremeSletanja,
+      DatumVremePoletanja : item.datumVremePoletanja,
+      VremePutovanja : item.vremePutovanja,
+      DuzinaPutovanja : item.duzinaPutovanja,
+      brojPresedanja : item.brojPresedanja,
+      lokacijaPresedanja : item.lokacijaPresedanja,
+      CenaKarte : item.cenaKarte,
+      AirCompanyID : item.airCompanyId
+    };
+
+    console.log(body);
+    return this.http.post(this.BaseURI + '/Destinacija/AddDestinacija', body);
+  }
 
   mockedDestinacija(): Array<Destinacija> {
     let allDestinacija = new Array<Destinacija>();
@@ -29,5 +48,24 @@ export class DestinacijaService {
     allDestinacija.push(dest4);
 
     return allDestinacija;
+  }
+
+  ucitajDestinacija()
+  {
+    let destinacijeNiz = new Array<Destinacija>();
+
+    var array = this.http.get<Destinacija[]>(this.BaseURI + '/Destinacija');
+
+    //this.http.get(this.BaseURI + '/RentACarServis').pipe(map((res: RentACarServis) => res.json()));
+
+    //allRentACarServis = Observable.create(observer => { this.http.get(this.BaseURI + '/RentACarServis').map(response => response.json(); })
+
+    return array;
+
+  }
+
+  ucitajDestinacijaZaAviokompanijuOdredjenu(id:Number)
+  {
+    return this.http.get<Destinacija>(this.BaseURI + '/Destinacija/GetDestinacijaZaOdredjenuAvioKompaniju/'+id);
   }
 }

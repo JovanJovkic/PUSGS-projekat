@@ -35,32 +35,13 @@ export class AvioPocetnaComponent implements OnInit {
   loadAvion(): void {
     this.allAvion = this.avionService.loadAirCompanies();
   }
-
+/*
   editAvioModal(avion: AirCompanies): void {
     this.avionToEdit = avion;
   }
+  */
 
-  dodajDestinacijuInfo()
-  {
-
-  }
-
-  editAirCompanyInfo()
-  {
-
-  }
-
-  dodajDestinacijuZaAvioKompaniju(destinacija:Destinacija)
-  {
-
-  }
-
-  EditAirCompany(avion: AirCompanies)
-  {
-
-  }
-
-  editAvioInfo(): void {
+  editAirCompanyInfo(): void {
     let nazivAvioKompanije = (<HTMLInputElement> document.getElementById("nazivAvioKompanije")).value;
     let adresa = (<HTMLInputElement> document.getElementById("adresa")).value;
     let promotivniOpis = (<HTMLInputElement> document.getElementById("promotivniOpis")).value;
@@ -91,12 +72,108 @@ export class AvioPocetnaComponent implements OnInit {
       }
     );
     this.avionToEdit = null;
+  }
+
+  EditAirCompany(avion: AirCompanies): void {
+    this.avionToEdit = avion;
+  }
+
+  loadRentServis() {
+    this.allAvion = new Array<AirCompanies>();  
+    
+    this.avionService.ucitajAirCompanies().subscribe(
+    (res: any) => {
+      //console.log(res);
+      if (res != null ) {
+        var temp = res;
+        temp.forEach(element => {
+          
+          const ak = new AirCompanies(element.id, element.nazivAvioKompanije, element.adresa, element.promotivniOpis, element.destnako
+            , element.letovi, element.spisakKarataSaPopustomZaBrzuRez, element.konfigSegMesta, element.cenovnik, element.infoPrtljag);
+          console.log(element);
+          if(ak.destinacija.length!=0)
+          {
+            console.log(ak.destinacija);
+            ak.destinacija=element.vozila;
+          }
+         
+          this.allAvion.push(ak);
+        });
+
+        this.loadDestinacija();
+
+      } else {
+      }
+    },
+    err => {
+      console.log('greska');
+      console.log(err);
+    }
+    );
+  }
+
+  dodajDestinacijuZaAvioKompaniju(destinacija: AirCompanies): void{
+
+    this.destinacijaToEdit = destinacija;
 
   }
 
-  dodajDestinacijuZaAviokompaniju(kompanija: AirCompanies): void {
-    this.destinacijaToEdit = kompanija;
+  dodajDestinacijuInfo():void
+  {
+    let nazivDest = (<HTMLInputElement> document.getElementById("destNaziv")).value;
+    let datumVremeSl = (<HTMLInputElement> document.getElementById("datVremeSl")).value;
+    let datumVremePol = (<HTMLInputElement> document.getElementById("datVremePol")).value;
+    let vremePutov = (<HTMLInputElement> document.getElementById("vremePut")).value;
+    let duzinaPutov = (<HTMLInputElement> document.getElementById("duzinaPut")).value;
+    let brojPresed = (<HTMLInputElement> document.getElementById("brojPresed")).value;
+    let lokacPresed = (<HTMLInputElement> document.getElementById("lokacPresed")).value;
+    let cenaKarte = (<HTMLInputElement> document.getElementById("kartaCena")).value;
+
+    var temp = new Destinacija(5,nazivDest,datumVremeSl,datumVremePol,vremePutov,duzinaPutov,+brojPresed,lokacPresed,cenaKarte);
+    temp.airCompanyId = this.destinacijaToEdit.id;
+    this.destinacijaToEdit.destinacija.push(temp);
+
+    this.destinacijaService.dodajDestinaciju(temp).subscribe(
+      (res: any) => {
+        if (res != null ) {
+        }
+      }
+    );
+    
+    this.avionService.izmeniAirCompany(this.destinacijaToEdit).subscribe(
+      (res: any) => {
+        if (res != null ) {
+          alert("Vasa izmena je sacuvana!");
+          this.loadAvion();
+          //this.loadVozila();
+          (<HTMLInputElement> document.getElementById("naslovEditEdit")).value = "Vasa izmena je sacuvana!";
+        }
+      }
+    );
   }
+
+  loadDestinacija()
+  {
+    this.destinacijaService.ucitajDestinacija().subscribe(
+      (res: any) => {
+        res.forEach(element => {
+
+          console.log(element);
+          this.allAvion.forEach(item => {
+
+            if(element.AirCompanyID == item.id)
+            {
+              item.destinacija.push(element);
+            }
+
+          });
+
+        });
+      }
+      );
+  }
+
+
 
   /*
   updateAvio(nazivAvioKompanije: string, adresa: string, promotivniOpis:string, destNaKojimPosluje:string, letovi:string, spisakKarataSaPopustomZaBrzuRez: string, konfigSegMesta:string, cenovnik: string, infoPrtljag: string  ): void {

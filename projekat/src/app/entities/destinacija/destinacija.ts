@@ -10,6 +10,7 @@ export class Destinacija {
     brojPresedanja: number;
     lokacijaPresedanja: string;
     cenaKarte: string;
+    airCompanyId: number;
 
 
     constructor(id:number, nazivDestinacije: string, datumVremeSletanja: string, datumVremePoletanja: string, vremePutovanja: string, duzinaPutovanja: string, brojPresedanja: number, lokacijaPresedanja: string, cenaKarte: string) {
