@@ -118,7 +118,7 @@ export class AircompaniesService {
 
   izmeniAirCompany(servis: AirCompanies)
   {
-    return this.http.post(this.BaseURI + '/AirCompaniesService/UpdateAircompaniesService', servis);
+    return this.http.post(this.BaseURI + '/AirCompany/UpdateAviokompanija', servis);
   }
 
   ucitajAdmineAvio()
@@ -130,7 +130,7 @@ export class AircompaniesService {
   {
     let allAirCompanies = new Array<AircompaniesService>();
 
-    var array = this.http.get<AircompaniesService[]>(this.BaseURI + '/AircompaniesService');
+    var array = this.http.get<AircompaniesService[]>(this.BaseURI + '/AirCompany');
 
     return array;
 
@@ -138,7 +138,7 @@ export class AircompaniesService {
 
   ucitajOdredjenuAirCompany(id:Number)
   {
-     return this.http.get<AircompaniesService>(this.BaseURI + '/AircompaniesService/'+id);
+     return this.http.get<AircompaniesService>(this.BaseURI + '/AirCompany/'+id);
   }
 }
 

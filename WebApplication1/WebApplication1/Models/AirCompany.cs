@@ -19,5 +19,7 @@ namespace WebApplication1.Models
         public string ProsecnaOcena { get; set; }
 
         public string Admin { get; set; }
+
+        public ICollection<Destinacija> Destinacije { get; set; }
     }
 }

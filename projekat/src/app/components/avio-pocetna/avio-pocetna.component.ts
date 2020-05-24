@@ -32,9 +32,9 @@ export class AvioPocetnaComponent implements OnInit {
     //alert("Upravo se pozvala OnInit metoda komponente Avion");
   }
 
-  loadAvion(): void {
-    this.allAvion = this.avionService.loadAirCompanies();
-  }
+  //loadAvion(): void {
+  //  this.allAvion = this.avionService.loadAirCompanies();
+  //}
 /*
   editAvioModal(avion: AirCompanies): void {
     this.avionToEdit = avion;
@@ -78,7 +78,7 @@ export class AvioPocetnaComponent implements OnInit {
     this.avionToEdit = avion;
   }
 
-  loadRentServis() {
+  loadAvion() {
     this.allAvion = new Array<AirCompanies>();  
     
     this.avionService.ucitajAirCompanies().subscribe(
