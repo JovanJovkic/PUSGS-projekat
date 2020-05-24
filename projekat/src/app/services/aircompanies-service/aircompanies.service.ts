@@ -116,7 +116,7 @@ export class AircompaniesService {
   //  return this.mockedAirCompanies();
   //}
 
-  izmeniAirCompany(servis: AircompaniesService)
+  izmeniAirCompany(servis: AirCompanies)
   {
     return this.http.post(this.BaseURI + '/AirCompaniesService/UpdateAircompaniesService', servis);
   }

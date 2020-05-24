@@ -40,6 +40,26 @@ export class AvioPocetnaComponent implements OnInit {
     this.avionToEdit = avion;
   }
 
+  dodajDestinacijuInfo()
+  {
+
+  }
+
+  editAirCompanyInfo()
+  {
+
+  }
+
+  dodajDestinacijuZaAvioKompaniju(destinacija:Destinacija)
+  {
+
+  }
+
+  EditAirCompany(avion: AirCompanies)
+  {
+
+  }
+
   editAvioInfo(): void {
     let nazivAvioKompanije = (<HTMLInputElement> document.getElementById("nazivAvioKompanije")).value;
     let adresa = (<HTMLInputElement> document.getElementById("adresa")).value;
@@ -74,7 +94,7 @@ export class AvioPocetnaComponent implements OnInit {
 
   }
 
-  dodajDestinacijuZaAviokompaniju(kompanija: AircompaniesService): void {
+  dodajDestinacijuZaAviokompaniju(kompanija: AirCompanies): void {
     this.destinacijaToEdit = kompanija;
   }
 
