@@ -87,8 +87,8 @@ export class AvioPocetnaComponent implements OnInit {
       if (res != null ) {
         var temp = res;
         temp.forEach(element => {
-          
-          const ak = new AirCompanies(element.id, element.nazivAvioKompanije, element.adresa, element.promotivniOpis, element.destnako
+          console.log(element);
+          const ak = new AirCompanies(element.id, element.nazivAvioKompanije, element.gradAvioKompanije, element.promotivniOpis, element.destnako
             , element.letovi, element.spisakKarataSaPopustomZaBrzuRez, element.konfigSegMesta, element.cenovnik, element.infoPrtljag);
           console.log(element);
           if(ak.destinacija.length!=0)
