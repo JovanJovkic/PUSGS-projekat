@@ -1,4 +1,8 @@
+import { NumberValueAccessor } from '@angular/forms';
+import { Destinacija } from 'src/app/entities/destinacija/destinacija'
+
 export class Avion {
+    id: number;
     nazivAvioKompanije: string;
     adresa: string;
     promotivniOpis: string;
@@ -8,8 +12,11 @@ export class Avion {
     konfigSegMesta: string;
     cenovnik: string;
     infoPrtljag: string;
+    destinacija: Array<Destinacija>;
 
-    constructor(nazivAvioKompanije: string, adresa: string, promotivniOpis: string, destNaKojimPosluje: string,letovi: string,spisakKarataSaPopustomZaBrzuRez: string,konfigSegMesta: string,cenovnik: string,infoPrtljag: string) {
+
+    constructor(id:number, nazivAvioKompanije: string, adresa: string, promotivniOpis: string, destNaKojimPosluje: string,letovi: string,spisakKarataSaPopustomZaBrzuRez: string,konfigSegMesta: string,cenovnik: string,infoPrtljag: string) {
+        this.id = id;
         this.nazivAvioKompanije = nazivAvioKompanije;
         this.adresa = adresa;
         this.promotivniOpis = promotivniOpis;
@@ -19,6 +26,7 @@ export class Avion {
         this.konfigSegMesta = konfigSegMesta;
         this.cenovnik = cenovnik;
         this.infoPrtljag = infoPrtljag;
+        this.destinacija = new Array<Destinacija>();
     }
 
 }

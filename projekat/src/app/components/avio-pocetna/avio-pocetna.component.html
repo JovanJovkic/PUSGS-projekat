@@ -1,6 +1,5 @@
-<div class="container" >
+<!--<div class="container" >
   <h1 style="background-color: #b8d9c1; border-style:double;" st>Profil avio kompanije</h1>
-  <!--<form  [formGroup]="avioPocetnaForma" >''-->
     <table class="table" border='12px' bgcolor="#b8d9c1">
         <thead class="thead-light">
             <tr>
@@ -47,7 +46,6 @@
            </tr>
         </thead>
     </table>
- <!-- </form>-->
 
 </div>
 
@@ -127,3 +125,238 @@
     </div>
   </div>
 </div>
+-->
+
+<div class="container">
+  <br/>
+  <p class="text-center h1">Profil administratora avio-kompanija</p>
+  <br/>
+  <table class=" table table-secondary" border="1" *ngFor="let item of allAvion">
+      <thead class="thead-dark">
+      <tr>
+          <th class="text-center">Naziv aviokompanije: </th>
+          <th class="text-center">Adresa avikompanije: </th>
+          <th class="text-center">Promotivni opis avikompanije: </th>
+          <th class="text-center">Destinacije na kojim posluje aviokompanija: </th>
+          <th class="text-center">Spisak karata sa popustom za brzu registraciju aviokompanije: </th>
+          <th class="text-center">Kongiguracija segmenata i mesta aviokompanije: </th>
+          <th class="text-center">Cenovnik aviokompanije: </th>
+          <th class="text-center">Informacije o prtljagu aviokompanije: </th>
+          <th class="text-center">Letovi: </th>                   
+          <th>  </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+          <td class="text-center">{{item.nazivAvioKompanije}}</td>
+          <td class="text-center">{{item.adresa}}</td>
+          <td class="text-center">{{item.promotivniOpis}}</td>
+          <td class="text-center">{{item.destNaKojimPosluje}}</td>
+          <td class="text-center">{{item.spisakKarataSaPopustomZaBrzuRez}}</td>
+          <td class="text-center">{{item.konfigSegMesta}}</td>
+          <td class="text-center">{{item.cenovnik}}</td>
+          <td class="text-center">{{item.infoPrtljag}}</td>
+          
+          <td>
+              <table>
+                  <tr>
+                      <th class="text-center">Destinacija</th>
+                      <th class="text-center">Datum i vreme sletanja</th>
+                      <th class="text-center">Datum i vreme poletanja</th>
+                      <th class="text-center">Vreme putovanja</th>
+                      <th class="text-center">Dužina putovanja</th>
+                      <th class="text-center">Broj presedanja</th>
+                      <th class="text-center">Lokacije presedanja</th>
+                      <th class="text-center">Cena karte</th>
+                  </tr>
+                  <tr *ngFor="let destinac of item.destinacije">
+                      <td class="text-center">{{destinac.nazivDestinacije}}</td>  
+                      <td class="text-center">{{destinac.datumVremeSletanja}}</td> 
+                      <td class="text-center">{{destinac.datumVremePoletanja}}</td> 
+                      <td class="text-center">{{destinac.vremePutovanja}}</td> 
+                      <td class="text-center">{{destinac.duzinaPutovanja}}</td>  
+                      <td class="text-center">{{destinac.brojPresedanja}}</td>  
+                      <td class="text-center">{{destinac.lokacijaPresedanja}}</td>  
+                      <td class="text-center">{{destinac.cenaKarte}}</td> 
+                      <td class="btn-group-vertical">
+                          <button class="btn btn-success">Obriši</button>
+                          <button class="btn btn-success">Izmeni</button>
+                      </td>  
+                  </tr>
+              </table>
+          </td>
+          <td>
+              <div class="btn-group-vertical">
+                  <br/>
+                  <button class="btn btn-success" data-toggle="modal" data-target="#EditAirCompany" (click)="EditAirCompany(item)">Izmeni</button>
+                  <br/>
+                  <button class="btn btn-success" data-toggle="modal" data-target="#DodajDestinacijuForm" (click)="dodajDestinacijuZaAvioKompaniju(item)">Dodaj destinaciju</button>
+              </div>
+          </td>
+      </tr>
+      </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="EditAirCompany" tabindex="-1" role="dialog" aria-labelledby="EditAirCompany" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="naslovEditEdit">Izmena podataka o avio-kompaniji</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div  class="modal-body" *ngIf="avionToEdit">
+        <div class="tab-content">
+          <form class="form">
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Naziv: </label>
+              <div class="col-sm-6">
+                  <input type="text" class="form-control" id="nazivAvioKompanije" value="{{avionToEdit.nazivAvioKompanije}}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Adresa: </label>
+              <div class="col-sm-6">
+                  <input type="text" class="form-control" id="adresa"  value="{{avionToEdit.adresa}}">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Promotivni opis: </label>
+              <div class="col-sm-6">
+                 <input type="text" class="form-control" id="promotivniOpis"  value="{{avionToEdit.promotivniOpis}}">
+              </div>
+            </div>
+            
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Destinacije na kojim posluje aviokompanija: </label>
+              <div class="col-sm-6">
+                 <input type="text" class="form-control" id="destNaKojimPosluje"  value="{{avionToEdit.destNaKojimPosluje}}">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Spisak karata sa popustom za brzu registraciju aviokompanije: </label>
+              <div class="col-sm-6">
+                 <input type="text" class="form-control" id="spisakKarataSaPopustomZaBrzuRez"  value="{{avionToEdit.spisakKarataSaPopustomZaBrzuRez}}">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Kongiguracija segmenata i mesta aviokompanije: </label>
+              <div class="col-sm-6">
+                 <input type="text" class="form-control" id="konfigSegMesta"  value="{{avionToEdit.konfigSegMesta}}">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Cenovnik aviokompanije: </label>
+              <div class="col-sm-6">
+                 <input type="text" class="form-control" id="cenovnik"  value="{{avionToEdit.cenovnik}}">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Informacije o prtljagu aviokompanij: </label>
+              <div class="col-sm-6">
+                 <input type="text" class="form-control" id="infoPrtljag"  value="{{avionToEdit.infoPrtljag}}">
+              </div>
+            </div>
+
+
+            
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="editAirCompanyInfo()">Sačuvaj izmene</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="DodajDestinacijuForm" tabindex="-1" role="dialog" aria-labelledby="DodajDestinacijuForm" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="naslovEditEdit">Dodajte destinaciju</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div  class="modal-body">
+        <div class="tab-content">
+          <form class="form">
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Naziv destinacije: </label>
+              <div class="col-sm-6">
+                  <input type="text" class="form-control" id="destNaziv">
+              </div>
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Datum i vreme sletanja: </label>
+              <div class="col-sm-6">
+                  <input type="text" class="form-control" id="datVremeSl">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Datum i vreme poletanja: </label>
+              <div class="col-sm-6">
+                 <input type="text" class="form-control" id="datVremePol">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Vreme putovanja: </label>
+              <div class="col-sm-6">
+                 <input type="number" class="form-control" id="vremePut" min="1900" max="2020">
+              </div>
+            </div>
+            
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Dužina putovanja: </label>
+              <div class="col-sm-6">
+                 <input type="number" class="form-control" id="duzinaPut" min="1" max="50">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Broj presedanja: </label>
+              <div class="col-sm-6">
+                 <input type="text" class="form-control" id="brojPresed">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Lokacije presedanja: </label>
+              <div class="col-sm-6">
+                 <input type="text" class="form-control" id="lokacPresed">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Cena karte: </label>
+              <div class="col-sm-6">
+                 <input type="text" class="form-control" id="kartaCena">
+              </div>
+            </div>
+            
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="dodajDestinacijuInfo()">Sačuvaj izmene</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

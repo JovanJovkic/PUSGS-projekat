@@ -4,19 +4,27 @@ import { Destinacija } from 'src/app/entities/destinacija/destinacija'
 export class AirCompanies {
     id: number;
     nazivAvioKompanije: string;
-    gradAvioKompanije: string;
-    //polazniAerodrom: string;
-    //odredisniAerodrom: string;
-    cenaKarte: number;
+    adresa: string;
+    promotivniOpis: string;
+    destNaKojimPosluje: string;
+    letovi: string;
+    spisakKarataSaPopustomZaBrzuRez: string;
+    konfigSegMesta: string;
+    cenovnik: string;
+    infoPrtljag: string;
     destinacija: Array<Destinacija>;
 
-    constructor(id:number, nazivAvioKompanije: string, gradAvioKompanije: string, cenaKarte: number) {
+    constructor(id:number, nazivAvioKompanije: string, adresa: string, promotivniOpis: string, destNaKojimPosluje: string,letovi: string,spisakKarataSaPopustomZaBrzuRez: string,konfigSegMesta: string,cenovnik: string,infoPrtljag: string) {
         this.id = id;
         this.nazivAvioKompanije = nazivAvioKompanije;
-        this.gradAvioKompanije = gradAvioKompanije;
-        //this.model = model;
-        //this.year = year;
-        this.cenaKarte = cenaKarte;
+        this.adresa = adresa;
+        this.promotivniOpis = promotivniOpis;
+        this.destNaKojimPosluje = destNaKojimPosluje;
+        this.letovi = letovi;
+        this.spisakKarataSaPopustomZaBrzuRez = spisakKarataSaPopustomZaBrzuRez;
+        this.konfigSegMesta = konfigSegMesta;
+        this.cenovnik = cenovnik;
+        this.infoPrtljag = infoPrtljag;
         this.destinacija = new Array<Destinacija>();
     }
 }

@@ -45,13 +45,13 @@ export class AircompaniesService {
       for (const filterParam of filterParams) {
         if (this.checkAirCompaniesBrandFilter(aircompany, filterParam)) {
           addAirCompany = false;
-            console.log(aircompany.nazivAvioKompanije + ' ' + aircompany.gradAvioKompanije + ' ne zadovoljava vrednost polja airCompanyBrandFilter');
+            console.log(aircompany.nazivAvioKompanije + ' ' + aircompany.adresa + ' ne zadovoljava vrednost polja airCompanyBrandFilter');
             break;
         }
 
         if (this.checkAirCompaniesMaxPerDayPriceFilter(aircompany, filterParam)) {
           addAirCompany = false;
-          console.log(aircompany.nazivAvioKompanije + ' ' + aircompany.gradAvioKompanije + ' ne zadovoljava vrednost polja checkAirCompaniesMaxPerDayPriceFilter');
+          console.log(aircompany.nazivAvioKompanije + ' ' + aircompany.adresa + ' ne zadovoljava vrednost polja checkAirCompaniesMaxPerDayPriceFilter');
           break;
         }
       }
@@ -68,17 +68,17 @@ export class AircompaniesService {
   }
 
   checkAirCompaniesMaxPerDayPriceFilter(aircompany: AirCompanies, filterParam: AbstractFilterParam): boolean {
-    return filterParam instanceof NumberFilterParam && filterParam.getFilterParamName() === 'airCompanyMaxPerDayPriceFilter' && (aircompany.cenaKarte < filterParam.getFilterParamValue());
+    return filterParam instanceof NumberFilterParam && filterParam.getFilterParamName() === 'airCompanyMaxPerDayPriceFilter' && (aircompany.id < filterParam.getFilterParamValue());
   }
 
   mockedAirCompanies(): Array<AirCompanies> {
     let allCompanies = new Array<AirCompanies>();
 
-    const aircom1 = new AirCompanies(1, 'AirSerbia','Beograd', 3);
-    const aircom2 = new AirCompanies(2, 'QatarAirways', 'Doha', 5);
-    const aircom3 = new AirCompanies(3, 'WizzAir', 'Budapest', 4);
-    const aircom4 = new AirCompanies(4, 'RyanAir', 'Dublin', 2);
-    const aircom5 = new AirCompanies(5, 'Emirates', 'Dubai', 4);
+    const aircom1 = new AirCompanies(1, 'AirSerbia','Beograd', 'Opis kompanije', 'Pariz, Njujork', 'Letovi', 'Pariz', '1 2 3 4 5', '444 - 1000', 'besplatan rucni prtljag');
+    const aircom2 = new AirCompanies(2, 'QatarAirways', 'Doha', 'Opis kompanije', 'Pariz, Njujork', 'Letovi', 'Pariz', '1 2 3 4 5', '444 - 1000', 'besplatan rucni prtljag');
+    const aircom3 = new AirCompanies(3, 'WizzAir', 'Budapest', 'Opis kompanije', 'Pariz, Njujork', 'Letovi', 'Pariz', '1 2 3 4 5', '444 - 1000', 'besplatan rucni prtljag');
+    const aircom4 = new AirCompanies(4, 'RyanAir', 'Dublin', 'Opis kompanije', 'Pariz, Njujork', 'Letovi', 'Pariz', '1 2 3 4 5', '444 - 1000', 'besplatan rucni prtljag');
+    const aircom5 = new AirCompanies(5, 'Emirates', 'Dubai', 'Opis kompanije', 'Pariz, Njujork', 'Letovi', 'Pariz', '1 2 3 4 5', '444 - 1000', 'besplatan rucni prtljag');
     
     aircom1.destinacija = this.mockedDestinacija();
     aircom1.destinacija = this.mockedDestinacija();
@@ -111,9 +111,34 @@ export class AircompaniesService {
     return allDestinacija;
   }
 
+  //loadAirCompany() {
+  //  console.log('Učitavanje avio-kompanija...');
+  //  return this.mockedAirCompanies();
+  //}
+
+  izmeniAirCompany(servis: AircompaniesService)
+  {
+    return this.http.post(this.BaseURI + '/AirCompaniesService/UpdateAircompaniesService', servis);
+  }
+
   ucitajAdmineAvio()
   {
     return this.http.get('https://localhost:44308/api' + '/ApplicationUser/GetAdminAvio');
+  }
+
+  ucitajAirCompanies()
+  {
+    let allAirCompanies = new Array<AircompaniesService>();
+
+    var array = this.http.get<AircompaniesService[]>(this.BaseURI + '/AircompaniesService');
+
+    return array;
+
+  }
+
+  ucitajOdredjenuAirCompany(id:Number)
+  {
+     return this.http.get<AircompaniesService>(this.BaseURI + '/AircompaniesService/'+id);
   }
 }
 
