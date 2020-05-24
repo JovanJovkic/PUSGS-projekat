@@ -35,8 +35,8 @@
                         <td class="text-center">{{voz.brojSedista}}</td>  
                         <td class="text-center">{{voz.tipVozila}}</td>  
                         <td class="btn-group-vertical">
-                            <button class="btn btn-success">Obriši</button>
-                            <button class="btn btn-success">Izmeni</button>
+                            <button class="btn btn-success" (click)="obrisiVozilo(voz)">Obriši</button>
+                            <button class="btn btn-success" data-toggle="modal" data-target="#IzmeniVoziloForm" (click)="editVozilo(voz)">Izmeni</button>
                         </td>  
                     </tr>
                 </table>
@@ -162,6 +162,73 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
             <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="dodajVoziloInfo()">Sačuvaj izmene</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="IzmeniVoziloForm" tabindex="-1" role="dialog" aria-labelledby="IzmeniVoziloForm" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="naslovEditEdit">Dodajte vozilo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div  class="modal-body"  *ngIf="voziloToEdit">
+          <div class="tab-content">
+            <form class="form">
+
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Naziv: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="nazivVozIz" value="{{voziloToEdit.naziv}}">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Marka: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="markaVozIz" value="{{voziloToEdit.marka}}">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Model: </label>
+                <div class="col-sm-6">
+                   <input type="text" class="form-control" id="modelVozIz" value="{{voziloToEdit.model}}">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Godina proizvodnje: </label>
+                <div class="col-sm-6">
+                   <input type="number" class="form-control" id="godinaVozIz" min="1900" max="2020" value="{{voziloToEdit.godinaProizvodnje}}">
+                </div>
+              </div>
+              
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Broj sedista: </label>
+                <div class="col-sm-6">
+                   <input type="number" class="form-control" id="brojSedVozIz" min="1" max="50" value="{{voziloToEdit.brojSedista}}">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Tip vozila: </label>
+                <div class="col-sm-6">
+                   <input type="text" class="form-control" id="tipVozIz" value="{{voziloToEdit.tipVozila}}">
+                </div>
+              </div>
+              
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="izmeniVoziloInfo()">Sačuvaj izmene</button>
           </div>
         </div>
       </div>

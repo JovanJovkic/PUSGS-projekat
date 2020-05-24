@@ -63,4 +63,14 @@ export class VoziloService {
   {
     return this.http.get<Vozilo>(this.BaseURI + '/Vozila/GetVozilaZaOdredjeniServis/'+id);
   }
+
+  izmeniVozilo(vozilo: Vozilo)
+  {
+    return this.http.post(this.BaseURI + '/Vozila/UpdateVozilo/', vozilo);
+  }
+
+  obrisiVozilo(id: Number)
+  {
+    return this.http.delete(this.BaseURI + '/Vozila/DeleteVozilo/'+id);
+  }
 }

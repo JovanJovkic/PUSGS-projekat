@@ -15,6 +15,7 @@ export class RentAdminProfilComponent implements OnInit {
   allRentACarServis: Array<RentACarServis>;
   servisToEdit:RentACarServis;
   servisZaVozilo:RentACarServis;
+  voziloToEdit:Vozilo;
 
   constructor(private rentACarService: RentACarService,private voziloService: VoziloService) { 
     this.allRentACarServis = new Array<RentACarServis>();    
@@ -97,6 +98,8 @@ export class RentAdminProfilComponent implements OnInit {
   }*/
 
   loadRentServis() {
+    this.allRentACarServis = new Array<RentACarServis>();  
+    
     this.rentACarService.ucitajRentACarServise().subscribe(
     (res: any) => {
       //console.log(res);
@@ -146,5 +149,46 @@ export class RentAdminProfilComponent implements OnInit {
         });
       }
       );
+  }
+
+  obrisiVozilo(vozilo:Vozilo): void {
+
+    this.voziloService.obrisiVozilo(vozilo.id).subscribe(
+      (res: any) => {
+        this.loadRentServis();
+      }
+    );
+  }
+
+  editVozilo(vozilo:Vozilo): void {
+    this.voziloToEdit=vozilo;
+  }
+
+  izmeniVoziloInfo():void{
+
+    let nazivVoz = (<HTMLInputElement> document.getElementById("nazivVozIz")).value;
+    let markaVoz = (<HTMLInputElement> document.getElementById("markaVozIz")).value;
+    let modelVoz = (<HTMLInputElement> document.getElementById("modelVozIz")).value;
+    let godinaVoz = (<HTMLInputElement> document.getElementById("godinaVozIz")).value;
+    let brojSedVoz = (<HTMLInputElement> document.getElementById("brojSedVozIz")).value;
+    let tipVoz = (<HTMLInputElement> document.getElementById("tipVozIz")).value;
+
+    this.voziloToEdit.naziv=nazivVoz;
+    this.voziloToEdit.marka=markaVoz;
+    this.voziloToEdit.model=modelVoz;
+    this.voziloToEdit.godinaProizvodnje=+godinaVoz;
+    this.voziloToEdit.brojSedista=+brojSedVoz;
+    this.voziloToEdit.tipVozila=tipVoz;
+
+    this.voziloService.izmeniVozilo(this.voziloToEdit).subscribe(
+      (res: any) => {
+        if (res != null ) {
+          this.loadRentServis();
+          //alert("Vasa izmena je sacuvana!");
+          //this.loadRentServis();
+          //(<HTMLInputElement> document.getElementById("naslovEditEdit")).value = "Vasa izmena je sacuvana!";
+        }
+      }
+    );
   }
 }
