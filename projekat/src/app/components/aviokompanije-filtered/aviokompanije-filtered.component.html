@@ -12,8 +12,8 @@
     <tbody>
         <tr *ngFor="let aircompany of filteredAirCompanies">
             <td>{{aircompany.nazivAvioKompanije}}</td>
-            <td>{{aircompany.gradAvioKompanije}}</td>
-            <td>{{aircompany.cenaKarte}}</td>
+            <td>{{aircompany.adresa}}</td>
+            <td>{{aircompany.infoPrtljag}}</td>
             <td> <button class="btn btn-success" routerLink="/avio-kompanija-pocetna/{{aircompany.id}}/profilKompanije">Detalji</button></td>
         </tr>
     </tbody>

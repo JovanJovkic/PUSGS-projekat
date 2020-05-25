@@ -24,12 +24,13 @@ export class AviokompanijePocetnaComponent implements OnInit {
 
   constructor(private aircompanyService: AircompaniesService, private destinacijaService: DestinacijaService) { 
     this.allAirCompanies = this.aircompanyService.loadAirCompanies();
-    this.filteredAirCompanies = this.allAirCompanies;
+    //this.filteredAirCompanies = this.allAirCompanies;
     this.allAirCompanies = new Array<AirCompanies>();   
   }
 
   ngOnInit(): void {
     this.loadAirCompaniesService();
+    this.filteredAirCompanies = this.allAirCompanies;
   }
 
   filterAirCompanies(): void {
