@@ -20,6 +20,7 @@ export class AvioPocetnaComponent implements OnInit {
   allAvion: Array<AirCompanies>;
   avionToEdit: AirCompanies;
   destinacijaToEdit: AirCompanies;
+  destinacijaEdit: Destinacija;
 
   constructor(private avionService: AircompaniesService, private destinacijaService: DestinacijaService) {
     //alert("Upravo se pozvao konstruktor komponente Avion");
@@ -94,7 +95,7 @@ export class AvioPocetnaComponent implements OnInit {
           if(ak.destinacija.length!=0)
           {
             console.log(ak.destinacija);
-            ak.destinacija=element.vozila;
+            ak.destinacija=element.destinacija;
           }
          
           this.allAvion.push(ak);
@@ -145,7 +146,6 @@ export class AvioPocetnaComponent implements OnInit {
         if (res != null ) {
           alert("Vasa izmena je sacuvana!");
           this.loadAvion();
-          //this.loadVozila();
           (<HTMLInputElement> document.getElementById("naslovEditEdit")).value = "Vasa izmena je sacuvana!";
         }
       }
@@ -171,6 +171,48 @@ export class AvioPocetnaComponent implements OnInit {
         });
       }
       );
+  }
+
+  obrisiDestinaciju(destinacija:Destinacija): void {
+
+    this.destinacijaService.obrisiDestinaciju(destinacija.id).subscribe(
+      (res: any) => {
+        this.loadAvion();
+      }
+    );
+  }
+
+  editDestinaciju(destinacija:Destinacija): void {
+    this.destinacijaEdit=destinacija;
+  }
+
+  izmeniDestinacijuInfo():void{
+
+    let nazivDest = (<HTMLInputElement> document.getElementById("destNazivIzm")).value;
+    let datumVremeSl = (<HTMLInputElement> document.getElementById("datVremeSlIzm")).value;
+    let datumVremePol = (<HTMLInputElement> document.getElementById("datVremePolIzm")).value;
+    let vremePutov = (<HTMLInputElement> document.getElementById("vremePutIzm")).value;
+    let duzinaPutov = (<HTMLInputElement> document.getElementById("duzinaPutIzm")).value;
+    let brojPresed = (<HTMLInputElement> document.getElementById("brojPresedIzm")).value;
+    let lokacPresed = (<HTMLInputElement> document.getElementById("lokacPresedIzm")).value;
+    let cenaKarte = (<HTMLInputElement> document.getElementById("kartaCenaIzm")).value;
+
+    this.destinacijaEdit.nazivDestinacije=nazivDest;
+    this.destinacijaEdit.datumVremeSletanja=datumVremeSl;
+    this.destinacijaEdit.datumVremePoletanja=datumVremePol;
+    this.destinacijaEdit.vremePutovanja=vremePutov;
+    this.destinacijaEdit.duzinaPutovanja=duzinaPutov;
+    this.destinacijaEdit.brojPresedanja=+brojPresed;
+    this.destinacijaEdit.lokacijaPresedanja=lokacPresed;
+    this.destinacijaEdit.cenaKarte=cenaKarte;
+
+    this.destinacijaService.izmeniDestinaciju(this.destinacijaEdit).subscribe(
+      (res: any) => {
+        if (res != null ) {
+          this.loadAvion();
+        }
+      }
+    );
   }
 
 

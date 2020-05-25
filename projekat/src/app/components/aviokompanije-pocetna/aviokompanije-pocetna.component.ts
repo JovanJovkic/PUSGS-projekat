@@ -5,6 +5,8 @@ import { AbstractFilterParam } from 'src/app/entities/abstract-filter-param/abst
 import { StringFilterParam } from 'src/app/entities/string-filter-param/string-filter-param';
 import { NumberFilterParam } from 'src/app/entities/number-filter-param/number-filter-param';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Destinacija } from 'src/app/entities/destinacija/destinacija';
+import { DestinacijaService } from 'src/app/services/destinacija-service/destinacija.service';
 
 @Component({
   selector: 'app-aviokompanije-pocetna',
@@ -17,14 +19,17 @@ export class AviokompanijePocetnaComponent implements OnInit {
 
   allAirCompanies: Array<AirCompanies>;
   filteredAirCompanies: Array<AirCompanies>;
+  
 
 
-  constructor(private aircompanyService: AircompaniesService) { 
+  constructor(private aircompanyService: AircompaniesService, private destinacijaService: DestinacijaService) { 
     this.allAirCompanies = this.aircompanyService.loadAirCompanies();
     this.filteredAirCompanies = this.allAirCompanies;
+    this.allAirCompanies = new Array<AirCompanies>();   
   }
 
   ngOnInit(): void {
+    this.loadAirCompaniesService();
   }
 
   filterAirCompanies(): void {
@@ -54,6 +59,59 @@ export class AviokompanijePocetnaComponent implements OnInit {
 
   getFilterFieldValue(filterFieldId: string) {
     return (<HTMLInputElement> document.getElementById(filterFieldId)).value;
+  }
+
+  loadAirCompaniesService() {
+    this.aircompanyService.ucitajAirCompanies().subscribe(
+    (res: any) => {
+      //console.log(res);
+      if (res != null ) {
+        var temp = res;
+        temp.forEach(element => {
+          
+          const ak = new AirCompanies(element.id, element.nazivAvioKompanije, element.gradAvioKompanije, element.promotivniOpis, element.destnako
+            , element.letovi, element.spisakKarataSaPopustomZaBrzuRez, element.konfigSegMesta, element.cenovnik, element.infoPrtljag);
+          console.log(element);
+          if(ak.destinacija.length!=0)
+          {
+            console.log(ak.destinacija);
+            ak.destinacija=element.destinacija;
+          }
+         
+          this.allAirCompanies.push(ak);
+        });
+
+        this.loadDestinacije();
+
+      } else {
+      }
+    },
+    err => {
+      console.log('greska');
+      console.log(err);
+    }
+    );
+  }
+
+  loadDestinacije()
+  {
+    this.destinacijaService.ucitajDestinacija().subscribe(
+      (res: any) => {
+        res.forEach(element => {
+
+          console.log(element);
+          this.allAirCompanies.forEach(item => {
+
+            if(element.AirCompanyID == item.id)
+            {
+              item.destinacija.push(element);
+            }
+
+          });
+
+        });
+      }
+      );
   }
 
 }

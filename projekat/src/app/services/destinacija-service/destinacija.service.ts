@@ -13,7 +13,7 @@ export class DestinacijaService {
   readonly BaseURI = 'https://localhost:44308/api';
 
   loadDestinacija() {
-    console.log('Učitavanje vozila...');
+    console.log('Učitavanje destinacija...');
     return this.mockedDestinacija();
   }
 
@@ -56,12 +56,18 @@ export class DestinacijaService {
 
     var array = this.http.get<Destinacija[]>(this.BaseURI + '/Destinacija');
 
-    //this.http.get(this.BaseURI + '/RentACarServis').pipe(map((res: RentACarServis) => res.json()));
-
-    //allRentACarServis = Observable.create(observer => { this.http.get(this.BaseURI + '/RentACarServis').map(response => response.json(); })
-
     return array;
 
+  }
+
+  izmeniDestinaciju(destinacija: Destinacija)
+  {
+    return this.http.post(this.BaseURI + '/Destinacija/UpdateDestinacija/', destinacija);
+  }
+
+  obrisiDestinaciju(id: Number)
+  {
+    return this.http.delete(this.BaseURI + '/Destinacija/DeleteDestinacija/'+id);
   }
 
   ucitajDestinacijaZaAviokompanijuOdredjenu(id:Number)

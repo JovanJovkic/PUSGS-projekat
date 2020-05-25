@@ -50,8 +50,8 @@
                       <td class="text-center">{{destinac.lokacijaPresedanja}}</td>  
                       <td class="text-center">{{destinac.cenaKarte}}</td> 
                       <td class="btn-group-vertical">
-                          <button class="btn btn-success">Obriši</button>
-                          <button class="btn btn-success">Izmeni</button>
+                          <button class="btn btn-success" (click)="obrisiDestinaciju(destinac)">Obriši</button>
+                          <button class="btn btn-success" data-toggle="modal" data-target="#IzmeniDestinacijuForm" (click)="editDestinaciju(destinac)">Izmeni</button>
                       </td>  
                   </tr>
               </table>
@@ -226,6 +226,87 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
           <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="dodajDestinacijuInfo()">Sačuvaj izmene</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="IzmeniDestinacijuForm" tabindex="-1" role="dialog" aria-labelledby="IzmeniDestinacijuForm" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="naslovEditEdit">Dodajte destinaciju</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div  class="modal-body"  *ngIf="destinacijaEdit">
+        <div class="tab-content">
+          <form class="form">
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Naziv destinacije: </label>
+              <div class="col-sm-6">
+                  <input type="text" class="form-control" id="destNazivIzm" value="{{destinacijaEdit.nazivDestinacije}}">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Datum i vreme sletanja: </label>
+              <div class="col-sm-6">
+                  <input type="text" class="form-control" id="datVremeSlIzm" value="{{destinacijaEdit.datumVremeSletanja}}">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Datum i vreme poletanja: </label>
+              <div class="col-sm-6">
+                 <input type="text" class="form-control" id="datVremePolIzm" value="{{destinacijaEdit.datumVremePoletanja}}">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Vreme putovanja: </label>
+              <div class="col-sm-6">
+                 <input type="text" class="form-control" id="vremePutIzm" min="1900" max="2020" value="{{destinacijaEdit.vremePutovanja}}">
+              </div>
+            </div>
+            
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Dužina putovanja: </label>
+              <div class="col-sm-6">
+                 <input type="text" class="form-control" id="duzinaPutIzm" min="1" max="50" value="{{destinacijaEdit.duzinaPutovanja}}">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Broj presedanja: </label>
+              <div class="col-sm-6">
+                 <input type="text" class="form-control" id="brojSedVozIz" min="1" max="50" value="{{destinacijaEdit.brojPresedanja}}">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Lokacije presedanja: </label>
+              <div class="col-sm-6">
+                 <input type="text" class="form-control" id="lokacPresedIzm" value="{{destinacijaEdit.lokacijaPresedanja}}">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="lat" class="col-sm-3 col-form-label">Cena karte: </label>
+              <div class="col-sm-6">
+                 <input type="text" class="form-control" id="kartaCenaIzm" value="{{destinacijaEdit.cenaKarte}}">
+              </div>
+            </div>
+            
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="izmeniDestinacijuInfo()">Sačuvaj izmene</button>
         </div>
       </div>
     </div>

@@ -94,6 +94,21 @@ namespace WebApplication1.Controllers
             return NoContent();
         }
 
+        [HttpGet]
+        [Route("GetDestinacijaZaOdredjenuAvioKompaniju/{id}")]
+        public async Task<ActionResult<IEnumerable<Destinacija>>> GetDestinacijaZaOdredjenuAvioKompaniju(int id)
+        {
+            List<Destinacija> destinacije = await _context.Destinacije.Where(x => x.AirCompanyID == id).ToListAsync();
+
+            if (destinacije == null)
+            {
+                return NotFound();
+            }
+
+
+            return destinacije;
+        }
+
         private bool DestinacijaExists(int id)
         {
             return _context.Destinacije.Any(e => e.Id == id);

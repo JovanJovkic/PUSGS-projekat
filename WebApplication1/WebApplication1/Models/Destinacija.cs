@@ -26,5 +26,7 @@ namespace WebApplication1.Models
         public string lokacijaPresedanja { get; set; }
 
         public string cenaKarte { get; set; }
+
+        public int AirCompanyID { get; set; }
     }
 }
