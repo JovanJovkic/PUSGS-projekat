@@ -25,5 +25,7 @@ namespace WebApplication1.Models
         public string TipVozila { get; set; }
 
         public int RentACarServisID { get; set; }
+
+        public int FilijalaID { get; set; }
     }
 }

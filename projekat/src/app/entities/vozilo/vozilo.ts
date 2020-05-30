@@ -10,6 +10,7 @@ export class Vozilo {
     brojSedista: number;
     tipVozila: string;
     rentACarId:number;
+    filijalaId:number;
 
 
     constructor(id:number, naziv: string, marka: string, model: string, godinaProizvodnje: number, brojSedista: number, tipVozila: string) {

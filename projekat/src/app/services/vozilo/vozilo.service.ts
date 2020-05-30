@@ -24,7 +24,8 @@ export class VoziloService {
       GodinaProizvodnje : item.godinaProizvodnje,
       BrojSedista : item.brojSedista,
       TipVozila : item.tipVozila,
-      RentACarServisID : item.rentACarId
+      RentACarServisID : item.rentACarId,
+      FilijalaID : item.filijalaId
     };
     console.log(body);
     return this.http.post(this.BaseURI + '/Vozila/AddVozilo', body);

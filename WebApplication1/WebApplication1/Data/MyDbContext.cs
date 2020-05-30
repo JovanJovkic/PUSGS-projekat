@@ -27,5 +27,7 @@ namespace WebApplication1.Data
         public DbSet<Destinacija> Destinacije { get; set; }
 
          public DbSet<AirCompany> AvioKompanije { get; set; }
+
+        public DbSet<Filijala> Filijale { get; set; }
     }
 }

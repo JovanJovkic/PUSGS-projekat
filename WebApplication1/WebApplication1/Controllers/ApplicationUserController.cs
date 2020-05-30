@@ -54,7 +54,7 @@ namespace WebApplication1.Controllers
             {
                 
                 var result = await _userManager.CreateAsync(applicationUser, model.Lozinka);
-                
+                PosaljiMejl(applicationUser);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -217,13 +217,16 @@ namespace WebApplication1.Controllers
             return lista;
         }
 
+
         public void PosaljiMejl(Korisnik k)
         {
             using (MailMessage mail = new MailMessage())
             {
                 Task<string> code = _userManager.GenerateEmailConfirmationTokenAsync(k);
                 //string codeHtmlVersion = HttpUtility.UrlEncode(code);
-                string toMail = "https://localhost:44308/api/ApplicationUser/PotvrdiMejl?userId=" + k.Id + "&code=" + code;
+                //string toMail = "https://localhost:44308/api/ApplicationUser/PotvrdiMejl?userId=" + k.Id + "&code=" + code;
+
+                string toMail = "https://localhost:44308/api/ApplicationUser/PotvrdiMejl/" + k.Id;
 
                 mail.From = new MailAddress("webprojekatpusgs@gmail.com");
                 mail.To.Add(k.Email);

@@ -4,6 +4,8 @@ import { RentACarServis } from 'src/app/entities/rentacar/rentacar';
 import { TransformVisitor } from '@angular/compiler/src/render3/r3_ast';
 import { Vozilo } from 'src/app/entities/vozilo/vozilo';
 import { VoziloService } from 'src/app/services/vozilo/vozilo.service';
+import { Filijala } from 'src/app/entities/filijala/filijala';
+import { FilijaleService } from 'src/app/services/filijale/filijale.service';
 
 @Component({
   selector: 'app-rent-admin-profil',
@@ -15,18 +17,69 @@ export class RentAdminProfilComponent implements OnInit {
   allRentACarServis: Array<RentACarServis>;
   servisToEdit:RentACarServis;
   servisZaVozilo:RentACarServis;
+  filijalaToEdit:Filijala;
   voziloToEdit:Vozilo;
 
-  constructor(private rentACarService: RentACarService,private voziloService: VoziloService) { 
+  public listItems: Array<Filijala> = [];
+  public listItemsZaOdredjen: Array<Filijala> = [];
+
+  constructor(private rentACarService: RentACarService,private voziloService: VoziloService,private filijalaService: FilijaleService) { 
     this.allRentACarServis = new Array<RentACarServis>();    
   }
 
   ngOnInit(): void {
     this.loadRentServis();
+    this.ucitajSveFilijale();
     //this.loadVozila();
   }
 
+  ucitajSveFilijale(){
+   
+    this.filijalaService.ucitajFilijale().subscribe(
+    (res: any) => {
+      if (res != null) {
+
+        this.listItems =  new Array<Filijala>();  
+
+        res.forEach(element => {
+        
+          console.log(element);
+          var id = element.rentACarId;
+          var f = new Filijala(element.id, element.ulica, element.broj, element.mesto);
+          f.rentACarId = element.rentACarServisID;
+          this.listItems.push(f);
+          
+        });
+        
+       
+      } else {
+        res.errors.forEach(element => {
+          switch (element.code) {
+            default:
+              break;
+          }
+        });
+      }
+    },
+    err => {
+      console.log('greska');
+      console.log(err);
+    }
+    
+  );
+}
+
   dodajVoziloZaRentACar(servis: RentACarServis): void {
+    this.servisZaVozilo = servis;
+    this.listItems.forEach(element => {
+      if(element.rentACarId == servis.id)
+      {
+        this.listItemsZaOdredjen.push(element);
+      }
+    });
+  }
+
+  dodajFilijaluaRentACar(servis: RentACarServis): void {
     this.servisZaVozilo = servis;
   }
 
@@ -37,20 +90,45 @@ export class RentAdminProfilComponent implements OnInit {
     let godinaVoz = (<HTMLInputElement> document.getElementById("godinaVoz")).value;
     let brojSedVoz = (<HTMLInputElement> document.getElementById("brojSedVoz")).value;
     let tipVoz = (<HTMLInputElement> document.getElementById("tipVoz")).value;
+    let filId = (<HTMLInputElement> document.getElementById("filId")).value;
 
+    console.log(this.servisZaVozilo);
     var temp = new Vozilo(5,nazivVoz,markaVoz,modelVoz,+godinaVoz,+brojSedVoz,tipVoz);
     temp.rentACarId = this.servisZaVozilo.id;
-    this.servisZaVozilo.vozila.push(temp);
-
+    temp.filijalaId = +filId;
+    //this.servisZaVozilo.vozila.push(temp);
+    
     this.voziloService.dodajVozilo(temp).subscribe(
       (res: any) => {
         if (res != null ) {
+          this.loadRentServis();
           //alert("Vasa izmena je sacuvana!");
           //this.loadRentServis();
           //(<HTMLInputElement> document.getElementById("naslovEditEdit")).value = "Vasa izmena je sacuvana!";
         }
       }
     );
+  }
+
+    dodajFilijaluInfo():void{
+      let ulicaFil = (<HTMLInputElement> document.getElementById("ulicaFil")).value;
+      let brojFil = (<HTMLInputElement> document.getElementById("brojFil")).value;
+      let mestoFil = (<HTMLInputElement> document.getElementById("mestoFil")).value;
+  
+      var temp = new Filijala(3,ulicaFil,+brojFil,mestoFil);
+      temp.rentACarId = this.servisZaVozilo.id;
+      //this.listItems.push(temp);
+       
+      this.filijalaService.dodajFilijalu(temp).subscribe(
+        (res: any) => {
+          if (res != null ) {
+            this.ucitajSveFilijale();
+            //alert("Vasa izmena je sacuvana!");
+            //this.loadRentServis();
+            //(<HTMLInputElement> document.getElementById("naslovEditEdit")).value = "Vasa izmena je sacuvana!";
+          }
+        }
+      );
     
     this.rentACarService.izmeniRentACarServis(this.servisZaVozilo).subscribe(
       (res: any) => {
@@ -63,11 +141,27 @@ export class RentAdminProfilComponent implements OnInit {
       }
     );
 
-  }
+    }
 
   editRentACar(servis: RentACarServis): void {
     this.servisToEdit = servis;
   }
+
+
+  editFilijala(filijala: Filijala): void {
+    console.log(filijala);
+    this.filijalaToEdit = filijala;
+  }
+
+
+  obrisiFilijalu(filijala:Filijala): void {
+    this.filijalaService.obrisiVozilo(filijala.id).subscribe(
+      (res: any) => {
+        this.ucitajSveFilijale();
+      }
+    );
+  }
+
 
   editRentACarInfo(): void {
     let naziv = (<HTMLInputElement> document.getElementById("naziv")).value;
@@ -187,6 +281,25 @@ export class RentAdminProfilComponent implements OnInit {
           //alert("Vasa izmena je sacuvana!");
           //this.loadRentServis();
           //(<HTMLInputElement> document.getElementById("naslovEditEdit")).value = "Vasa izmena je sacuvana!";
+        }
+      }
+    );
+  }
+
+  izmeniFilijalaInfo():void{
+
+    let ulicaFilIz = (<HTMLInputElement> document.getElementById("ulicaFilIz")).value;
+    let brojFilIz = (<HTMLInputElement> document.getElementById("brojFilIz")).value;
+    let mestoFilIz = (<HTMLInputElement> document.getElementById("mestoFilIz")).value;
+
+    this.filijalaToEdit.ulica=ulicaFilIz;
+    this.filijalaToEdit.broj=+brojFilIz;
+    this.filijalaToEdit.mesto=mestoFilIz;
+
+    this.filijalaService.izmeniVozilo(this.filijalaToEdit).subscribe(
+      (res: any) => {
+        if (res != null ) {
+          this.ucitajSveFilijale();
         }
       }
     );
