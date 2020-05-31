@@ -33,6 +33,16 @@ export class RentACarService {
     return this.http.post(this.BaseURI + '/RentACarServis/AddRentACarServis', body);
   }
 
+  pretrazi(naziv: string, datumOd:string, datumDo:string) {
+    var body = {
+      Naziv: naziv,
+      DatumOd: datumOd,
+      DatumDo: datumDo
+    };
+    console.log(body);
+    return this.http.put(this.BaseURI + '/RentACarServis/PretragaRentACarServis', body);
+  }
+
   izmeniRentACarServis(servis: RentACarServis)
   {
     return this.http.post(this.BaseURI + '/RentACarServis/UpdateRentACarServis', servis);

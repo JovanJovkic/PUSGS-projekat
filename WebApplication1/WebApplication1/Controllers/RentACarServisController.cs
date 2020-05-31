@@ -67,11 +67,11 @@ namespace WebApplication1.Controllers
         {
 
             _context.RentACarServisi.Add(servis);
-    
+
             await _context.SaveChangesAsync();
 
             var result = _context.Entry(servis).Entity;
-           
+
             return Ok(result);
         }
 
@@ -99,6 +99,41 @@ namespace WebApplication1.Controllers
             return NoContent();
         }
 
-       
+        [HttpPut]
+        [Route("PretragaRentACarServis")]
+        public List<RentACarServis> PretragaRentACarServis(PretragaRent pretraga)
+        {
+            List<RentACarServis> servisi =  _context.RentACarServisi.ToList();
+
+            List<RentACarServis> rezultat = new List<RentACarServis>();
+
+            foreach (RentACarServis item in servisi)
+            {
+                if(item.Naziv.ToLower().Contains(pretraga.Naziv.ToLower()))
+                {
+                    rezultat.Add(item);
+                }
+            }
+
+            foreach (RentACarServis item in rezultat)
+            {
+                item.PretvoriUListu();
+
+                if(item.ZauzetiDatumi!=null)
+                {
+                    foreach (DateTime datum in item.ZauzetiDatumi)
+                    {
+                        if (datum >= pretraga.DatumOd && datum <= pretraga.DatumDo)
+                        {
+                            rezultat.Remove(item);
+                        }
+                    }
+                }
+            }
+
+            return rezultat;
+        }
+
+
     }
 }

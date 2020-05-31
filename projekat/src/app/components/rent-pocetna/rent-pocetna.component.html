@@ -29,14 +29,23 @@
         <div class="col-md-4">
             <div class="input-group form-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="material-icons"></i></span>
+                    <span class="input-group-text"><i class="material-icons">Datum od</i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Vremenski period" id="vremeFilter">
+                <input type="date" class="form-control" placeholder="Vremenski period od" id="vremeFilterOd">
             </div>
         </div>
 
         <div class="col-md-4">
-            <button type="button" class="btn btn-primary" style="margin-left: 30px" (click)="filterRentACar()">Filtriraj</button>
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="material-icons">Datum do</i></span>
+                </div>
+                <input type="date" class="form-control" placeholder="Vremenski period do" id="vremeFilterDo">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <button type="button" class="btn btn-primary" style="margin-left: 30px" (click)="filterRentACar()">Pretrazi</button>
             <button type="button" class="btn btn-secondary" style="margin-left: 15px" (click)="resetFilter()">Resetuj</button>
         </div>
     </div>

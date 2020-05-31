@@ -34,6 +34,7 @@ export class RentPocetnaComponent implements OnInit {
   }*/
 
   filterRentACar(): void {
+    /*
     let filterParams = new Array<AbstractFilterParam>();
     if (this.getFilterFieldValue("nazivFilter")) {
       filterParams.push(this.addnazivFilterParam());
@@ -42,7 +43,24 @@ export class RentPocetnaComponent implements OnInit {
       filterParams.push(this.addvremeFilterParam());
     }
 
-    this.filteredRentACarServis = this.rentACarService.filterRentCarServise(this.allRentACarServis, filterParams);
+    this.filteredRentACarServis = this.rentACarService.filterRentCarServise(this.allRentACarServis, filterParams);*/
+
+    let nazivFilter = (<HTMLInputElement> document.getElementById("nazivFilter")).value;
+    let vremeFilterOd = (<HTMLInputElement> document.getElementById("vremeFilterOd")).value;
+    let vremeFilterDo = (<HTMLInputElement> document.getElementById("vremeFilterDo")).value;
+
+    this.rentACarService.pretrazi(nazivFilter,vremeFilterOd,vremeFilterDo).subscribe(
+      (res: any) => {
+        this.filteredRentACarServis = new Array<RentACarServis>();
+        res.forEach(element => {
+
+          console.log(element);
+          this.filteredRentACarServis.push(new RentACarServis(element.id,element.naziv,element.adresa,element.promotivniOpis, 4));
+        });
+      }
+      );
+
+
   }
 
   resetFilter(): void {
