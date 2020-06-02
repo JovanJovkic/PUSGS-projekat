@@ -93,7 +93,7 @@ export function socialConfigs() {
       useClass: TokenInterceptor,
       multi: true,
       },
-    /*AuthService,  
+   /* AuthService,  
     {  
       provide: AuthServiceConfig,  
       useFactory: socialConfigs,  

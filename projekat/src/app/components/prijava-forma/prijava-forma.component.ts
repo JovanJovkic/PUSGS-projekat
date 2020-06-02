@@ -53,8 +53,9 @@ export class PrijavaFormaComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.service.login(form.value).subscribe(
       (res: any) => {
+        console.log(res);
         localStorage.setItem('token', res.token);
-        console.log('ss');
+        localStorage.setItem('userName', res.userName);
         this.router.navigateByUrl('/homepage-forma');
       },
       err => {

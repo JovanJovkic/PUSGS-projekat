@@ -111,5 +111,61 @@ namespace WebApplication1.Controllers
 
             return vozila;
         }
+
+        public List<Vozilo> VozilaZaOdredjeniServis(int id)
+        {
+            List<Vozilo> vozila = _context.Vozila.Where(x => x.RentACarServisID == id).ToList();
+
+            if (vozila == null)
+            {
+                return new List<Vozilo>();
+            }
+
+
+            return vozila;
+        }
+
+        [Route("PretraziVozila")]
+        public List<Vozilo> PretraziVozila(PretragaVozila pretraga)
+        {
+            List<Vozilo> vozila = _context.Vozila.Where(x => x.RentACarServisID == pretraga.IdRentACar).ToList();
+
+            foreach (Vozilo item in vozila.ToList())
+            {
+                if(item.TipVozila != pretraga.TipVozila)
+                {
+                    vozila.Remove(item);
+                }
+                else if(item.BrojSedista < pretraga.BrojPutnika)
+                {
+                    vozila.Remove(item);
+                }
+            }
+
+            foreach (Vozilo voz in vozila.ToList())
+            {
+                voz.PretvoriUListu();
+
+                bool postoji = false;
+
+                if (voz.ZauzetiDatumi != null)
+                {
+                    foreach (DateTime datum in voz.ZauzetiDatumi)
+                    {
+                        if (datum >= pretraga.DatumPreuzimanja && datum <= pretraga.DatumVracanja)
+                        {
+                            postoji = true;
+                        }
+                    }
+                }
+
+                if (postoji)
+                {
+                    vozila.Remove(voz);
+                }
+            }
+
+            return vozila;
+        }
     }
 }

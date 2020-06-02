@@ -29,5 +29,7 @@ namespace WebApplication1.Data
          public DbSet<AirCompany> AvioKompanije { get; set; }
 
         public DbSet<Filijala> Filijale { get; set; }
+
+        public DbSet<RezervacijaVozila> RezervacijeVozila { get; set; }
     }
 }

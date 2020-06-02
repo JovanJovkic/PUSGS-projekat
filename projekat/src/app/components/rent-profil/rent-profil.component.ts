@@ -7,6 +7,8 @@ import { AbstractFilterParam } from 'src/app/entities/abstract-filter-param/abst
 import { StringFilterParam } from 'src/app/entities/string-filter-param/string-filter-param';
 import { NumberFilterParam } from 'src/app/entities/number-filter-param/number-filter-param';
 import { VoziloService } from 'src/app/services/vozilo/vozilo.service';
+import { RezervacijaVozila } from 'src/app/entities/rezervacijaVozila/rezervacijaVozila';
+import { RezervacijaVozilaService } from 'src/app/services/rezervacijaVozila/rezervacija-vozila.service';
 
 @Component({
   selector: 'app-rent-profil',
@@ -21,8 +23,10 @@ export class RentProfilComponent implements OnInit {
 
   allVozila:Array<Vozilo>;
   filteredVozila:Array<Vozilo>;
+
+  rezervacija:RezervacijaVozila;
   
-  constructor(private rentACarServis: RentACarService,private route: ActivatedRoute,private voziloServis:VoziloService) { 
+  constructor(private rentACarServis: RentACarService,private route: ActivatedRoute,private voziloServis:VoziloService, private rezervacijaServis:RezervacijaVozilaService) { 
     this.allProfiles = new Array<RentACarServis>();
     route.params.subscribe(params => { this.id = params['id']; });
     this.profil=new RentACarServis(0,"","","",0);
@@ -117,6 +121,33 @@ export class RentProfilComponent implements OnInit {
     this.filteredVozila = this.allVozila;
   }
 
+  pretragaVozila():void{
+    let MestoPreFilter = (<HTMLInputElement> document.getElementById("MestoPreFilter")).value;
+    let DatumPreFilter = (<HTMLInputElement> document.getElementById("DatumPreFilter")).value;
+    let TipVozilaFilter = (<HTMLInputElement> document.getElementById("TipVozilaFilter")).value;
+    let MestoVraFilter = (<HTMLInputElement> document.getElementById("MestoVraFilter")).value;
+    let DatumVraFilter = (<HTMLInputElement> document.getElementById("DatumVraFilter")).value;
+    let BrojPutnikaFilter = (<HTMLInputElement> document.getElementById("BrojPutnikaFilter")).value;
+    let CenaOdFilter = (<HTMLInputElement> document.getElementById("CenaOdFilter")).value;
+    let CenaDoFilter = (<HTMLInputElement> document.getElementById("CenaDoFilter")).value;
+
+    var id = this.profil.id;
+
+    this.rezervacija = new RezervacijaVozila(1,this.profil.id,0,"",0,DatumPreFilter,DatumVraFilter);
+
+    this.voziloServis.pretraziVozila(id,MestoPreFilter,DatumPreFilter,TipVozilaFilter,MestoVraFilter,DatumVraFilter,+BrojPutnikaFilter,+CenaOdFilter,+CenaDoFilter).subscribe(
+      (res: any) => {
+        if (res != null ) {
+          this.filteredVozila = new Array<Vozilo>();
+         res.forEach(element => {
+            this.filteredVozila.push(element);
+         });
+         
+        }
+      }
+    );
+  }
+
   loadRentServis() {
     this.rentACarServis.ucitajOdredjeniRentACarServis(this.id).subscribe(
     (res: any) => {
@@ -134,6 +165,7 @@ export class RentProfilComponent implements OnInit {
             {
               console.log(ak.vozila);
               ak.vozila=temp.vozila;
+              this.filteredVozila=temp.vozila;
             }
           }
          
@@ -158,6 +190,20 @@ export class RentProfilComponent implements OnInit {
       (res: any) => {
         res.forEach(element => {
               this.profil.vozila.push(element);
+              
+          });
+          this.filteredVozila=this.profil.vozila;
+      }
+      );
+  }
+
+  rezervisi(vozilo:Vozilo):void{
+    this.rezervacija.idVozila = vozilo.id;
+    this.rezervacijaServis.rezervisiVozilo(this.rezervacija).subscribe(
+      (res: any) => {
+        res.forEach(element => {
+              
+              
           });
       }
       );

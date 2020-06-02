@@ -23,24 +23,24 @@ namespace WebApplication1.Models
 
         public ICollection<Vozilo> Vozila { get; set; }
 
-        [NotMapped]
-        public List<DateTime> ZauzetiDatumi { get; set; }
+        //[NotMapped]
+        //public List<DateTime> ZauzetiDatumi { get; set; }
 
-        public string ZauzetiDatumiString { get; set; }
+        //public string ZauzetiDatumiString { get; set; }
 
-        public void PretvoriUJson()
-        {
-            string output = JsonConvert.SerializeObject(ZauzetiDatumi);
-            ZauzetiDatumiString = output;
-        }
+        //public void PretvoriUJson()
+        //{
+        //    string output = JsonConvert.SerializeObject(ZauzetiDatumi);
+        //    ZauzetiDatumiString = output;
+        //}
 
-        public void PretvoriUListu()
-        {
-            if (ZauzetiDatumiString != null)
-            {
-                List<DateTime> deserializedProduct = JsonConvert.DeserializeObject<List<DateTime>>(ZauzetiDatumiString);
-                ZauzetiDatumi = deserializedProduct;
-            }
-        }
+        //public void PretvoriUListu()
+        //{
+        //    if (ZauzetiDatumiString != null)
+        //    {
+        //        List<DateTime> deserializedProduct = JsonConvert.DeserializeObject<List<DateTime>>(ZauzetiDatumiString);
+        //        ZauzetiDatumi = deserializedProduct;
+        //    }
+        //}
     }
 }

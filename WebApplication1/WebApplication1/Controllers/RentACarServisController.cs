@@ -115,20 +115,39 @@ namespace WebApplication1.Controllers
                 }
             }
 
-            foreach (RentACarServis item in rezultat)
+            foreach (RentACarServis item in rezultat.ToList())
             {
-                item.PretvoriUListu();
+                VozilaController vc = new VozilaController(_context);
+                List<Vozilo> vozila = vc.VozilaZaOdredjeniServis(item.Id);
 
-                if(item.ZauzetiDatumi!=null)
+                foreach (Vozilo voz in vozila.ToList())
                 {
-                    foreach (DateTime datum in item.ZauzetiDatumi)
+                    voz.PretvoriUListu();
+
+                    bool postoji = false;
+
+                    if (voz.ZauzetiDatumi != null)
                     {
-                        if (datum >= pretraga.DatumOd && datum <= pretraga.DatumDo)
+                        foreach (DateTime datum in voz.ZauzetiDatumi)
                         {
-                            rezultat.Remove(item);
+                            if (datum >= pretraga.DatumOd && datum <= pretraga.DatumDo)
+                            {
+                                postoji = true;
+                            }
                         }
                     }
+
+                    if(postoji)
+                    {
+                        vozila.Remove(voz);
+                    }
                 }
+
+                if (vozila.Count == 0)
+                {
+                    rezultat.Remove(item);
+                }
+
             }
 
             return rezultat;

@@ -12,10 +12,12 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using WebApplication1.Data;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
@@ -24,16 +26,20 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class ApplicationUserController : ControllerBase
     {
+
+        private readonly AuthenticationContext _context;
         private UserManager<Korisnik> _userManager;
         private SignInManager<Korisnik> _signInManager;
         private readonly ApplicationSettings _appSettings;
 
         public ApplicationUserController(UserManager<Korisnik> userManager,
-            SignInManager<Korisnik> signInManager, IOptions<ApplicationSettings> appSettings)
+            SignInManager<Korisnik> signInManager, IOptions<ApplicationSettings> appSettings,AuthenticationContext c)
         {
+            //userManager.Store = 
             _userManager = userManager;
             _signInManager = signInManager;
             _appSettings = appSettings.Value;
+            _context = c;
         }
 
         [HttpPost]
@@ -54,7 +60,7 @@ namespace WebApplication1.Controllers
             {
                 
                 var result = await _userManager.CreateAsync(applicationUser, model.Lozinka);
-                PosaljiMejl(applicationUser);
+                PosaljiMejlAsync(applicationUser);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -72,6 +78,11 @@ namespace WebApplication1.Controllers
             var user = await _userManager.FindByNameAsync(model.UserName);
             if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
             {
+                if (user.EmailConfirmed == false)
+                {
+                    return BadRequest(new { message = "Morate da aktivirate Vas nalog, link je poslat na Vas mejl." });
+                }
+
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new Claim[]
@@ -85,7 +96,7 @@ namespace WebApplication1.Controllers
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var securityToken = tokenHandler.CreateToken(tokenDescriptor);
                 var token = tokenHandler.WriteToken(securityToken);
-                return Ok(new { token });
+                return Ok(new { token, model.UserName });
             }
             else
                 return BadRequest(new { message = "Username or password is incorrect." });
@@ -218,13 +229,19 @@ namespace WebApplication1.Controllers
         }
 
 
-        public void PosaljiMejl(Korisnik k)
+        public async void PosaljiMejlAsync(Korisnik k)
         {
             using (MailMessage mail = new MailMessage())
             {
-                Task<string> code = _userManager.GenerateEmailConfirmationTokenAsync(k);
+                string code = await _userManager.GenerateEmailConfirmationTokenAsync(k);
                 //string codeHtmlVersion = HttpUtility.UrlEncode(code);
+              
                 //string toMail = "https://localhost:44308/api/ApplicationUser/PotvrdiMejl?userId=" + k.Id + "&code=" + code;
+
+                
+              //  string s = Url.Link("PotvrdiMejl", new { userId = k.Id, codee = code });
+
+             //   var callbackUrl = new Uri(Url.Link("https://localhost:44308/api/ApplicationUser/PotvrdiMejl", new { userId = k.Id, code = code }));
 
                 string toMail = "https://localhost:44308/api/ApplicationUser/PotvrdiMejl/" + k.Id;
 
@@ -244,20 +261,25 @@ namespace WebApplication1.Controllers
             }
         }
 
-        [Route("PotvrdiMejl/{id}")]
-        public void PotvrdiMejl(string id,string code)
+        [HttpGet]
+        [Route("PotvrdiMejl/{userId}")]
+        public void PotvrdiMejl(string userId)
         {
             
-            List<Korisnik> lista = _userManager.Users.Where(user => user.Id == id).ToList();
+            List<Korisnik> lista = _userManager.Users.Where(user => user.Id == userId).ToList();
 
             //var result = _userManager.ConfirmEmailAsync(id, code);
             if(lista.Count>0)
             {
                 Korisnik korisnik = lista[0];
+                korisnik.EmailConfirmed = true;
+                _userManager.UpdateAsync(korisnik);
+                _context.SaveChanges();
+
                 
-                _userManager.ConfirmEmailAsync(korisnik, code);
+                // string code = await _userManager.GenerateEmailConfirmationTokenAsync(korisnik);
+                //_userManager.ConfirmEmailAsync(korisnik, code);
             }
-            
         }
     }
 }

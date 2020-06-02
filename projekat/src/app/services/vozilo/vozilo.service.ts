@@ -16,6 +16,23 @@ export class VoziloService {
     return this.mockedVozilo();
   }
 
+  pretraziVozila(Id:Number, MestoPreFilter:String, DatumPreFilter:String, TipVozilaFilter:String, MestoVraFilter:String, DatumVraFilter:String, BrojPutnikaFilter:Number, CenaOdFilter:Number, CenaDoFilter:Number)
+  {
+    var body = {
+      MestoPreuzimanja : MestoPreFilter,
+      DatumPreuzimanja : DatumPreFilter,
+      TipVozila : TipVozilaFilter,
+      MestoVracanja : MestoVraFilter,
+      DatumVracanja : DatumVraFilter,
+      BrojPutnika : BrojPutnikaFilter,
+      CenaOd : CenaOdFilter,
+      CenaDo : CenaDoFilter,
+      IdRentACar: Id
+    };
+
+    return this.http.post(this.BaseURI + '/Vozila/PretraziVozila', body);
+  }
+
   dodajVozilo(item:Vozilo) {
     var body = {
       Naziv : item.naziv,
@@ -27,7 +44,7 @@ export class VoziloService {
       RentACarServisID : item.rentACarId,
       FilijalaID : item.filijalaId
     };
-    console.log(body);
+    //console.log(body);
     return this.http.post(this.BaseURI + '/Vozila/AddVozilo', body);
   }
 

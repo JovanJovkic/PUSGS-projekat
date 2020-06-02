@@ -2,7 +2,6 @@ C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\
 C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\WebApplication1.exe
-C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.csprojAssemblyReference.cache
 C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\staticwebassets\WebApplication1.StaticWebAssets.Manifest.cache
 C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\staticwebassets\WebApplication1.StaticWebAssets.xml
 C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.AssemblyInfoInputs.cache
@@ -328,3 +327,4 @@ C:\Users\Marko\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\
 C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Marko\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.csprojAssemblyReference.cache
+C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.csprojAssemblyReference.cache

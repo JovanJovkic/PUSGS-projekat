@@ -8,26 +8,24 @@ using System.Threading.Tasks;
 
 namespace WebApplication1.Models
 {
-    public class Vozilo
+    public class RezervacijaVozila
     {
         [Key]
         public int Id { get; set; }
 
-        public string Naziv { get; set; }
+        public int IdRentACar { get; set; }
 
-        public string Marka { get; set; }
+        public int IdVozila { get; set; }
 
-        public string Model { get; set; }
+        public double Cena { get; set; }
 
-        public int GodinaProizvodnje { get; set; }
+        public bool Zavrseno { get; set; }
 
-        public int BrojSedista { get; set; }
+        public string IdKlijenta { get; set; }
 
-        public string TipVozila { get; set; }
+        public DateTime PocetniDatum { get; set; }
 
-        public int RentACarServisID { get; set; }
-
-        public int FilijalaID { get; set; }
+        public DateTime KrajnjiDatum { get; set; }
 
         [NotMapped]
         public List<DateTime> ZauzetiDatumi { get; set; }
