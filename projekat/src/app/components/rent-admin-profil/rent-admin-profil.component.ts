@@ -185,6 +185,39 @@ export class RentAdminProfilComponent implements OnInit {
     this.servisToEdit = null;
   }
 
+  izmeniCenovnikInfo():void{
+    let cenaPrviDan = (<HTMLInputElement> document.getElementById("cenaPrviDanFo")).value;
+    let cenaSledeciDan = (<HTMLInputElement> document.getElementById("cenaSledeciDanFo")).value;
+
+    this.servisToEdit.cenaPrviDan = +cenaPrviDan;
+    this.servisToEdit.cenaSledeciDan = +cenaSledeciDan;
+
+    this.rentACarService.izmeniRentACarServis(this.servisToEdit).subscribe(
+      (res: any) => {
+        if (res != null ) {
+          alert("Vasa izmena je sacuvana!");
+          this.loadRentServis();
+          //this.loadVozila();
+          //(<HTMLInputElement> document.getElementById("naslovEditEdit")).value = "Vasa izmena je sacuvana!";
+        }
+      }
+    );
+    this.servisToEdit = null;
+
+  }
+
+  pogledajCenovnik(servis:RentACarServis):void{
+    this.servisToEdit = servis;
+  }
+  
+  odobri(servis:RentACarServis):void{
+    this.rentACarService.odobri(servis.id).subscribe(
+      (res: any) => {
+        this.loadRentServis();
+      }
+    );
+  }
+
   /*
   loadRentServis(): void {
     this.allRentACarServis = this.rentACarService.loadRentACar();
@@ -202,6 +235,8 @@ export class RentAdminProfilComponent implements OnInit {
         temp.forEach(element => {
           
           const ak = new RentACarServis(element.id,element.naziv,element.adresa,element.promotivniOpis, 4);
+          ak.cenaPrviDan = element.cenaPrviDan;
+          ak.cenaSledeciDan = element.cenaSledeciDan;
           console.log(element);
           if(ak.vozila.length!=0)
           {

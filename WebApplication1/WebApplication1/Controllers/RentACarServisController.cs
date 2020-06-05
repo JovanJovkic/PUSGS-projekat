@@ -56,6 +56,24 @@ namespace WebApplication1.Controllers
             return servisi;
         }
 
+        [HttpDelete]
+        [Route("OdobriRentACarServis/{id}")]
+        public async Task<ActionResult<RentACarServis>> OdobriRentACarServis(int id)
+        {
+            var servisi = await _context.RentACarServisi.FindAsync(id);
+            if (servisi == null)
+            {
+                return NotFound();
+            }
+
+            _context.Entry(servisi).State = EntityState.Modified;
+            servisi.Odobreno = true;
+
+            await _context.SaveChangesAsync();
+
+            return servisi;
+        }
+
         private bool RentACarServisExists(int id)
         {
             return _context.RentACarServisi.Any(e => e.Id == id);

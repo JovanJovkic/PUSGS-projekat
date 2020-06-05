@@ -7,7 +7,10 @@ export class RentACarServis {
     adresa: string;
     promotivniOpis: string;
     ocena: number;
-    vozila: Array<Vozilo>
+    vozila: Array<Vozilo>;
+    cenaPrviDan : number;
+    cenaSledeciDan : number;
+    odobreno:boolean;
 
     constructor(id:number, naziv: string, adresa: string, promotivniOpis: string, ocena: number) {
         this.id = id;

@@ -97,5 +97,27 @@ namespace WebApplication1.Controllers
             return NoContent();
         }
 
+        public double ukupnaCena(RezervacijaVozila rezervacija)
+        {
+            DateTime pocetni = rezervacija.PocetniDatum;
+            DateTime krajnji = rezervacija.KrajnjiDatum;
+
+            RentACarServis rentACar = _context.RentACarServisi.Find(rezervacija.IdRentACar);
+
+            double ukupnaCena = rentACar.cenaPrviDan;
+
+            if (pocetni != krajnji)
+            {
+                TimeSpan ts = new TimeSpan(1, 0, 0, 0);
+
+                while (pocetni != krajnji)
+                { 
+                    pocetni += ts;
+                    ukupnaCena += rentACar.cenaSledeciDan;
+                }
+            }
+
+            return  ukupnaCena;
+        }
     }
 }

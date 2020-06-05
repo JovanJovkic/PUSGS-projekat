@@ -27,10 +27,15 @@ export class RentACarService {
     var body = {
       Naziv: this.formModel.value.naziv,
       Adresa: this.formModel.value.adresa,
-      Admin: this.formModel.value.admin
+      Admin: this.formModel.value.admin,
+      Odobreno: false
     };
     console.log(body);
     return this.http.post(this.BaseURI + '/RentACarServis/AddRentACarServis', body);
+  }
+
+  odobri(id:number) {
+    return this.http.get(this.BaseURI + '/RentACarServis/OdobriRentACarServis/' + id);
   }
 
   pretrazi(naziv: string, datumOd:string, datumDo:string) {

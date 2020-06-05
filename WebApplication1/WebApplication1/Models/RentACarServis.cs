@@ -23,6 +23,12 @@ namespace WebApplication1.Models
 
         public ICollection<Vozilo> Vozila { get; set; }
 
+        public double cenaPrviDan { get; set; }
+
+        public double cenaSledeciDan { get; set; }
+
+        public bool Odobreno { get; set; }
+
         //[NotMapped]
         //public List<DateTime> ZauzetiDatumi { get; set; }
 
