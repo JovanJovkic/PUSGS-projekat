@@ -10,14 +10,14 @@
     <br/>
   
     <h2>Unesite sledece podatke i prikazace Vam se vozila koja Vam odgovaraju!</h2>
-    
+    <form [formGroup]="formModel" autocomplete="off" (submit)="pretragaVozila()">
     <div class="form-row">
         <div class="col-md-4">
             <div class="input-group form-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="material-icons"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Mesto preuzimanja" id="MestoPreFilter">
+                <input type="text" class="form-control" placeholder="Mesto preuzimanja" id="MestoPreFilter" formControlName="MestoPreFilter">
             </div>
         </div>
         <div class="col-md-4">
@@ -25,7 +25,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="material-icons">Datum preuzimanja</i></span>
                 </div>
-                <input type="date" class="form-control" placeholder="Datum preuzimanja" id="DatumPreFilter">
+                <input type="date" class="form-control" placeholder="Datum preuzimanja" id="DatumPreFilter" formControlName="DatumPreFilter">
             </div>
         </div>
 
@@ -34,7 +34,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="material-icons"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Tip vozila" id="TipVozilaFilter">
+                <input type="text" class="form-control" placeholder="Tip vozila" id="TipVozilaFilter" formControlName="TipVozilaFilter">
             </div>
         </div>
 
@@ -43,7 +43,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="material-icons"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Mesto vracanja" id="MestoVraFilter">
+                <input type="text" class="form-control" placeholder="Mesto vracanja" id="MestoVraFilter" formControlName="MestoVraFilter">
             </div>
         </div>
         <div class="col-md-4">
@@ -51,7 +51,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="material-icons">Datum vracanja</i></span>
                 </div>
-                <input type="date" class="form-control" placeholder="Datum vracanja" id="DatumVraFilter">
+                <input type="date" class="form-control" placeholder="Datum vracanja" id="DatumVraFilter" formControlName="DatumVraFilter">
             </div>
         </div>
        
@@ -60,7 +60,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="material-icons"></i></span>
                 </div>
-                <input type="number" class="form-control" placeholder="Broj putnika" id="BrojPutnikaFilter">
+                <input type="number" class="form-control" placeholder="Broj putnika" id="BrojPutnikaFilter" formControlName="BrojPutnikaFilter">
             </div>
         </div>
         <div class="col-md-4">
@@ -68,7 +68,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="material-icons"></i></span>
                 </div>
-                <input type="number" class="form-control" placeholder="Cena od" id="CenaOdFilter">
+                <input type="number" class="form-control" placeholder="Cena od" id="CenaOdFilter" formControlName="CenaOdFilter">
             </div>
         </div>
         <div class="col-md-4">
@@ -76,15 +76,16 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="material-icons"></i></span>
                 </div>
-                <input type="number" class="form-control" placeholder="Cena do" id="CenaDoFilter">
+                <input type="number" class="form-control" placeholder="Cena do" id="CenaDoFilter" formControlName="CenaDoFilter">
             </div>
         </div>
         <div>
             <div class="col-md-4">
-                <button class="btn btn-success" (click)="pretragaVozila()">Pretraži</button>
+                <button class="btn btn-success" [disabled]="!formModel.valid"  type="submit">Pretraži</button>
             </div>
         </div>
     </div>
+</form>
 
     <h3>Spisak vozila koja su u ponudi: </h3>
 

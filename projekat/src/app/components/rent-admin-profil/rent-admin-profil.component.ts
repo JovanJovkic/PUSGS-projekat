@@ -6,6 +6,8 @@ import { Vozilo } from 'src/app/entities/vozilo/vozilo';
 import { VoziloService } from 'src/app/services/vozilo/vozilo.service';
 import { Filijala } from 'src/app/entities/filijala/filijala';
 import { FilijaleService } from 'src/app/services/filijale/filijale.service';
+import { BrzaRezervacijaVozila } from 'src/app/entities/brzaRezervacijaVozila/brzaRezervacijaVozila';
+import { BrzaRezervacijaVozilaService } from 'src/app/services/brzaRezervacijaVozila/brza-rezervacija-vozila.service';
 
 @Component({
   selector: 'app-rent-admin-profil',
@@ -19,17 +21,21 @@ export class RentAdminProfilComponent implements OnInit {
   servisZaVozilo:RentACarServis;
   filijalaToEdit:Filijala;
   voziloToEdit:Vozilo;
+  vozilaZaBrzuRezervaciju: Array<Vozilo>;
+  idZaBrzuRezervaciju;
+  brzeRez: Array<BrzaRezervacijaVozila>;
 
   public listItems: Array<Filijala> = [];
   public listItemsZaOdredjen: Array<Filijala> = [];
 
-  constructor(private rentACarService: RentACarService,private voziloService: VoziloService,private filijalaService: FilijaleService) { 
+  constructor(private rentACarService: RentACarService,private voziloService: VoziloService,private filijalaService: FilijaleService,private brzaRezVozService: BrzaRezervacijaVozilaService) { 
     this.allRentACarServis = new Array<RentACarServis>();    
   }
 
   ngOnInit(): void {
     this.loadRentServis();
     this.ucitajSveFilijale();
+    this.ucitajSveBrzeRezervacije();
     //this.loadVozila();
   }
 
@@ -43,7 +49,7 @@ export class RentAdminProfilComponent implements OnInit {
 
         res.forEach(element => {
         
-          console.log(element);
+          //console.log(element);
           var id = element.rentACarId;
           var f = new Filijala(element.id, element.ulica, element.broj, element.mesto);
           f.rentACarId = element.rentACarServisID;
@@ -92,7 +98,7 @@ export class RentAdminProfilComponent implements OnInit {
     let tipVoz = (<HTMLInputElement> document.getElementById("tipVoz")).value;
     let filId = (<HTMLInputElement> document.getElementById("filId")).value;
 
-    console.log(this.servisZaVozilo);
+    //console.log(this.servisZaVozilo);
     var temp = new Vozilo(5,nazivVoz,markaVoz,modelVoz,+godinaVoz,+brojSedVoz,tipVoz);
     temp.rentACarId = this.servisZaVozilo.id;
     temp.filijalaId = +filId;
@@ -149,7 +155,7 @@ export class RentAdminProfilComponent implements OnInit {
 
 
   editFilijala(filijala: Filijala): void {
-    console.log(filijala);
+   // console.log(filijala);
     this.filijalaToEdit = filijala;
   }
 
@@ -237,10 +243,10 @@ export class RentAdminProfilComponent implements OnInit {
           const ak = new RentACarServis(element.id,element.naziv,element.adresa,element.promotivniOpis, 4);
           ak.cenaPrviDan = element.cenaPrviDan;
           ak.cenaSledeciDan = element.cenaSledeciDan;
-          console.log(element);
+         // console.log(element);
           if(ak.vozila.length!=0)
           {
-            console.log(ak.vozila);
+            //console.log(ak.vozila);
             ak.vozila=element.vozila;
           }
          
@@ -265,7 +271,7 @@ export class RentAdminProfilComponent implements OnInit {
       (res: any) => {
         res.forEach(element => {
 
-          console.log(element);
+          //console.log(element);
           this.allRentACarServis.forEach(item => {
 
             if(element.rentACarServisID == item.id)
@@ -339,4 +345,83 @@ export class RentAdminProfilComponent implements OnInit {
       }
     );
   }
+
+  vozilaZaOdredjeniServis(rentacar:RentACarServis):void{
+
+    var id = rentacar.id ;
+    this.idZaBrzuRezervaciju =id;
+
+    this.vozilaZaBrzuRezervaciju = new Array<Vozilo>();
+
+    this.voziloService.ucitajVozilaZaRentACarOdredjeni(id).subscribe(
+      (res: any) => {
+
+        if (res != null ) {
+          //pravimo vozila i stavljamo u neku listu
+          res.forEach(element => {
+            this.vozilaZaBrzuRezervaciju.push(element);
+          });
+         
+        }
+
+      }
+    );
+
+  }
+
+  dodajBrzuRezervaciju():void{
+
+    let voziloNazivFo = (<HTMLInputElement> document.getElementById("voziloNazivFo")).value;
+    let pocetniDatFo = (<HTMLInputElement> document.getElementById("pocetniDatFo")).value;
+    let krajnjiDatFo = (<HTMLInputElement> document.getElementById("krajnjiDatFo")).value;
+    let popustFo = (<HTMLInputElement> document.getElementById("popustFo")).value;
+
+    var idRent = this.idZaBrzuRezervaciju;
+    var email = '';
+    //console.log(voziloNazivFo);
+    var rez = new BrzaRezervacijaVozila(0,idRent,+voziloNazivFo,email,+popustFo,0,0,pocetniDatFo,krajnjiDatFo);
+
+    this.brzaRezVozService.dodajBrzuRez(rez).subscribe(
+      (res: any) => {
+
+        if (res != null ) {
+ 
+        }
+
+      }
+    );
+  }
+
+  ucitajSveBrzeRezervacije(){
+   
+    this.brzaRezVozService.ucitajSveBrzeRez().subscribe(
+    (res: any) => {
+      if (res != null) {
+
+        this.brzeRez =  new Array<BrzaRezervacijaVozila>();  
+
+        res.forEach(element => {
+
+          element.krajnjiDatum =  element.krajnjiDatum.split('T')[0];
+          element.pocetniDatum =  element.pocetniDatum.split('T')[0];
+          this.brzeRez.push(element);
+          
+        });
+       
+      } else {
+        res.errors.forEach(element => {
+          switch (element.code) {
+            default:
+              break;
+          }
+        });
+      }
+    },
+    err => {
+      console.log('greska');
+      console.log(err);
+    }
+    
+  );
+}
 }

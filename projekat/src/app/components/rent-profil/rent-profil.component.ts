@@ -9,6 +9,7 @@ import { NumberFilterParam } from 'src/app/entities/number-filter-param/number-f
 import { VoziloService } from 'src/app/services/vozilo/vozilo.service';
 import { RezervacijaVozila } from 'src/app/entities/rezervacijaVozila/rezervacijaVozila';
 import { RezervacijaVozilaService } from 'src/app/services/rezervacijaVozila/rezervacija-vozila.service';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-rent-profil',
@@ -26,7 +27,7 @@ export class RentProfilComponent implements OnInit {
 
   rezervacija:RezervacijaVozila;
   
-  constructor(private rentACarServis: RentACarService,private route: ActivatedRoute,private voziloServis:VoziloService, private rezervacijaServis:RezervacijaVozilaService) { 
+  constructor(private rentACarServis: RentACarService,private route: ActivatedRoute,private voziloServis:VoziloService, private rezervacijaServis:RezervacijaVozilaService, private fb: FormBuilder) { 
     this.allProfiles = new Array<RentACarServis>();
     route.params.subscribe(params => { this.id = params['id']; });
     this.profil=new RentACarServis(0,"","","",0);
@@ -165,7 +166,7 @@ export class RentProfilComponent implements OnInit {
             {
               console.log(ak.vozila);
               ak.vozila=temp.vozila;
-              this.filteredVozila=temp.vozila;
+             // this.filteredVozila=temp.vozila;
             }
           }
          
@@ -192,7 +193,7 @@ export class RentProfilComponent implements OnInit {
               this.profil.vozila.push(element);
               
           });
-          this.filteredVozila=this.profil.vozila;
+          //this.filteredVozila=this.profil.vozila;
       }
       );
   }
@@ -208,5 +209,16 @@ export class RentProfilComponent implements OnInit {
       }
       );
   }
+
+  formModel = this.fb.group({
+    MestoPreFilter: ['',Validators.required],
+    DatumPreFilter: ['',Validators.required],
+    TipVozilaFilter: ['',Validators.required],
+    MestoVraFilter: ['',Validators.required],
+    DatumVraFilter: ['',Validators.required],
+    BrojPutnikaFilter: ['',Validators.required],
+    CenaOdFilter: [''],
+    CenaDoFilter: ['']
+  });
 
 }

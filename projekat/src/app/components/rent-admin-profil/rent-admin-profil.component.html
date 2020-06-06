@@ -2,21 +2,12 @@
   <br/>
   <p class="text-center h1">Profil rent-a-car administratora</p>
   <br/>
-  <table class=" table table-secondary" border="1" *ngFor="let item of allRentACarServis">
-      <thead class="thead-dark">
-      <tr>
-          <th class="text-center">Naziv</th>
-          <th class="text-center">Adresa</th>
-          <th class="text-center">Promotivni opis</th>        
-          <th>  </th>
-      </tr>
-      </thead>
-
-      <tbody>
-        <td class="text-center"><b>{{item.naziv}}</b></td>
-        <td class="text-center"><b>{{item.adresa}}</b></td>
-        <td class="text-center"><b>{{item.promotivniOpis}}</b></td>
-        <td>
+     <div class=" table bg-light" border="1" *ngFor="let item of allRentACarServis">
+      <br/>
+          <h3 class="text-center">Naziv: <b>{{item.naziv}}</b></h3>
+          <h3 class="text-center">Adresa: <b>{{item.adresa}}</b></h3>
+          <h3 class="text-center">Promotivni opis: <b>{{item.promotivniOpis}}</b></h3>        
+          <br/><br/>
           <div class="btn-group">
               <br/>
               <button class="btn btn-info" data-toggle="modal" data-target="#EditRentaCar" (click)="editRentACar(item)">Izmeni</button>
@@ -24,63 +15,88 @@
               <button class="btn btn-info" data-toggle="modal" data-target="#DodajVoziloForm" (click)="dodajVoziloZaRentACar(item)">Dodaj vozilo</button>
               <br/>
               <button class="btn btn-info" data-toggle="modal" data-target="#DodajFilijaluForm" (click)="dodajFilijaluaRentACar(item)">Dodaj filijalu</button>
-          </div>
-          <br/> 
-          <button class="btn btn-warning" data-toggle="modal" data-target="#CenovnikForm" (click)="pogledajCenovnik(item)">Pogledajte cenovnik</button>
-          <button class="btn btn-danger" (click)="odobri(item)">Odobri</button>
-        </td>
-      </tbody>
-
-      <thead class="thead-dark">
-        <th colspan="3" class="text-center">Spisak vozila</th> 
-        <th class="text-center">Spisak filijala</th>    
-      </thead>
+              <br/> 
+              <button class="btn btn-warning" data-toggle="modal" data-target="#CenovnikForm" (click)="pogledajCenovnik(item)">Pogledajte cenovnik</button>
+              <button class="btn btn-danger" (click)="odobri(item)">Odobri</button>
+              <br/>
+              <button class="btn btn-info" data-toggle="modal" data-target="#BrzaRezForm" (click)="vozilaZaOdredjeniServis(item)">Dodaj brzu rezervaciju</button>
+        </div>
+    
+        <br/><br/>
+        <h3 colspan="3" class="text-center">Spisak vozila</h3> 
+        <!-- <th class="text-center">Spisak filijala</th>    
+        -->
       
-      <tbody>
-      <tr >
-          <td colspan="3">
-              <table>
-                  <tr>
-                      <th class="text-center">Naziv</th>
-                      <th class="text-center">Marka</th>
-                      <th class="text-center">Model</th>
-                      <th class="text-center">Godina proizvodnje</th>
-                      <th class="text-center">Broj sedišta</th>
-                      <th class="text-center">Tip vozila</th>
-                      <th class="text-center">Filijala</th>
-                  </tr>
-                  <tr *ngFor="let voz of item.vozila">
-                      <td class="text-center">{{voz.naziv}}</td>  
-                      <td class="text-center">{{voz.marka}}</td> 
-                      <td class="text-center">{{voz.model}}</td> 
-                      <td class="text-center">{{voz.godinaProizvodnje}}</td> 
-                      <td class="text-center">{{voz.brojSedista}}</td>  
-                      <td class="text-center">{{voz.tipVozila}}</td>
-                      <td class="text-center">fil</td>  
-                      <td class="btn-group-vertical">
-                          <button class="btn btn-success" (click)="obrisiVozilo(voz)">Obriši</button>
-                          <button class="btn btn-success" data-toggle="modal" data-target="#IzmeniVoziloForm" (click)="editVozilo(voz)">Izmeni</button>
-                      </td>  
-                  </tr>
-              </table>
-          </td>
-          <td>
-            <table>
-              <tr>
-                  <th class="text-center">Adresa</th>
-              </tr>   
-              <tr  *ngFor="let fil of listItems">
-                <td *ngIf="fil.rentACarId == item.id" class="text-center">{{fil.ulica}} {{fil.broj}}, {{fil.mesto}}</td>
-                <td  *ngIf="fil.rentACarId == item.id" class="btn-group-vertical">
-                  <button class="btn btn-success" (click)="obrisiFilijalu(fil)">Obriši</button>
-                  <button class="btn btn-success" data-toggle="modal" data-target="#IzmeniFilijaluForm" (click)="editFilijala(fil)">Izmeni</button>
+      <table class=" table table-secondary" border="1">
+        <thead class="thead-dark">
+            <th class="text-center">Naziv</th>
+            <th class="text-center">Marka</th>
+            <th class="text-center">Model</th>
+            <th class="text-center">Godina proizvodnje</th>
+            <th class="text-center">Broj sedišta</th>
+            <th class="text-center">Tip vozila</th>
+            <th class="text-center">Filijala</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let voz of item.vozila">
+                <td class="text-center">{{voz.naziv}}</td>  
+                <td class="text-center">{{voz.marka}}</td> 
+                <td class="text-center">{{voz.model}}</td> 
+                <td class="text-center">{{voz.godinaProizvodnje}}</td> 
+                <td class="text-center">{{voz.brojSedista}}</td>  
+                <td class="text-center">{{voz.tipVozila}}</td>
+                <td class="text-center">fil</td>  
+                <td class="btn-group-vertical">
+                    <button class="btn btn-success" (click)="obrisiVozilo(voz)">Obriši</button>
+                    <button class="btn btn-success" data-toggle="modal" data-target="#IzmeniVoziloForm" (click)="editVozilo(voz)">Izmeni</button>
+                </td>  
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 colspan="3" class="text-center">Spisak filijala</h3>
+
+        <table  class=" table table-secondary" border="1">
+          <thead  class="thead-dark">
+              <th class="text-center">Adresa</th>
+              <th></th>
+          </thead>   
+          <tbody>
+            <tr  *ngFor="let fil of listItems">
+              <td *ngIf="fil.rentACarId == item.id" class="text-center">{{fil.ulica}} {{fil.broj}}, {{fil.mesto}}</td>
+              <td  *ngIf="fil.rentACarId == item.id" class="btn-group-vertical">
+                <button class="btn btn-success" (click)="obrisiFilijalu(fil)">Obriši</button>
+                <button class="btn btn-success" data-toggle="modal" data-target="#IzmeniFilijaluForm" (click)="editFilijala(fil)">Izmeni</button>
               </td>  
-            </tr>  
-            </table>
-          </td>
-      </tr>
-      </tbody>
-  </table>
+            </tr>
+          </tbody>  
+        </table>
+
+        <h3 colspan="3" class="text-center">Spisak brzih rezervacija</h3>
+
+        <table class=" table table-secondary" border="1">
+          <thead class="thead-dark">
+              <th class="text-center">Vozilo</th>
+              <th class="text-center">Pocetni datum</th>
+              <th class="text-center">Krajnji datum</th>
+              <th class="text-center">Pocetna cena</th>
+              <th class="text-center">Popust</th>
+              <th class="text-center">Cena sa popustom</th>
+              <th></th>
+          </thead>
+          <tbody>
+              <tr *ngFor="let rez of brzeRez">
+                  <td  *ngIf="rez.idRentACar == item.id" class="text-center"></td>  
+                  <td  *ngIf="rez.idRentACar == item.id" class="text-center">{{rez.pocetniDatum}}</td> 
+                  <td  *ngIf="rez.idRentACar == item.id" class="text-center">{{rez.krajnjiDatum}}</td> 
+                  <td  *ngIf="rez.idRentACar == item.id" class="text-center">{{rez.pocetnaCena}}</td> 
+                  <td  *ngIf="rez.idRentACar == item.id" class="text-center">{{rez.popust}}</td>  
+                  <td  *ngIf="rez.idRentACar == item.id" class="text-center">{{rez.novaCena}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
 </div> 
 
 <div class="modal fade" id="EditRentaCar" tabindex="-1" role="dialog" aria-labelledby="EditRentaCar" aria-hidden="true">
@@ -393,6 +409,61 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Izadji</button>
             <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="izmeniCenovnikInfo()">Sačuvaj izmene</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="BrzaRezForm" tabindex="-1" role="dialog" aria-labelledby="BrzaRezForm" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="naslovEditEdit">Brza rezervacija</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div  class="modal-body"  *ngIf="vozilaZaBrzuRezervaciju">
+          <div class="tab-content">
+            <form class="form">
+
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Vozilo: </label>
+                <div class="col-sm-6">
+                  <select id="voziloNazivFo" class="form-control">
+                    <option *ngFor="let item of vozilaZaBrzuRezervaciju" [value]="item.id" >{{item.naziv}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Pocetni datum: </label>
+                <div class="col-sm-6">
+                   <input type="date" class="form-control" id="pocetniDatFo">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Krajnji datum: </label>
+                <div class="col-sm-6">
+                   <input type="date" class="form-control" id="krajnjiDatFo">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="lat" class="col-sm-3 col-form-label">Popust u procentima: </label>
+                <div class="col-sm-6">
+                   <input type="number" class="form-control" id="popustFo">
+                </div>
+              </div>
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Izadji</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="dodajBrzuRezervaciju()">Sačuvaj izmene</button>
           </div>
         </div>
       </div>

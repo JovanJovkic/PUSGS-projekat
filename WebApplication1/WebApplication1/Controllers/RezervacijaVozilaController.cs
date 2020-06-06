@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
 using WebApplication1.Models;
+using WebApplication1.Servis;
 
 namespace WebApplication1.Controllers
 {
@@ -15,10 +16,12 @@ namespace WebApplication1.Controllers
     public class RezervacijaVozilaController : ControllerBase
     {
         private readonly MyDbContext _context;
+        private RezervacijaServis servis;
 
         public RezervacijaVozilaController(MyDbContext context)
         {
             _context = context;
+            servis = new RezervacijaServis(_context);
         }
 
         [HttpGet]
@@ -65,8 +68,9 @@ namespace WebApplication1.Controllers
         [Route("AddRezervacijaVozila")]
         public async Task<ActionResult<RezervacijaVozila>> AddRezervacijaVozila(RezervacijaVozila rezervacija)
         {
-
+            rezervacija.Cena = servis.ukupnaCena(rezervacija);
             _context.RezervacijeVozila.Add(rezervacija);
+            servis.dodajDatumeVozilu(rezervacija);
 
             await _context.SaveChangesAsync();
 
@@ -97,27 +101,6 @@ namespace WebApplication1.Controllers
             return NoContent();
         }
 
-        public double ukupnaCena(RezervacijaVozila rezervacija)
-        {
-            DateTime pocetni = rezervacija.PocetniDatum;
-            DateTime krajnji = rezervacija.KrajnjiDatum;
-
-            RentACarServis rentACar = _context.RentACarServisi.Find(rezervacija.IdRentACar);
-
-            double ukupnaCena = rentACar.cenaPrviDan;
-
-            if (pocetni != krajnji)
-            {
-                TimeSpan ts = new TimeSpan(1, 0, 0, 0);
-
-                while (pocetni != krajnji)
-                { 
-                    pocetni += ts;
-                    ukupnaCena += rentACar.cenaSledeciDan;
-                }
-            }
-
-            return  ukupnaCena;
-        }
+       
     }
 }
