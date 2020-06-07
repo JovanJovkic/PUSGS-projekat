@@ -28,24 +28,42 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { TokenInterceptor } from './auth/tokenInterceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CookieService } from 'ngx-cookie-service';
-import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, AuthService } from 'angular-6-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider, AuthService } from 'angularx-social-login';  
+import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';  
 import { RegistracijaAdminComponent } from './components/registracija-admin/registracija-admin.component';
 
+/*
 export function socialConfigs() {  
   const config = new AuthServiceConfig(  
     [  
       {  
         id: FacebookLoginProvider.PROVIDER_ID,  
         provider: new FacebookLoginProvider('app -id')  
-      },  
+      }, 
       {  
         id: GoogleLoginProvider.PROVIDER_ID,  
-        provider: new GoogleLoginProvider('')  
+        provider: new GoogleLoginProvider('266307384505-kr2k6e05sfvukul2krhofkvbgvs94fov.apps.googleusercontent.com')  
       }  
     ]  
   );  
   return config;  
 }  
+*/
+
+let config = new AuthServiceConfig([
+  {
+     id: GoogleLoginProvider.PROVIDER_ID,
+     provider: new GoogleLoginProvider('219104745928-b057e5erdn5hs4b1bshsr8g42kgl7453.apps.googleusercontent.com')
+  },
+/*{
+     id: FacebookLoginProvider.PROVIDER_ID,
+     provider: new FacebookLoginProvider(Facebook AppId)
+  },*/
+]);
+export function provideConfig()
+ {
+    return config;
+ }
 
 @NgModule({
   declarations: [
@@ -79,8 +97,10 @@ export function socialConfigs() {
     ToastrModule.forRoot({
       progressBar: true
     }),
+    SocialLoginModule.initialize(config)
   ],
   providers: [
+    AuthService,
     CookieService,
     UserService, 
     {
@@ -92,12 +112,17 @@ export function socialConfigs() {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true,
-      },
-   /* AuthService,  
+    },/*
+    AuthService,  
     {  
       provide: AuthServiceConfig,  
-      useFactory: socialConfigs,  
-    }  */
+      useFactory: socialConfigs  
+    }, */
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
+    
   ],
   bootstrap: [AppComponent]
 })
