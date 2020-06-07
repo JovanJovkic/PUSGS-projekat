@@ -96,7 +96,7 @@ namespace WebApplication1.Controllers
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var securityToken = tokenHandler.CreateToken(tokenDescriptor);
                 var token = tokenHandler.WriteToken(securityToken);
-                return Ok(new { token, model.UserName });
+                return Ok(new { token, model.UserName, user.Uloga });
             }
             else
                 return BadRequest(new { message = "Username or password is incorrect." });
@@ -184,7 +184,7 @@ namespace WebApplication1.Controllers
             {
 
                 var result = await _userManager.CreateAsync(applicationUser, model.Lozinka);
-
+                PosaljiMejlAsync(applicationUser);
                 return Ok(result);
             }
             catch (Exception ex)

@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { AuthService, GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 import { DOCUMENT } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from 'src/environments/environment';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-prijava-forma',
@@ -56,7 +58,10 @@ export class PrijavaFormaComponent implements OnInit {
         console.log(res);
         localStorage.setItem('token', res.token);
         localStorage.setItem('userName', res.userName);
+        localStorage.setItem('uloga', res.uloga);
         this.router.navigateByUrl('/homepage-forma');
+        environment.uloga = res.uloga;
+        NavbarComponent.uloga = res.uloga;
       },
       err => {
         if (err.status == 400)
