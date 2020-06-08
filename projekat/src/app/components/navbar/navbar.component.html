@@ -12,28 +12,24 @@
         <li class="nav-item">
             <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/ren-a-car" style="margin-left :5px">Rent-a-car servisi</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="Getuloga == '4'">
             <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/profil" style="margin-left :5px">Profil administratora sistema</a>
         </li>
        
-        <li class="nav-item dropdown">
-          <a class="btn btn-outline-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Profili administratora kompanija
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" type="btn" routerLink="/profilRent" >Profil rent-a-car administratora</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" type="btn" routerLink="/profilAdminAvio">Profil administratora avio-kompanije</a>
-          </div>
+        <li *ngIf="Getuloga == '3'">
+          <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/profilRent" >Profil rent-a-car administratora</a>
         </li>
-        <li class="nav-item" *ngIf="Getuloga == 1">
+        <li *ngIf="Getuloga == '2'">
+            <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/profilAdminAvio">Profil administratora avio-kompanije</a>
+        </li>
+        <li class="nav-item" *ngIf="Getuloga == '0'">
             <a class="btn btn-outline-light my-2 ml-5 my-sm-0" type="btn" routerLink="/registracija" style="margin-left :5px">Registracija</a>
         </li>
-        <li class="nav-item" *ngIf="Getuloga == 1">
+        <li class="nav-item" *ngIf="Getuloga == '0'">
             <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/prijava" style="margin-left :5px">Prijava</a>
         </li>
-        <li class="nav-item" *ngIf="Getuloga != 1" >
-          <a class="btn btn-outline-light  my-2 ml-5 my-sm-0" type="btn" routerLink="/prijava" style="margin-left :5px">Odjavite se</a>
+        <li class="nav-item" *ngIf="Getuloga != '0'" >
+          <button class="btn btn-outline-light  my-2 ml-5 my-sm-0" type="btn" (click)="odjaviSe()" style="margin-left :5px">Odjavite se</button>
       </li>
       </ul>
     </div>

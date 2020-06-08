@@ -10,13 +10,29 @@ export class NavbarComponent implements OnInit {
 
   static  uloga = environment.uloga;
 
-  constructor() { }
+  constructor() {
+    if(environment.uloga == null)
+    {
+      environment.uloga = '0';
+      localStorage.setItem('uloga','0');
+    }
+   }
 
   ngOnInit(): void {
   }
 
   get Getuloga() {
     return NavbarComponent.uloga;
+  }
+
+  odjaviSe():void{
+    environment.uloga = '0';
+    NavbarComponent.uloga = '0';
+    localStorage.removeItem('uloga');
+    localStorage.removeItem('token');
+    localStorage.removeItem('userName');
+    localStorage.setItem('userName','');
+    localStorage.setItem('uloga','0');
   }
 
 }

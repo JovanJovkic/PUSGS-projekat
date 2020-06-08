@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  uloga: 1,
+  uloga: localStorage.getItem('uloga'),
 };
 
 /*

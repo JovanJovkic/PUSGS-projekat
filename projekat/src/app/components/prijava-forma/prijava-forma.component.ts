@@ -1,6 +1,6 @@
-import { ToastrService } from 'ngx-toastr';
+import {  ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/korisnik-service/user.service';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject,ViewChild  } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService, GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
@@ -15,7 +15,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
   styleUrls: ['./prijava-forma.component.css']
 })
 export class PrijavaFormaComponent implements OnInit {
-
+ 
   formModel = {
     UserName: '',
     Password: ''
@@ -25,7 +25,7 @@ export class PrijavaFormaComponent implements OnInit {
 
   constructor(private service: UserService, private router: Router, private toastr: ToastrService,
     public OAuth: AuthService,
-    private cookieService: CookieService, @Inject(DOCUMENT) private document: Document) { }
+    private cookieService: CookieService, @Inject(DOCUMENT) private document: Document) {  }
 
   ngOnInit() {
     //if (localStorage.getItem('token') != null)
@@ -65,7 +65,11 @@ export class PrijavaFormaComponent implements OnInit {
       },
       err => {
         if (err.status == 400)
-          this.toastr.error('Incorrect username or password.', 'Authentication failed.');
+        
+          this.toastr.error('Incorrect username or password.', 'Authentication failed.', {
+            timeOut: 8000,
+           // positionClass: 'toast-top-left',
+          });
         else
           console.log(err);
       }

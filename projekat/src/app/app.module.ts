@@ -95,7 +95,8 @@ export function provideConfig()
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot({
-      progressBar: true
+      positionClass: 'toast-top-right',
+      //progressBar: true
     }),
     SocialLoginModule.initialize(config)
   ],
