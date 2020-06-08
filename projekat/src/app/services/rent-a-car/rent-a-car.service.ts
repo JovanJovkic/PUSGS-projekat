@@ -35,6 +35,7 @@ export class RentACarService {
   }
 
   odobri(id:number) {
+    console.log(id);
     return this.http.get(this.BaseURI + '/RentACarServis/OdobriRentACarServis/' + id);
   }
 

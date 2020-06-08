@@ -220,6 +220,11 @@ export class RentAdminProfilComponent implements OnInit {
     this.rentACarService.odobri(servis.id).subscribe(
       (res: any) => {
         this.loadRentServis();
+      },
+      err => {
+        alert('Morate popuni sve podatke o rent-a-car servisu!')
+       //console.log('greska');
+       // console.log(err);
       }
     );
   }
@@ -243,6 +248,7 @@ export class RentAdminProfilComponent implements OnInit {
           const ak = new RentACarServis(element.id,element.naziv,element.adresa,element.promotivniOpis, 4);
           ak.cenaPrviDan = element.cenaPrviDan;
           ak.cenaSledeciDan = element.cenaSledeciDan;
+          ak.odobreno = element.odobreno;
          // console.log(element);
           if(ak.vozila.length!=0)
           {

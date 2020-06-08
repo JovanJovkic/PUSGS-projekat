@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment }  from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   static  uloga = environment.uloga;
 
-  constructor() {
+  constructor( private router: Router) {
     if(environment.uloga == null)
     {
       environment.uloga = '0';
@@ -33,6 +34,7 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem('userName');
     localStorage.setItem('userName','');
     localStorage.setItem('uloga','0');
+    this.router.navigateByUrl('prijava');
   }
 
 }

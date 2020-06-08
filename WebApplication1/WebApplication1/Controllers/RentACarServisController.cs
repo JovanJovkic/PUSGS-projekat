@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
 using WebApplication1.Models;
+using WebApplication1.Servis;
 
 namespace WebApplication1.Controllers
 {
@@ -14,10 +15,12 @@ namespace WebApplication1.Controllers
     public class RentACarServisController : ControllerBase
     {
         private readonly MyDbContext _context;
+        private RentServis servis;
 
         public RentACarServisController(MyDbContext context)
         {
             _context = context;
+            servis = new RentServis(context);
         }
 
         [HttpGet]
@@ -50,18 +53,25 @@ namespace WebApplication1.Controllers
                 return NotFound();
             }
 
+
             _context.RentACarServisi.Remove(servisi);
             await _context.SaveChangesAsync();
 
             return servisi;
         }
 
-        [HttpDelete]
+        [HttpGet]
         [Route("OdobriRentACarServis/{id}")]
         public async Task<ActionResult<RentACarServis>> OdobriRentACarServis(int id)
         {
             var servisi = await _context.RentACarServisi.FindAsync(id);
             if (servisi == null)
+            {
+                return NotFound();
+            }
+
+
+            if (!servis.DaLiMozeDaSeOdobri(id))
             {
                 return NotFound();
             }

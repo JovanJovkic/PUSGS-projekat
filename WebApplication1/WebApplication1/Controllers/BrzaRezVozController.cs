@@ -76,9 +76,10 @@ namespace WebApplication1.Controllers
             rezervacija.NovaCena = rezervacija.PocetnaCena - rezervacija.PocetnaCena * rezervacija.Popust / 100;
 
             _context.BrzeRezervacijeVozila.Add(rezervacija);
-            servis.dodajDatumeVozilu(rezervacija);
-
+            
             await _context.SaveChangesAsync();
+            
+            servis.dodajDatumeVozilu(rezervacija);
 
             return CreatedAtAction("GetBrzaRezervacijaVozila", new { id = rezervacija.Id }, rezervacija);
         }

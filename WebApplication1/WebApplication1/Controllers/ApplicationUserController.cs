@@ -274,11 +274,16 @@ namespace WebApplication1.Controllers
                 Korisnik korisnik = lista[0];
                 korisnik.EmailConfirmed = true;
                 _userManager.UpdateAsync(korisnik);
-                _context.SaveChanges();
 
-                
-                // string code = await _userManager.GenerateEmailConfirmationTokenAsync(korisnik);
-                //_userManager.ConfirmEmailAsync(korisnik, code);
+                try
+                {
+                    _context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+
+                    
+                }
             }
         }
     }
