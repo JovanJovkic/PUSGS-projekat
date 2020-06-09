@@ -11,9 +11,10 @@ export class Vozilo {
     tipVozila: string;
     rentACarId:number;
     filijalaId:number;
+    rowVersion:any[];
 
 
-    constructor(id:number, naziv: string, marka: string, model: string, godinaProizvodnje: number, brojSedista: number, tipVozila: string) {
+    constructor(id:number, naziv: string, marka: string, model: string, godinaProizvodnje: number, brojSedista: number, tipVozila: string, rowVersion:any[]) {
         this.id = id;
         this.naziv = naziv;
         this.marka = marka;
@@ -21,6 +22,7 @@ export class Vozilo {
         this.godinaProizvodnje = godinaProizvodnje;
         this.brojSedista = brojSedista;
         this.tipVozila = tipVozila;
+        this.rowVersion = rowVersion;
     }
 
 

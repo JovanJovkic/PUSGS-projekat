@@ -79,7 +79,14 @@ export class UserService {
   }
 
   externalLogin(formData){
-    return this.http.post(this.BaseURI + '/ApplicationUser/SocialLogin',formData);
+    var body = {
+      Id : formData.id,
+      Ime : formData.firstName ,
+      Prezime : formData.lastName,
+      Email : formData.email,
+      IdToken : formData.idToken
+    };
+    return this.http.post(this.BaseURI + '/ApplicationUser/SocialLogin',body);
   }
 
   getUserProfile() {

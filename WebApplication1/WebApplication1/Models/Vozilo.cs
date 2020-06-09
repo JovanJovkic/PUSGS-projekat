@@ -34,6 +34,9 @@ namespace WebApplication1.Models
 
         public string ZauzetiDatumiString { get; set; }
 
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
+
         public void PretvoriUJson()
         {
             string output = JsonConvert.SerializeObject(ZauzetiDatumi);
@@ -46,6 +49,10 @@ namespace WebApplication1.Models
             {
                 List<DateTime> deserializedProduct = JsonConvert.DeserializeObject<List<DateTime>>(ZauzetiDatumiString);
                 ZauzetiDatumi = deserializedProduct;
+            }
+            else
+            {
+                ZauzetiDatumi = new List<DateTime>();
             }
         }
     }

@@ -134,7 +134,7 @@ export class RentProfilComponent implements OnInit {
 
     var id = this.profil.id;
 
-    this.rezervacija = new RezervacijaVozila(1,this.profil.id,0,"",0,DatumPreFilter,DatumVraFilter);
+    this.rezervacija = new RezervacijaVozila(1,this.profil.id,0,"",0,DatumPreFilter,DatumVraFilter,null);
 
     this.voziloServis.pretraziVozila(id,MestoPreFilter,DatumPreFilter,TipVozilaFilter,MestoVraFilter,DatumVraFilter,+BrojPutnikaFilter,+CenaOdFilter,+CenaDoFilter).subscribe(
       (res: any) => {
@@ -198,14 +198,23 @@ export class RentProfilComponent implements OnInit {
       );
   }
 
-  rezervisi(vozilo:Vozilo):void{
+  rezervisi(vozilo:Vozilo):void{ 
     this.rezervacija.idVozila = vozilo.id;
+    this.rezervacija.vozilo = vozilo;
     this.rezervacijaServis.rezervisiVozilo(this.rezervacija).subscribe(
       (res: any) => {
-        res.forEach(element => {
+       /* res.forEach(element => {
               
-              
-          });
+            
+          });*/
+          console.log(res);
+          alert("Uspesno ste rezervisali vozilo!");
+      },
+      err => {
+        if (err.status == 400)
+        {
+          alert("Doslo je do konflikta, osvezite podatke i probajte ponovo!");
+        }
       }
       );
   }

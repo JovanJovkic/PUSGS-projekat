@@ -18,6 +18,13 @@ namespace WebApplication1.Data
         {
         }
 
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Vozilo>()
+        //        .Property(p => p.RowVersion)
+        //        .IsRowVersion();
+        //}
+
         //public DbSet<Korisnik> Korisnici { get; set; }
 
         public DbSet<Vozilo> Vozila { get; set; }

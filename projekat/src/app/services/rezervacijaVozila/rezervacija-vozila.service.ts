@@ -20,6 +20,7 @@ export class RezervacijaVozilaService {
       Cena : rezervacija.cena,
       PocetniDatum : rezervacija.pocetniDatum,
       KrajnjiDatum : rezervacija.krajnjiDatum,
+      Vozilo: rezervacija.vozilo
     };
     
     return this.http.post(this.BaseURI + '/RezervacijaVozila/AddRezervacijaVozila/', body);

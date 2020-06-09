@@ -69,12 +69,28 @@ namespace WebApplication1.Controllers
         public async Task<ActionResult<RezervacijaVozila>> AddRezervacijaVozila(RezervacijaVozila rezervacija)
         {
             rezervacija.Cena = servis.ukupnaCena(rezervacija);
-            _context.RezervacijeVozila.Add(rezervacija);
-            servis.dodajDatumeVozilu(rezervacija);
+            bool dozvola = servis.dodajDatumeVozilu(rezervacija);
 
-            await _context.SaveChangesAsync();
+            if (dozvola)
+            {
+                _context.RezervacijeVozila.Add(rezervacija);
 
-            return CreatedAtAction("GetRezervacijaVozila", new { id = rezervacija.Id }, rezervacija);
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (Exception e)
+                {
+
+                }
+
+                // return CreatedAtAction("GetRezervacijaVozila", new { id = rezervacija.Id }, rezervacija);
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         [Route("UpdateRezervacijaVozila")]

@@ -105,16 +105,31 @@ namespace WebApplication1.Controllers
         [HttpPost]
         [Route("SocialLogin")]
         // POST: api/<controller>/Login
-        public async Task<IActionResult> SocialLogin([FromBody]LoginModel loginModel)
+        public async Task<IActionResult> SocialLogin([FromBody]GoogleLogin loginModel)
         {
             var test = _appSettings.JWT_Secret;
+
+            Korisnik userModel = new Korisnik();
+            userModel.Email = loginModel.Email;
+            //userModel.Ime = loginModel.Ime;
+            //userModel.Prezime = loginModel.Prezime;
+            userModel.Uloga = TipKorisnika.Registrovani;
+            userModel.UserName = loginModel.Id;
+
+            
+
+            if (_userManager.FindByNameAsync(userModel.UserName).Result == null)
+            {
+                var result = await _userManager.CreateAsync(userModel);
+            }
+
             if (VerifyToken(loginModel.IdToken))
             {
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Expires = DateTime.UtcNow.AddMinutes(5),
                     //Key min: 16 characters
-                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSettings.JWT_Secret)), SecurityAlgorithms.HmacSha256Signature)
+                   // SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSettings.JWT_Secret)), SecurityAlgorithms.HmacSha256Signature)
                 };
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var securityToken = tokenHandler.CreateToken(tokenDescriptor);

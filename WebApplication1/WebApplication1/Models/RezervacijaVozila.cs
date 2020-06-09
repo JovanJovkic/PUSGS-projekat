@@ -32,6 +32,10 @@ namespace WebApplication1.Models
 
         public string ZauzetiDatumiString { get; set; }
 
+        [NotMapped]
+        public Vozilo Vozilo { get; set; }
+
+
         public void PretvoriUJson()
         {
             string output = JsonConvert.SerializeObject(ZauzetiDatumi);

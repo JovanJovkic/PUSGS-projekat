@@ -99,7 +99,7 @@ export class RentAdminProfilComponent implements OnInit {
     let filId = (<HTMLInputElement> document.getElementById("filId")).value;
 
     //console.log(this.servisZaVozilo);
-    var temp = new Vozilo(5,nazivVoz,markaVoz,modelVoz,+godinaVoz,+brojSedVoz,tipVoz);
+    var temp = new Vozilo(5,nazivVoz,markaVoz,modelVoz,+godinaVoz,+brojSedVoz,tipVoz,[]);
     temp.rentACarId = this.servisZaVozilo.id;
     temp.filijalaId = +filId;
     //this.servisZaVozilo.vozila.push(temp);
