@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "WQlSBl9gZAZZ30g2q+ua+5Eq0nkSf2PBxzoqpV6EzvgAGdvioKKK7hujcx5LDMBi9cTumQPMxbfd/wIkPLxbXw==",
+  "dgSpecHash": "CHL6hqbtJ3ZG7pPtjChpxXuikUqB1E3VO5bZjPI2eb+dq751Zxuh5068B2WmhsH/71nv8tbhhumgGdH+n+1VmQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Marko\\Desktop\\PUSGS-projekat\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
   "expectedPackageFiles": [
@@ -79,14 +79,14 @@
     "C:\\Users\\Marko\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\Marko\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
-    "C:\\Users\\Marko\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\3.1.2\\microsoft.visualstudio.web.codegeneration.3.1.2.nupkg.sha512",
-    "C:\\Users\\Marko\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.contracts\\3.1.2\\microsoft.visualstudio.web.codegeneration.contracts.3.1.2.nupkg.sha512",
-    "C:\\Users\\Marko\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\3.1.2\\microsoft.visualstudio.web.codegeneration.core.3.1.2.nupkg.sha512",
-    "C:\\Users\\Marko\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.design\\3.1.2\\microsoft.visualstudio.web.codegeneration.design.3.1.2.nupkg.sha512",
-    "C:\\Users\\Marko\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.entityframeworkcore\\3.1.2\\microsoft.visualstudio.web.codegeneration.entityframeworkcore.3.1.2.nupkg.sha512",
-    "C:\\Users\\Marko\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.templating\\3.1.2\\microsoft.visualstudio.web.codegeneration.templating.3.1.2.nupkg.sha512",
-    "C:\\Users\\Marko\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.utils\\3.1.2\\microsoft.visualstudio.web.codegeneration.utils.3.1.2.nupkg.sha512",
-    "C:\\Users\\Marko\\.nuget\\packages\\microsoft.visualstudio.web.codegenerators.mvc\\3.1.2\\microsoft.visualstudio.web.codegenerators.mvc.3.1.2.nupkg.sha512",
+    "C:\\Users\\Marko\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\3.1.3\\microsoft.visualstudio.web.codegeneration.3.1.3.nupkg.sha512",
+    "C:\\Users\\Marko\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.contracts\\3.1.3\\microsoft.visualstudio.web.codegeneration.contracts.3.1.3.nupkg.sha512",
+    "C:\\Users\\Marko\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\3.1.3\\microsoft.visualstudio.web.codegeneration.core.3.1.3.nupkg.sha512",
+    "C:\\Users\\Marko\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.design\\3.1.3\\microsoft.visualstudio.web.codegeneration.design.3.1.3.nupkg.sha512",
+    "C:\\Users\\Marko\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.entityframeworkcore\\3.1.3\\microsoft.visualstudio.web.codegeneration.entityframeworkcore.3.1.3.nupkg.sha512",
+    "C:\\Users\\Marko\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.templating\\3.1.3\\microsoft.visualstudio.web.codegeneration.templating.3.1.3.nupkg.sha512",
+    "C:\\Users\\Marko\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.utils\\3.1.3\\microsoft.visualstudio.web.codegeneration.utils.3.1.3.nupkg.sha512",
+    "C:\\Users\\Marko\\.nuget\\packages\\microsoft.visualstudio.web.codegenerators.mvc\\3.1.3\\microsoft.visualstudio.web.codegenerators.mvc.3.1.3.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
@@ -204,7 +204,8 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\Marko\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
   ],
   "logs": []
 }

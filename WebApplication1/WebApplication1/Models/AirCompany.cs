@@ -21,5 +21,11 @@ namespace WebApplication1.Models
         public string Admin { get; set; }
 
         public ICollection<Destinacija> Destinacije { get; set; }
+
+        public double cenaPrviDan { get; set; }
+
+        public double cenaSledeciDan { get; set; }
+
+        public bool Odobreno { get; set; }
     }
 }

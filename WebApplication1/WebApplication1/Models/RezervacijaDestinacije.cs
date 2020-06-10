@@ -8,36 +8,33 @@ using System.Threading.Tasks;
 
 namespace WebApplication1.Models
 {
-    public class Destinacija
+    public class RezervacijaDestinacije
     {
         [Key]
         public int Id { get; set; }
 
-        public string NazivDestinacije { get; set; }
+        public int IdAirCompany { get; set; }
 
-        public string datumVremeSletanja { get; set; }
+        public int IdDestinacije { get; set; }
 
-        public string datumVremePoletanja { get; set; }
+        public double Cena { get; set; }
 
-        public string vremePutovanja { get; set; }
+        public bool Zavrseno { get; set; }
 
-        public string duzinaPutovanja { get; set; }
+        public string IdKlijenta { get; set; }
 
-        public int brojPresedanja { get; set; }
+        public DateTime PocetniDatum { get; set; }
 
-        public string lokacijaPresedanja { get; set; }
-
-        public string cenaKarte { get; set; }
-
-        public int AirCompanyID { get; set; }
+        public DateTime KrajnjiDatum { get; set; }
 
         [NotMapped]
         public List<DateTime> ZauzetiDatumi { get; set; }
 
         public string ZauzetiDatumiString { get; set; }
 
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
+        [NotMapped]
+        public Destinacija Destinacija { get; set; }
+
 
         public void PretvoriUJson()
         {
@@ -51,10 +48,6 @@ namespace WebApplication1.Models
             {
                 List<DateTime> deserializedProduct = JsonConvert.DeserializeObject<List<DateTime>>(ZauzetiDatumiString);
                 ZauzetiDatumi = deserializedProduct;
-            }
-            else
-            {
-                ZauzetiDatumi = new List<DateTime>();
             }
         }
     }
