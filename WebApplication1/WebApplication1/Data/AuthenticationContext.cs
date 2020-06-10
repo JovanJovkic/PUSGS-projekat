@@ -16,5 +16,21 @@ namespace WebApplication1.Data
         }
 
         public DbSet<Korisnik> ApplicationUsers { get; set; }
+
+        public DbSet<Vozilo> Vozila { get; set; }
+
+        public DbSet<RentACarServis> RentACarServisi { get; set; }
+
+        public DbSet<Destinacija> Destinacije { get; set; }
+
+        public DbSet<AirCompany> AvioKompanije { get; set; }
+
+        public DbSet<RezervacijaDestinacije> RezervacijeDestinacija { get; set; }
+
+        public DbSet<Filijala> Filijale { get; set; }
+
+        public DbSet<RezervacijaVozila> RezervacijeVozila { get; set; }
+
+        public DbSet<BrzaRezervacijaVozila> BrzeRezervacijeVozila { get; set; }
     }
 }

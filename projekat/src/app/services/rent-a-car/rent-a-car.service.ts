@@ -63,23 +63,23 @@ export class RentACarService {
   mockedRentACar(): Array<RentACarServis> {
     let allRentACarServis = new Array<RentACarServis>();
 
-    const ak1 = new RentACarServis(1,'Balkan', 'Jurija Gagarina 25, Novi Beograd', 'Najpovoljniji rent-a-car servis u gradu', 5);
-    const ak2 = new RentACarServis(2,'Novi Sad - rentAcar', 'Bulevar Oslobodjenja 123, Novi Sad', 'Servis za rent-a-car sa najnovijim modelima vozila', 5);
-    const ak3 = new RentACarServis(3,'Europa', 'Jovana Dučica 22, Loznica', 'Servis po vašoj meri', 3);
-    const ak4 = new RentACarServis(4,'Novi', 'Ive Andrića 25, Nis', 'servis za rent-a-car', 5);
-    const ak5 = new RentACarServis(5,'Servis BG', 'Karadjordjeva 254, Beograd', 'Posedujemo najnovija vozila', 4);
+    //const ak1 = new RentACarServis(1,'Balkan', 'Jurija Gagarina 25, Novi Beograd', 'Najpovoljniji rent-a-car servis u gradu', 5);
+    //const ak2 = new RentACarServis(2,'Novi Sad - rentAcar', 'Bulevar Oslobodjenja 123, Novi Sad', 'Servis za rent-a-car sa najnovijim modelima vozila', 5);
+    //const ak3 = new RentACarServis(3,'Europa', 'Jovana Dučica 22, Loznica', 'Servis po vašoj meri', 3);
+    //const ak4 = new RentACarServis(4,'Novi', 'Ive Andrića 25, Nis', 'servis za rent-a-car', 5);
+    //const ak5 = new RentACarServis(5,'Servis BG', 'Karadjordjeva 254, Beograd', 'Posedujemo najnovija vozila', 4);
 
-    ak1.vozila = this.mockedVozilo();
-    ak2.vozila = this.mockedVozilo();
-    ak3.vozila = this.mockedVozilo();
-    ak4.vozila = this.mockedVozilo();
-    ak5.vozila = this.mockedVozilo();
+    //ak1.vozila = this.mockedVozilo();
+    //ak2.vozila = this.mockedVozilo();
+    //ak3.vozila = this.mockedVozilo();
+   // ak4.vozila = this.mockedVozilo();
+    //ak5.vozila = this.mockedVozilo();
 
-    allRentACarServis.push(ak1);
-    allRentACarServis.push(ak2);
-    allRentACarServis.push(ak3);
-    allRentACarServis.push(ak4);
-    allRentACarServis.push(ak5);
+    //allRentACarServis.push(ak1);
+    //allRentACarServis.push(ak2);
+    //allRentACarServis.push(ak3);
+    //allRentACarServis.push(ak4);
+    //allRentACarServis.push(ak5);
 
     return allRentACarServis;
   }
@@ -150,8 +150,21 @@ export class RentACarService {
 
   }
 
+  ucitajRentACarServiseOdobrene()
+  {
+    var array = this.http.get<RentACarServis[]>(this.BaseURI + '/RentACarServis/GetRentACarServisiOdobreni');
+    return array;
+
+  }
+
   ucitajOdredjeniRentACarServis(id:Number)
   {
      return this.http.get<RentACarServis>(this.BaseURI + '/RentACarServis/'+id);
   }
+
+  ucitajRentACarServisZaAdmina(id:string)
+  {
+     return this.http.get<RentACarServis>(this.BaseURI + '/RentACarServis/GetRentACarServisiZaAdmina/'+id);
+  }
+  
 }

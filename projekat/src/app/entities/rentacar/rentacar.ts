@@ -11,13 +11,15 @@ export class RentACarServis {
     cenaPrviDan : number;
     cenaSledeciDan : number;
     odobreno:boolean;
+    admin:string;
 
-    constructor(id:number, naziv: string, adresa: string, promotivniOpis: string, ocena: number) {
+    constructor(id:number, naziv: string, adresa: string, promotivniOpis: string, ocena: number,admin:string) {
         this.id = id;
         this.naziv = naziv;
         this.adresa = adresa;
         this.promotivniOpis = promotivniOpis;
         this.ocena = ocena;
+        this.admin = admin;
         this.vozila = new Array<Vozilo>();
     }
 

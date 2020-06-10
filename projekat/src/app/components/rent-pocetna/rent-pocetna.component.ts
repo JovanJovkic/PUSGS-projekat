@@ -55,7 +55,7 @@ export class RentPocetnaComponent implements OnInit {
         res.forEach(element => {
 
           console.log(element);
-          this.filteredRentACarServis.push(new RentACarServis(element.id,element.naziv,element.adresa,element.promotivniOpis, 4));
+          this.filteredRentACarServis.push(new RentACarServis(element.id,element.naziv,element.adresa,element.promotivniOpis, 4,element.admin));
         });
       }
       );
@@ -80,14 +80,14 @@ export class RentPocetnaComponent implements OnInit {
   }
 
   loadRentServis() {
-    this.rentACarService.ucitajRentACarServise().subscribe(
+    this.rentACarService.ucitajRentACarServiseOdobrene().subscribe(
     (res: any) => {
       //console.log(res);
       if (res != null ) {
         var temp = res;
         temp.forEach(element => {
           
-          const ak = new RentACarServis(element.id,element.naziv,element.adresa,element.promotivniOpis, 4);
+          const ak = new RentACarServis(element.id,element.naziv,element.adresa,element.promotivniOpis, 4,element.admin);
           console.log(element);
           if(ak.vozila.length!=0)
           {

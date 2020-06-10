@@ -15,9 +15,9 @@ namespace WebApplication1.Controllers
     public class FilijaleController : ControllerBase
     {
      
-            private readonly MyDbContext _context;
+            private readonly AuthenticationContext _context;
 
-            public FilijaleController(MyDbContext context)
+            public FilijaleController(AuthenticationContext context)
             {
                 _context = context;
             }

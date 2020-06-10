@@ -14,11 +14,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using WebApplication1.Data;
 using WebApplication1.Models;
+using WebApplication1.Servis;
 
 namespace WebApplication1.Controllers
 {
@@ -53,7 +55,11 @@ namespace WebApplication1.Controllers
                 UserName = model.UserName,
                 Email = model.Email,
                 //FullName = model.FullName,
-                Uloga = TipKorisnika.Registrovani
+                Uloga = TipKorisnika.Registrovani,
+                Ime = model.Ime,
+                Prezime = model.Prezime,
+                Grad = model.Grad,
+                Telefon = model.Telefon
             };
 
             try
@@ -111,8 +117,8 @@ namespace WebApplication1.Controllers
 
             Korisnik userModel = new Korisnik();
             userModel.Email = loginModel.Email;
-            //userModel.Ime = loginModel.Ime;
-            //userModel.Prezime = loginModel.Prezime;
+            userModel.Ime = loginModel.Ime;
+            userModel.Prezime = loginModel.Prezime;
             userModel.Uloga = TipKorisnika.Registrovani;
             userModel.UserName = loginModel.Id;
 
@@ -180,6 +186,10 @@ namespace WebApplication1.Controllers
                 Email = model.Email,
                 //FullName = model.FullName,
                 //Uloga = TipKorisnika.Registrovani
+                Ime = model.Ime,
+                Prezime = model.Prezime,
+                Grad = model.Grad,
+                Telefon = model.Telefon
             };
 
             if(model.Uloga == "AdminAvioKompanije")
@@ -278,7 +288,7 @@ namespace WebApplication1.Controllers
 
         [HttpGet]
         [Route("PotvrdiMejl/{userId}")]
-        public void PotvrdiMejl(string userId)
+        public async void PotvrdiMejl(string userId)
         {
             
             List<Korisnik> lista = _userManager.Users.Where(user => user.Id == userId).ToList();
@@ -288,17 +298,37 @@ namespace WebApplication1.Controllers
             {
                 Korisnik korisnik = lista[0];
                 korisnik.EmailConfirmed = true;
-                _userManager.UpdateAsync(korisnik);
+                // _userManager.UpdateAsync(korisnik);
 
                 try
                 {
-                    _context.SaveChanges();
+                    //string token =  _userManager.GenerateEmailConfirmationTokenAsync(korisnik).Result;
+                    //var res = await _userManager.ConfirmEmailAsync(korisnik, token);
+                    //await _userManager.UpdateAsync(korisnik);
+                    //_context.Entry(korisnik).State = EntityState.Modified;
+                    //await _context.SaveChangesAsync();
+                    RentServis servis = new RentServis(_context);
+                    servis.potvrdi(korisnik);
                 }
                 catch (Exception e)
                 {
 
                     
                 }
+            }
+        }
+
+        [HttpPut]
+        [Route("IzmeniSifru")]
+        public void IzmeniSifru(IzmenaSifre izmena)
+        {
+            try
+            {
+                _userManager.ChangePasswordAsync(izmena.Korisnik, izmena.StaraSifra, izmena.NovaSifra);
+            }
+            catch(Exception e)
+            {
+
             }
         }
     }

@@ -14,10 +14,10 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class RentACarServisController : ControllerBase
     {
-        private readonly MyDbContext _context;
+        private readonly AuthenticationContext _context;
         private RentServis servis;
 
-        public RentACarServisController(MyDbContext context)
+        public RentACarServisController(AuthenticationContext context)
         {
             _context = context;
             servis = new RentServis(context);
@@ -28,6 +28,40 @@ namespace WebApplication1.Controllers
         {
             //_context.RentACarServisi.Include("Vozila").ToList();
             return await _context.RentACarServisi.ToListAsync();
+        }
+
+        [HttpGet]
+        [Route("GetRentACarServisiOdobreni")]
+        public async Task<ActionResult<IEnumerable<RentACarServis>>> GetRentACarServisiOdobreni()
+        {
+            List<RentACarServis> servisi = _context.RentACarServisi.ToList();
+
+            foreach (RentACarServis item in servisi.ToList())
+            {
+                if(item.Odobreno == false)
+                {
+                    servisi.Remove(item);
+                }
+            }
+
+            return servisi;
+        }
+
+        [HttpGet]
+        [Route("GetRentACarServisiZaAdmina/{id}")]
+        public async Task<ActionResult<IEnumerable<RentACarServis>>> GetRentACarServisiZaAdmina(string id)
+        {
+            List<RentACarServis> servisi = _context.RentACarServisi.ToList();
+
+            foreach (RentACarServis item in servisi.ToList())
+            {
+                if (item.Admin != id)
+                {
+                    servisi.Remove(item);
+                }
+            }
+
+            return servisi;
         }
 
         [HttpGet("{id}")]
@@ -132,6 +166,14 @@ namespace WebApplication1.Controllers
         public List<RentACarServis> PretragaRentACarServis(PretragaRent pretraga)
         {
             List<RentACarServis> servisi =  _context.RentACarServisi.ToList();
+
+            foreach (RentACarServis item in servisi.ToList())
+            {
+                if (item.Odobreno == false)
+                {
+                    servisi.Remove(item);
+                }
+            }
 
             List<RentACarServis> rezultat = new List<RentACarServis>();
 

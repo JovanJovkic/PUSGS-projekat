@@ -9,9 +9,9 @@ namespace WebApplication1.Servis
 {
     public class AirCompanyServis
     {
-        private readonly MyDbContext _context;
+        private readonly AuthenticationContext _context;
 
-        public AirCompanyServis(MyDbContext context)
+        public AirCompanyServis(AuthenticationContext context)
         {
             _context = context;
         }

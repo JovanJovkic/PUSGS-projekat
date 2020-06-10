@@ -10,9 +10,9 @@ namespace WebApplication1.Servis
 {
     public class RezervacijaServis
     {
-        private readonly MyDbContext _context;
+        private readonly AuthenticationContext _context;
 
-        public RezervacijaServis(MyDbContext context)
+        public RezervacijaServis(AuthenticationContext context)
         {
             _context = context;
         }

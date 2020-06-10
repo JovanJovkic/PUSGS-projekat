@@ -14,9 +14,9 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class AirCompanyController : ControllerBase
     {
-        private readonly MyDbContext _context;
+        private readonly AuthenticationContext _context;
 
-        public AirCompanyController(MyDbContext context)
+        public AirCompanyController(AuthenticationContext context)
         {
             _context = context;
         }

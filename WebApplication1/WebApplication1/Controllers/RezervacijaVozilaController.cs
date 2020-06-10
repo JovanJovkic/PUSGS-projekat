@@ -15,10 +15,10 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class RezervacijaVozilaController : ControllerBase
     {
-        private readonly MyDbContext _context;
+        private readonly AuthenticationContext _context;
         private RezervacijaServis servis;
 
-        public RezervacijaVozilaController(MyDbContext context)
+        public RezervacijaVozilaController(AuthenticationContext context)
         {
             _context = context;
             servis = new RezervacijaServis(_context);

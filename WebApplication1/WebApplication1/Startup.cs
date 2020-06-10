@@ -38,11 +38,11 @@ namespace WebApplication1
 
             services.AddControllers();
 
-            services.AddDbContext<MyDbContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("CRUD_ExampleContext")));
-            
             services.AddDbContext<AuthenticationContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("CRUD_ExampleContext")));
+            
+            //services.AddDbContext<AuthenticationContext>(options =>
+            //        options.UseSqlServer(Configuration.GetConnectionString("CRUD_ExampleContext")));
 
             services.AddDefaultIdentity<Korisnik>()
                 .AddEntityFrameworkStores<AuthenticationContext>();

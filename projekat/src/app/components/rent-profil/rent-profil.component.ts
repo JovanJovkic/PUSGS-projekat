@@ -10,6 +10,7 @@ import { VoziloService } from 'src/app/services/vozilo/vozilo.service';
 import { RezervacijaVozila } from 'src/app/entities/rezervacijaVozila/rezervacijaVozila';
 import { RezervacijaVozilaService } from 'src/app/services/rezervacijaVozila/rezervacija-vozila.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { environment }  from 'src/environments/environment';
 
 @Component({
   selector: 'app-rent-profil',
@@ -26,11 +27,12 @@ export class RentProfilComponent implements OnInit {
   filteredVozila:Array<Vozilo>;
 
   rezervacija:RezervacijaVozila;
+  uloga = environment.uloga;
   
   constructor(private rentACarServis: RentACarService,private route: ActivatedRoute,private voziloServis:VoziloService, private rezervacijaServis:RezervacijaVozilaService, private fb: FormBuilder) { 
     this.allProfiles = new Array<RentACarServis>();
     route.params.subscribe(params => { this.id = params['id']; });
-    this.profil=new RentACarServis(0,"","","",0);
+    this.profil=new RentACarServis(0,"","","",0,"");
   }
 
   ngOnInit(): void {
@@ -50,6 +52,10 @@ export class RentProfilComponent implements OnInit {
       }
     });
   }*/
+
+  Getuloga():string{
+    return environment.uloga;
+  }
 
   filterVozila(): void {
     let filterParams = new Array<AbstractFilterParam>();
@@ -157,7 +163,7 @@ export class RentProfilComponent implements OnInit {
         var temp = res;
         //temp.forEach(element => {
           
-          const ak = new RentACarServis(temp.id,temp.naziv,temp.adresa,temp.promotivniOpis, 4);
+          const ak = new RentACarServis(temp.id,temp.naziv,temp.adresa,temp.promotivniOpis, 4, temp.admin);
           console.log(temp);
           
           if(temp.vozila!=null)

@@ -14,9 +14,9 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class VozilaController : ControllerBase
     {
-        private readonly MyDbContext _context;
+        private readonly AuthenticationContext _context;
 
-        public VozilaController(MyDbContext context)
+        public VozilaController(AuthenticationContext context)
         {
             _context = context;
         }

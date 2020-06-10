@@ -238,14 +238,14 @@ export class RentAdminProfilComponent implements OnInit {
   loadRentServis() {
     this.allRentACarServis = new Array<RentACarServis>();  
     
-    this.rentACarService.ucitajRentACarServise().subscribe(
+    this.rentACarService.ucitajRentACarServisZaAdmina(localStorage.getItem("userName")).subscribe(
     (res: any) => {
       //console.log(res);
       if (res != null ) {
         var temp = res;
         temp.forEach(element => {
           
-          const ak = new RentACarServis(element.id,element.naziv,element.adresa,element.promotivniOpis, 4);
+          const ak = new RentACarServis(element.id,element.naziv,element.adresa,element.promotivniOpis, 4,element.admin);
           ak.cenaPrviDan = element.cenaPrviDan;
           ak.cenaSledeciDan = element.cenaSledeciDan;
           ak.odobreno = element.odobreno;

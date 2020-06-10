@@ -15,9 +15,9 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class DestinacijaController : ControllerBase
     {
-        private readonly MyDbContext _context;
+        private readonly AuthenticationContext _context;
 
-        public DestinacijaController(MyDbContext context)
+        public DestinacijaController(AuthenticationContext context)
         {
             _context = context;
         }

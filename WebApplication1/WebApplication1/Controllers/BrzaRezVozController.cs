@@ -17,10 +17,10 @@ namespace WebApplication1.Controllers
     {
 
 
-        private readonly MyDbContext _context;
+        private readonly AuthenticationContext _context;
         private RezervacijaServis servis;
 
-        public BrzaRezVozController(MyDbContext context)
+        public BrzaRezVozController(AuthenticationContext context)
         {
             _context = context;
             servis = new RezervacijaServis(_context);

@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200515145037_korisnici.cs" />
+    <Compile Remove="Migrations\20200515145037_korisnici.Designer.cs" />
+    <Compile Remove="Migrations\20200515154358_destinacija.cs" />
+    <Compile Remove="Migrations\20200515154358_destinacija.Designer.cs" />
     <Compile Remove="Migrations\20200517012543_aviokompanija.cs" />
     <Compile Remove="Migrations\20200517012543_aviokompanija.Designer.cs" />
     <Compile Remove="Migrations\20200517140710_aviokompanija.cs" />
@@ -27,6 +31,40 @@
     <Compile Remove="Migrations\20200519141733_avio.Designer.cs" />
     <Compile Remove="Migrations\20200519142229_avio.cs" />
     <Compile Remove="Migrations\20200519142229_avio.Designer.cs" />
+    <Compile Remove="Migrations\20200519142509_avio.cs" />
+    <Compile Remove="Migrations\20200519142509_avio.Designer.cs" />
+    <Compile Remove="Migrations\20200519195844_admin rent .cs" />
+    <Compile Remove="Migrations\20200519195844_admin rent .Designer.cs" />
+    <Compile Remove="Migrations\20200522141246_listaVozila.cs" />
+    <Compile Remove="Migrations\20200522141246_listaVozila.Designer.cs" />
+    <Compile Remove="Migrations\20200522145227_izmena-id-rent-a-car-vozilo.cs" />
+    <Compile Remove="Migrations\20200522145227_izmena-id-rent-a-car-vozilo.Designer.cs" />
+    <Compile Remove="Migrations\20200530181250_filijala.cs" />
+    <Compile Remove="Migrations\20200530181250_filijala.Designer.cs" />
+    <Compile Remove="Migrations\20200530195439_filijala id .cs" />
+    <Compile Remove="Migrations\20200530195439_filijala id .Designer.cs" />
+    <Compile Remove="Migrations\20200531145325_datumi.cs" />
+    <Compile Remove="Migrations\20200531145325_datumi.Designer.cs" />
+    <Compile Remove="Migrations\20200601105043_rezervacija.cs" />
+    <Compile Remove="Migrations\20200601105043_rezervacija.Designer.cs" />
+    <Compile Remove="Migrations\20200602195803_rezervacijaDatumi.cs" />
+    <Compile Remove="Migrations\20200602195803_rezervacijaDatumi.Designer.cs" />
+    <Compile Remove="Migrations\20200604190423_cena.cs" />
+    <Compile Remove="Migrations\20200604190423_cena.Designer.cs" />
+    <Compile Remove="Migrations\20200605143243_odobren.cs" />
+    <Compile Remove="Migrations\20200605143243_odobren.Designer.cs" />
+    <Compile Remove="Migrations\20200605193628_brza-rezervacija-vozila.cs" />
+    <Compile Remove="Migrations\20200605193628_brza-rezervacija-vozila.Designer.cs" />
+    <Compile Remove="Migrations\20200609165308_rowversionVozilo.cs" />
+    <Compile Remove="Migrations\20200609165308_rowversionVozilo.Designer.cs" />
+    <Compile Remove="Migrations\20200609181828_rowversion izmena.cs" />
+    <Compile Remove="Migrations\20200609181828_rowversion izmena.Designer.cs" />
+    <Compile Remove="Migrations\20200610030225_rezervacijaDestinacija.cs" />
+    <Compile Remove="Migrations\20200610030225_rezervacijaDestinacija.Designer.cs" />
+    <Compile Remove="Migrations\20200610130312_izmenaContexta.cs" />
+    <Compile Remove="Migrations\20200610130312_izmenaContexta.Designer.cs" />
+    <Compile Remove="Migrations\20200610131422_e.cs" />
+    <Compile Remove="Migrations\20200610131422_e.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,9 +10,9 @@ namespace WebApplication1.Servis
 {
     public class RentServis
     {
-        private readonly MyDbContext _context;
+        private readonly AuthenticationContext _context;
 
-        public RentServis(MyDbContext context)
+        public RentServis(AuthenticationContext context)
         {
             _context = context;
         }
@@ -28,6 +29,12 @@ namespace WebApplication1.Servis
             }
 
             return temp;
+        }
+
+        public void potvrdi(Korisnik k)
+        {
+            _context.Entry(k).State = EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }
