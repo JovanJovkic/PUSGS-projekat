@@ -1,0 +1,24 @@
+<div class="container" >
+    <br/><br/>
+    <p class="text-center h1">Stranica za izmenu lozinke</p>
+    <br/>
+    <h3>Unesite staru i novu lozinku</h3>
+    <form #form='ngForm' class="mb-4" autocomplete="off" (submit)="onSubmit(form)">
+
+        <div class="form-group">
+            <label>Stara lozinka</label>
+            <input type="password" class="form-control" #UserName="ngModel" name="StaraLozinka" [(ngModel)]="formModel.StaraLozinka" required>
+          </div>
+          <div class="form-group">
+            <label>Nova lozinka</label>
+            <input type="password" class="form-control" #Password="ngModel" name="NovaLozinka" [(ngModel)]="formModel.NovaLozinka" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-8 offset-md-2">
+              <button type="submit" class="btn btn-lg btn-block btn-primary" [disabled]="form.invalid">Sacuvaj izmene</button>
+            </div>
+          </div>
+
+    </form>
+
+</div>

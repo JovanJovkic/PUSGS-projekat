@@ -7,7 +7,7 @@ namespace WebApplication1.Models
 {
     public class IzmenaSifre
     {
-        public Korisnik Korisnik { get; set; }
+        public string Email { get; set; }
 
         public string NovaSifra { get; set; }
 

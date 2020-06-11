@@ -322,9 +322,10 @@ namespace WebApplication1.Controllers
         [Route("IzmeniSifru")]
         public void IzmeniSifru(IzmenaSifre izmena)
         {
+            Korisnik user =  _userManager.FindByNameAsync(izmena.Email).Result;
             try
             {
-                _userManager.ChangePasswordAsync(izmena.Korisnik, izmena.StaraSifra, izmena.NovaSifra);
+                _userManager.ChangePasswordAsync(user, izmena.StaraSifra, izmena.NovaSifra);
             }
             catch(Exception e)
             {

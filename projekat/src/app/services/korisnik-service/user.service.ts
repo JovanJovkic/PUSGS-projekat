@@ -93,5 +93,15 @@ export class UserService {
     return this.http.get(this.BaseURI + '/UserProfile/GetUserProfile');
   }
 
+  promeniLozinku(staraLozinka:string, novaLozinka:string)
+  {
+    var body = {
+      Email : localStorage.getItem("userName"),
+      NovaSifra : novaLozinka,
+      StaraSifra : staraLozinka,
+    };
+    return this.http.put(this.BaseURI + '/ApplicationUser/IzmeniSifru',body);
+  }
+
 
 }

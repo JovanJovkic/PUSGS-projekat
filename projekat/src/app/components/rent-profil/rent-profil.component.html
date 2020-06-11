@@ -5,6 +5,7 @@
     <h3>Nalazimo se na adresi {{profil.adresa}}</h3>
     <h4>{{profil.promotivniOpis}}</h4>
     <h3>Ocena: {{profil.ocena}}</h3>   
+    <button *ngIf="Getuloga() == '1'"  class="btn btn-success"  (click)="brzeRezervacije()">Vozila na popustu</button>
     </div> 
 
     <br/>
@@ -109,7 +110,7 @@
                 <td>{{item.godinaProizvodnje}}</td>
                 <td>{{item.brojSedista}}</td>
                 <td>{{item.tipVozila}}</td>
-                <td><button *ngIf="Getuloga == '1'" class="btn btn-success"  (click)="rezervisi(item)">Rezerviši</button></td>
+                <td><button *ngIf="Getuloga() == '1'" class="btn btn-success"  (click)="rezervisi(item)">Rezerviši</button></td>
             </tr>
         </tbody>
     </table>

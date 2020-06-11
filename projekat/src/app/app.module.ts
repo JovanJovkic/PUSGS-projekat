@@ -31,6 +31,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { GoogleLoginProvider, FacebookLoginProvider, AuthService } from 'angularx-social-login';  
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';  
 import { RegistracijaAdminComponent } from './components/registracija-admin/registracija-admin.component';
+import { PromeniLozinkuComponent } from './components/promeni-lozinku/promeni-lozinku.component';
 
 /*
 export function socialConfigs() {  
@@ -85,7 +86,8 @@ export function provideConfig()
     RentFilteredComponent,
     AviokompAdminProfilComponent,
     AvioProfilComponent,
-    RegistracijaAdminComponent
+    RegistracijaAdminComponent,
+    PromeniLozinkuComponent
   ],
   imports: [
     BrowserModule,

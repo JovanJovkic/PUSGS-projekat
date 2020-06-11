@@ -11,6 +11,7 @@ import { RezervacijaVozila } from 'src/app/entities/rezervacijaVozila/rezervacij
 import { RezervacijaVozilaService } from 'src/app/services/rezervacijaVozila/rezervacija-vozila.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { environment }  from 'src/environments/environment';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-rent-profil',
@@ -53,8 +54,8 @@ export class RentProfilComponent implements OnInit {
     });
   }*/
 
-  Getuloga():string{
-    return environment.uloga;
+  Getuloga(){
+    return NavbarComponent.uloga
   }
 
   filterVozila(): void {
@@ -235,5 +236,9 @@ export class RentProfilComponent implements OnInit {
     CenaOdFilter: [''],
     CenaDoFilter: ['']
   });
+
+  brzeRezervacije():void{
+    
+  }
 
 }
