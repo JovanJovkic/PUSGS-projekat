@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AircompaniesService } from 'src/app/services/aircompanies-service/aircompanies.service';
 import { AirCompanies } from 'src/app/entities/aircompanies/aircompanies';
 import { ActivatedRoute } from '@angular/router';
@@ -7,6 +8,9 @@ import { DestinacijaService } from 'src/app/services/destinacija-service/destina
 import { AbstractFilterParam } from 'src/app/entities/abstract-filter-param/abstract-filter-param';
 import { StringFilterParam } from 'src/app/entities/string-filter-param/string-filter-param';
 import { NumberFilterParam } from 'src/app/entities/number-filter-param/number-filter-param';
+import { environment }  from 'src/environments/environment';
+import { RezervacijaDestinacije } from 'src/app/entities/rezervacijaDestinacije/rezervacijaDestinacije';
+import { RezervacijaDestinacijeService } from 'src/app/services/rezervacijaDestinacije/rezervacija-destinacije.service';
 
 @Component({
   selector: 'app-avio-profil',
@@ -19,10 +23,13 @@ export class AvioProfilComponent implements OnInit {
   profil:AirCompanies;
   id: number;
 
+  rezervacija:RezervacijaDestinacije;
+  uloga = environment.uloga;
+
   allDestinacija:Array<Destinacija>;
   filteredDestinacija:Array<Destinacija>;
   
-  constructor(private airCompaniesServis: AircompaniesService,private route: ActivatedRoute, private destinacijaService:DestinacijaService) { 
+  constructor(private airCompaniesServis: AircompaniesService,private route: ActivatedRoute, private destinacijaService:DestinacijaService, private rezervacijaServis:RezervacijaDestinacijeService, private fb: FormBuilder) { 
     this.allProfiles = new Array<AirCompanies>();
     route.params.subscribe(params => { this.id = params['id']; });
     this.profil = new AirCompanies(0, "", "", "", "", "", "", "", "", "");
@@ -31,6 +38,10 @@ export class AvioProfilComponent implements OnInit {
   ngOnInit(): void {
   //  this.loadAvioCompanies();
     this.loadAirCompanies();
+  }
+
+  Getuloga():string{
+    return environment.uloga;
   }
 
   /*
@@ -96,5 +107,26 @@ loadDestinacija()
   resetFilter(): void {
     this.filteredDestinacija = this.allDestinacija;
   }
+
+  rezervisi(destinacija:Destinacija):void{ 
+    this.rezervacija.idDestinacije = destinacija.id;
+    this.rezervacija.destinacija = destinacija;
+    this.rezervacijaServis.rezervisiDestinaciju(this.rezervacija).subscribe(
+      (res: any) => {
+       /* res.forEach(element => {
+              
+            
+          });*/
+          console.log(res);
+          alert("Uspesno ste rezervisali destinaciju!");
+      },
+      err => {
+        if (err.status == 400)
+        {
+          alert("Doslo je do konflikta, osvezite podatke i probajte ponovo!");
+        }
+      }
+      );
+    }    
 
 }
