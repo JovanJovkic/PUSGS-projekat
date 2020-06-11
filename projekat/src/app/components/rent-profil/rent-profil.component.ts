@@ -12,6 +12,8 @@ import { RezervacijaVozilaService } from 'src/app/services/rezervacijaVozila/rez
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { environment }  from 'src/environments/environment';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { BrzaRezervacijaVozila } from 'src/app/entities/brzaRezervacijaVozila/brzaRezervacijaVozila';
+import { BrzaRezervacijaVozilaService } from 'src/app/services/brzaRezervacijaVozila/brza-rezervacija-vozila.service';
 
 @Component({
   selector: 'app-rent-profil',
@@ -29,8 +31,10 @@ export class RentProfilComponent implements OnInit {
 
   rezervacija:RezervacijaVozila;
   uloga = environment.uloga;
+
+  brzeRez: Array<BrzaRezervacijaVozila>;
   
-  constructor(private rentACarServis: RentACarService,private route: ActivatedRoute,private voziloServis:VoziloService, private rezervacijaServis:RezervacijaVozilaService, private fb: FormBuilder) { 
+  constructor(private rentACarServis: RentACarService,private route: ActivatedRoute,private voziloServis:VoziloService, private rezervacijaServis:RezervacijaVozilaService, private fb: FormBuilder, private brzeRezService:BrzaRezervacijaVozilaService) { 
     this.allProfiles = new Array<RentACarServis>();
     route.params.subscribe(params => { this.id = params['id']; });
     this.profil=new RentACarServis(0,"","","",0,"");
@@ -238,7 +242,33 @@ export class RentProfilComponent implements OnInit {
   });
 
   brzeRezervacije():void{
-    
+    this.brzeRezService.getBrzaRezZaRent(this.profil.id).subscribe(
+      (res: any) => {
+        this.brzeRez = new Array<BrzaRezervacijaVozila>();
+        res.forEach(element => {
+              console.log('e');
+              this.brzeRez.push(element);
+              console.log(this.brzeRez);
+          });
+          //this.filteredVozila=this.profil.vozila;
+      }
+      );
   }
+
+  RezervisiBrzuRezervaciju(rez:BrzaRezervacijaVozila):void{
+    this.brzeRezService.rezervisiVoziloBrzo(rez).subscribe(
+      (res: any) => {
+          console.log(res);
+          alert("Uspesno ste rezervisali vozilo!");
+      },
+      err => {
+        if (err.status == 400)
+        {
+          alert("Doslo je do konflikta, osvezite podatke i probajte ponovo!");
+        }
+      }
+      );
+  }
+
 
 }

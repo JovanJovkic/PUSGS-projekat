@@ -33,6 +33,9 @@ import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { RegistracijaAdminComponent } from './components/registracija-admin/registracija-admin.component';
 import { PromeniLozinkuComponent } from './components/promeni-lozinku/promeni-lozinku.component';
 
+import { ChartsModule, WavesModule } from 'angular-bootstrap-md'
+
+
 /*
 export function socialConfigs() {  
   const config = new AuthServiceConfig(  
@@ -68,6 +71,7 @@ export function provideConfig()
 
 @NgModule({
   declarations: [
+  
     AppComponent,
     RegistracijaFormaComponent,
     PrijavaFormaComponent,
@@ -90,6 +94,8 @@ export function provideConfig()
     PromeniLozinkuComponent
   ],
   imports: [
+    ChartsModule,
+    //WavesModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

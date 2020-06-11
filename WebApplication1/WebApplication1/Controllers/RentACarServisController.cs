@@ -47,6 +47,35 @@ namespace WebApplication1.Controllers
             return servisi;
         }
 
+        [HttpPut]
+        [Route("GetRentACarServisPosleAvio")]
+        public async Task<ActionResult<RentACarServis>> GetRentACarServisPosleAvio(RezVozPosleAvio rez)
+        {
+            List<Filijala> filijale = _context.Filijale.ToList();
+
+            foreach (Filijala item in filijale.ToList())
+            {
+                if (item.Mesto != rez.Lokacija)
+                {
+                    filijale.Remove(item);
+                }
+            }
+
+            RentACarServis rent = new RentACarServis();
+
+            if(filijale.Count==0)
+            {
+                // nema servisa u tom mestu
+                rent = _context.RentACarServisi.FirstOrDefault();
+            }
+            else
+            {
+                rent =  _context.RentACarServisi.Find(filijale[0].RentACarServisID);
+            }
+
+            return rent;
+        }
+
         [HttpGet]
         [Route("GetRentACarServisiZaAdmina/{id}")]
         public async Task<ActionResult<IEnumerable<RentACarServis>>> GetRentACarServisiZaAdmina(string id)

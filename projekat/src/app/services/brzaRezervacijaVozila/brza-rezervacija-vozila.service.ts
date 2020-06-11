@@ -42,4 +42,24 @@ export class BrzaRezervacijaVozilaService {
 
   }
 
+  getBrzaRezZaRent(id:Number)
+  {
+    return this.http.get(this.BaseURI + '/BrzaRezVoz/GetBrzaRezervacijaVozilaZaRent/' + id);
+  }
+
+  rezervisiVoziloBrzo(rezervacija: BrzaRezervacijaVozila)
+  {
+    var body = {
+      IdRentACar : rezervacija.idRentACar,
+      IdVozila : rezervacija.idVozila,
+      IdKlijenta : rezervacija.idKlijenta,
+      Cena : rezervacija.novaCena,
+      PocetniDatum : rezervacija.pocetniDatum,
+      KrajnjiDatum : rezervacija.krajnjiDatum,
+     // Vozilo: rezervacija.vozilo
+    };
+    
+    return this.http.post(this.BaseURI + '/BrzaRezVoz/Rezervisi/', body);
+  }
+
 }

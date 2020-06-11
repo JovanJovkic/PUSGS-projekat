@@ -326,5 +326,5 @@ C:\Users\Marko\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\
 C:\Users\Marko\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.csprojAssemblyReference.cache
 C:\Users\Marko\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.csprojAssemblyReference.cache
+C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.csprojAssemblyReference.cache

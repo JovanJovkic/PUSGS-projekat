@@ -45,6 +45,21 @@ namespace WebApplication1.Controllers
             return rezervacija;
         }
 
+
+        [HttpGet]
+        [Route("GetBrzaRezervacijaVozilaZaRent/{id}")]
+        public async Task<ActionResult<IEnumerable<BrzaRezervacijaVozila>>> GetBrzaRezervacijaVozilaZaRent(int id)
+        {
+            List<BrzaRezervacijaVozila> lista = _context.BrzeRezervacijeVozila.Where(x => x.IdRentACar == id).ToList();
+
+            if (lista == null)
+            {
+                return NotFound();
+            }
+
+            return lista;
+        }
+
         [HttpDelete]
         [Route("DeleteBrzaRezervacijaVozila/{id}")]
         public async Task<ActionResult<BrzaRezervacijaVozila>> DeleteBrzaRezervacijaVozila(int id)
@@ -59,6 +74,49 @@ namespace WebApplication1.Controllers
             await _context.SaveChangesAsync();
 
             return rezervacija;
+        }
+
+        [HttpPost]
+        [Route("Rezervisi")]
+        public async Task<ActionResult<BrzaRezervacijaVozila>> Rezervisi(BrzaRezervacijaVozila rezervacija)
+        {
+            BrzaRezervacijaVozila brza = _context.BrzeRezervacijeVozila.Where(x => x.Id == rezervacija.Id).FirstOrDefault();
+
+            if (rezervacija.RowVersion.Length != brza.RowVersion.Length)
+            {
+                return BadRequest();
+            }
+
+            for (int i = 0; i < brza.RowVersion.Length; i++)
+            {
+                if (brza.RowVersion[i] != rezervacija.RowVersion[i])
+                {
+                    return BadRequest();
+                }
+            }
+
+            RezervacijaVozila rez = new RezervacijaVozila();
+            rez.IdKlijenta = rezervacija.IdKlijenta;
+            rez.IdRentACar = rezervacija.IdRentACar;
+            rez.IdVozila = rezervacija.IdVozila;
+            rez.Cena = rezervacija.NovaCena;
+            rez.KrajnjiDatum = rezervacija.KrajnjiDatum;
+            rez.PocetniDatum = rezervacija.PocetniDatum;
+            rez.Zavrseno = false;
+
+            rezervacija.Zavrseno = true;
+            _context.Entry(rezervacija).State = EntityState.Modified;
+            _context.RezervacijeVozila.Add(rez);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+
+            }
+            return Ok();
         }
 
         private bool BrzaRezervacijaVozilaExists(int id)

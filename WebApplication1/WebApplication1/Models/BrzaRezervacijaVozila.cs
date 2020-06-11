@@ -28,5 +28,8 @@ namespace WebApplication1.Models
         public DateTime PocetniDatum { get; set; }
 
         public DateTime KrajnjiDatum { get; set; }
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
     }
 }

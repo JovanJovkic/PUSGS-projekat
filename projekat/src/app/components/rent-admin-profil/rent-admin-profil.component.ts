@@ -385,7 +385,7 @@ export class RentAdminProfilComponent implements OnInit {
     var idRent = this.idZaBrzuRezervaciju;
     var email = '';
     //console.log(voziloNazivFo);
-    var rez = new BrzaRezervacijaVozila(0,idRent,+voziloNazivFo,email,+popustFo,0,0,pocetniDatFo,krajnjiDatFo);
+    var rez = new BrzaRezervacijaVozila(0,idRent,+voziloNazivFo,email,+popustFo,0,0,pocetniDatFo,krajnjiDatFo,[]);
 
     this.brzaRezVozService.dodajBrzuRez(rez).subscribe(
       (res: any) => {
@@ -396,7 +396,7 @@ export class RentAdminProfilComponent implements OnInit {
 
       }
     );
-  }
+  } 
 
   ucitajSveBrzeRezervacije(){
    

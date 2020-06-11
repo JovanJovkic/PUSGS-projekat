@@ -7,6 +7,7 @@ import { NumberFilterParam } from 'src/app/entities/number-filter-param/number-f
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Vozilo } from 'src/app/entities/vozilo/vozilo';
 import { VoziloService } from 'src/app/services/vozilo/vozilo.service';
+import { ChartsModule, WavesModule } from 'angular-bootstrap-md'
 
 @Component({
   selector: 'app-rent-pocetna',
@@ -21,6 +22,10 @@ export class RentPocetnaComponent implements OnInit {
   constructor(private rentACarService: RentACarService,private voziloService: VoziloService) { 
     this.allRentACarServis = new Array<RentACarServis>();    
   }
+
+  
+ 
+
 
   ngOnInit(): void {
     this.loadRentServis();
@@ -130,5 +135,32 @@ export class RentPocetnaComponent implements OnInit {
       }
       );
   }
+  public chartType: string = 'line';
 
+  public chartDatasets: Array<any> = [
+    { data: [], label: 'Broj rezervacija' }
+  ];
+
+  public chartLabels: Array<any> = ['Januar', 'Februar', 'Mart', 'April', 'Maj', 'Jun', 'Jul', 'Avgust', 'Septembar', 'Oktobar','Novembar','Decembar'];
+
+  public chartColors: Array<any> = [
+    {
+      backgroundColor: 'rgba(105, 0, 132, .2)',
+      borderColor: 'rgba(200, 99, 132, .7)',
+      borderWidth: 2,
+    },
+    {
+      backgroundColor: 'rgba(0, 137, 132, .2)',
+      borderColor: 'rgba(0, 10, 130, .7)',
+      borderWidth: 2,
+    }
+  ];
+
+  public chartOptions: any = {
+    responsive: true
+  };
+  public chartClicked(e: any): void { }
+  public chartHovered(e: any): void { }
+
+  
 }

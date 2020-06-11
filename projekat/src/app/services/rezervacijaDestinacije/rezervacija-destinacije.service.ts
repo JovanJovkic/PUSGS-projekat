@@ -22,7 +22,9 @@ export class RezervacijaDestinacijeService {
       KrajnjiDatum : rezervacija.krajnjiDatum,
       Destinacija: rezervacija.destinacija
     };
+
+    console.log(body);
     
-    return this.http.post(this.BaseURI + '/RezervacijaDestinacije/AddRezervacijaDestinacije/', body);
+    return this.http.post(this.BaseURI + '/RezervacijaDestinacije/AddRezervacijaDestinacija/', body);
   }
 }

@@ -167,4 +167,14 @@ export class RentACarService {
      return this.http.get<RentACarServis>(this.BaseURI + '/RentACarServis/GetRentACarServisiZaAdmina/'+id);
   }
   
+  rentACarPosleAvio(lokacija:string,datum:string)
+  {
+    var body = {
+      Lokacija: lokacija,
+      Datum: datum,
+    };
+    console.log(body);
+    return this.http.put(this.BaseURI + '/RentACarServis/GetRentACarServisPosleAvio', body);
+  }
+  
 }

@@ -1,4 +1,5 @@
 import { NumberValueAccessor } from '@angular/forms';
+import { Vozilo } from '../vozilo/vozilo';
 
 export class BrzaRezervacijaVozila {
     id: number;
@@ -10,8 +11,9 @@ export class BrzaRezervacijaVozila {
     popust:number;
     pocetniDatum: string;
     krajnjiDatum:string;
+    rowVersion:any[];
 
-    constructor(id:number, idRentACar: number, idVozila: number, idKlijenta: string,popust: number,pocetnaCena: number, novaCena: number,pocetniDatum:string,krajnjiDatum:string) {
+    constructor(id:number, idRentACar: number, idVozila: number, idKlijenta: string,popust: number,pocetnaCena: number, novaCena: number,pocetniDatum:string,krajnjiDatum:string, rowVersion:any[]) {
         this.id = id;
         this.idRentACar = idRentACar;
         this.idVozila = idVozila;
@@ -21,6 +23,7 @@ export class BrzaRezervacijaVozila {
         this.pocetnaCena = pocetnaCena;
         this.novaCena = novaCena;
         this.popust = popust;
+        this.rowVersion = rowVersion;
     }
 
 }
