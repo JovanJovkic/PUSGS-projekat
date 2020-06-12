@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Korisnik } from 'src/app/entities/korisnik/korisnik';
 import { AvionService } from 'src/app/services/avion/avion.service';
 import { KorisnikServiceService } from 'src/app/services/korisnik-service/korisnik-service.service';
+import { UserService } from 'src/app/services/korisnik-service/user.service';
 
 @Component({
   selector: 'app-profil-korisnika',
@@ -15,8 +16,9 @@ export class ProfilKorisnikaComponent implements OnInit {
 
   allKorisnik: Array<Korisnik>;
   korisnikToEdit: Korisnik;
+  korisnik:Korisnik;
 
-  constructor(private korisnikService: KorisnikServiceService) {
+  constructor(private korisnikService: KorisnikServiceService,private userService:UserService) {
     //alert("Upravo se pozvao konstruktor komponente Avion");
     this.allKorisnik = new Array<Korisnik>();
     this.korisnikToEdit = new Korisnik("", "", "", "", "", "", "");
@@ -28,7 +30,17 @@ export class ProfilKorisnikaComponent implements OnInit {
   }
 
   loadKorisnik(): void {
-    this.allKorisnik = this.korisnikService.loadKorisnik();
+    //this.allKorisnik = this.korisnikService.loadKorisnik();
+    localStorage.getItem("userName");
+
+    this.userService.getUser(localStorage.getItem("userName")).subscribe(
+      (res: any) => {
+        
+              this.korisnik = res;
+      }
+      );
+
+      
   }
 
   editKorisnikModal(korisnik: Korisnik): void {
@@ -36,14 +48,25 @@ export class ProfilKorisnikaComponent implements OnInit {
   }
 
   editKorisnikInfo(): void {
-    let email = (<HTMLInputElement> document.getElementById("email")).value;
-    let lozinka = (<HTMLInputElement> document.getElementById("lozinka")).value;
+    //let email = (<HTMLInputElement> document.getElementById("email")).value;
+    //let lozinka = (<HTMLInputElement> document.getElementById("lozinka")).value;
     let ime = (<HTMLInputElement> document.getElementById("ime")).value;
     let prezime = (<HTMLInputElement> document.getElementById("prezime")).value;
     let grad = (<HTMLInputElement> document.getElementById("grad")).value;
     let telefon = (<HTMLInputElement> document.getElementById("telefon")).value;
-    let prijatelji = (<HTMLInputElement> document.getElementById("prijatelji")).value;
-    this.updateKorisnik(email, lozinka, ime, prezime, grad, telefon, prijatelji);
+    //let prijatelji = (<HTMLInputElement> document.getElementById("prijatelji")).value;
+
+    this.korisnik.ime = ime;
+    this.korisnik.prezime = prezime;
+    this.korisnik.grad = grad;
+    this.korisnik.telefon = telefon;
+
+    //izmeni korisnika
+    this.userService.izmeniKorisnika(this.korisnik).subscribe(
+      (res: any) => {
+
+      }
+      );
   }
 
   updateKorisnik(email: string, lozinka: string, ime:string, prezime:string, grad:string, telefon: string, prijatelji: string ): void {

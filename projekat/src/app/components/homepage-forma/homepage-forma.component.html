@@ -1,3 +1,10 @@
+<div *ngIf="(Getuloga == '2' || Getuloga == '3') && izmena=='false'">
+  <app-promeni-lozinku></app-promeni-lozinku>
+</div>
+
+
+
+<div *ngIf="(Getuloga == '2' && izmena=='true') || (Getuloga == '3' && izmena=='true') || (Getuloga != '2' && Getuloga != '3')">
 
 <h2 align = "center" style="background-color: #b8d9c1; border-style:double;">Home page</h2>
 <hr/>
@@ -70,4 +77,6 @@
         </tbody>
   </table>
   
+</div>
+
 </div>

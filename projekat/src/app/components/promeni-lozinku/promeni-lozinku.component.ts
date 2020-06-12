@@ -23,7 +23,7 @@ export class PromeniLozinkuComponent implements OnInit {
     
     this.service.promeniLozinku(this.formModel.StaraLozinka,this.formModel.NovaLozinka).subscribe(
       (res: any) => {
-      
+        localStorage.setItem("sifraIzmenjena","true");
       },
       err => {
         /*

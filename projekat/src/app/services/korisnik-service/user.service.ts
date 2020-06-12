@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Korisnik } from 'src/app/entities/korisnik/korisnik';
 
 @Injectable({
   providedIn: 'root'
@@ -103,5 +104,13 @@ export class UserService {
     return this.http.put(this.BaseURI + '/ApplicationUser/IzmeniSifru',body);
   }
 
+  getUser(email:string) {
+    return this.http.get(this.BaseURI + '/ApplicationUser/GetUser/'+email);
+  }
+
+  izmeniKorisnika(korisnik:Korisnik) {
+
+    return this.http.post(this.BaseURI + '/ApplicationUser/UpdateUser',korisnik);
+  }
 
 }

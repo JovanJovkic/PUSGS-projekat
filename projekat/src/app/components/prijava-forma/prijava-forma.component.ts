@@ -59,6 +59,7 @@ export class PrijavaFormaComponent implements OnInit {
         localStorage.setItem('token', res.token);
         localStorage.setItem('userName', res.userName);
         localStorage.setItem('uloga', res.uloga);
+        localStorage.setItem('sifraIzmenjena', res.izmenjenaLozinka);
         this.router.navigateByUrl('/homepage-forma');
         environment.uloga = res.uloga;
         NavbarComponent.uloga = res.uloga;

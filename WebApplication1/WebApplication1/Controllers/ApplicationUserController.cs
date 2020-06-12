@@ -59,7 +59,8 @@ namespace WebApplication1.Controllers
                 Ime = model.Ime,
                 Prezime = model.Prezime,
                 Grad = model.Grad,
-                Telefon = model.Telefon
+                Telefon = model.Telefon,
+                IzmenjenaLozinka = false
             };
 
             try
@@ -102,7 +103,7 @@ namespace WebApplication1.Controllers
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var securityToken = tokenHandler.CreateToken(tokenDescriptor);
                 var token = tokenHandler.WriteToken(securityToken);
-                return Ok(new { token, model.UserName, user.Uloga });
+                return Ok(new { token, model.UserName, user.Uloga, user.IzmenjenaLozinka });
             }
             else
                 return BadRequest(new { message = "Username or password is incorrect." });
@@ -326,11 +327,36 @@ namespace WebApplication1.Controllers
             try
             {
                 _userManager.ChangePasswordAsync(user, izmena.StaraSifra, izmena.NovaSifra);
+                user.IzmenjenaLozinka = true;
+                RentServis servis = new RentServis(_context);
+                servis.potvrdi(user);
+                //_userManager.UpdateAsync(user);
             }
             catch(Exception e)
             {
 
             }
         }
+
+        [HttpGet]
+        [Route("GetUser/{email}")]
+        public Korisnik GetUser(string email)
+        {
+            Korisnik k = _userManager.FindByNameAsync(email).Result;
+
+            return k;
+        }
+
+        [HttpPost]
+        [Route("UpdateUser")]
+        public Korisnik UpdateUser(Korisnik k)
+        {
+            RentServis servis = new RentServis(_context);
+            servis.potvrdi(k);
+
+            return k;
+        }
+
+        
     }
 }

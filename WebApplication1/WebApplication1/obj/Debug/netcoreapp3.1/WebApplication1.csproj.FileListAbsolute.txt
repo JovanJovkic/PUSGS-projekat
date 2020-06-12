@@ -162,7 +162,6 @@ C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\
 C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Embedded.dll
 C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.csprojAssemblyReference.cache
 C:\Users\Marko\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Marko\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Marko\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -328,3 +327,4 @@ C:\Users\Marko\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\
 C:\Users\Marko\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.pdb
 C:\Users\Marko\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.genruntimeconfig.cache
 C:\Users\Marko\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.csprojAssemblyReference.cache
+C:\Users\jovan\Desktop\PUSGS-projekat\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.csprojAssemblyReference.cache

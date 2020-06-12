@@ -34,5 +34,7 @@ namespace WebApplication1.Models
         public string Telefon { get; set; }
 
         public TipKorisnika Uloga { get; set; }
+
+        public bool IzmenjenaLozinka { get; set; }
     }
 }
