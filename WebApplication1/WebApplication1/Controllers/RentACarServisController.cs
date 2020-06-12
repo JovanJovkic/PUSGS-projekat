@@ -252,6 +252,34 @@ namespace WebApplication1.Controllers
             return rezultat;
         }
 
+        [HttpGet]
+        [Route("GetMesecniIzvestaj/{id}")]
+        public async Task<ActionResult<IEnumerable<int>>> GetMesecniIzvestaj(int id)
+        {
+            return servis.BrojNaMesecnomNivou(id);
+        }
+
+        [HttpGet]
+        [Route("GetNedeljniIzvestaj/{id}")]
+        public async Task<ActionResult<IEnumerable<int>>> GetNedeljniIzvestaj(int id)
+        {
+            return servis.BrojNaNedeljnomNivou(id);
+        }
+
+        [HttpGet]
+        [Route("GetDnevniIzvestaj/{id}")]
+        public async Task<ActionResult<IEnumerable<int>>> GetDnevniIzvestaj(int id)
+        {
+            return servis.BrojNaDnevnomNivou(id);
+        }
+
+        [HttpPost]
+        [Route("Prihodi")]
+        public async Task<ActionResult<double>> Prihodi(PrihodiZaPeriod pp)
+        {
+            return servis.OdrediPrihodeZaPeriod(pp);
+        }
+
 
     }
 }

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ToastrModule } from 'ngx-toastr';
+import {animate, trigger, state, style, transition} from '@angular/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,7 +34,8 @@ import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { RegistracijaAdminComponent } from './components/registracija-admin/registracija-admin.component';
 import { PromeniLozinkuComponent } from './components/promeni-lozinku/promeni-lozinku.component';
 
-import { ChartsModule, WavesModule } from 'angular-bootstrap-md'
+import { ChartsModule, WavesModule } from 'angular-bootstrap-md';
+import { RentIzvestajComponent } from './components/rent-izvestaj/rent-izvestaj.component'
 
 
 /*
@@ -91,7 +93,8 @@ export function provideConfig()
     AviokompAdminProfilComponent,
     AvioProfilComponent,
     RegistracijaAdminComponent,
-    PromeniLozinkuComponent
+    PromeniLozinkuComponent,
+    RentIzvestajComponent
   ],
   imports: [
     ChartsModule,

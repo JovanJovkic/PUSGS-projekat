@@ -27,6 +27,9 @@ namespace WebApplication1.Models
 
         public DateTime KrajnjiDatum { get; set; }
 
+        public int OcenaZaRentACar { get; set; }
+        public int OcenaZaVozilo { get; set; }
+
         [NotMapped]
         public List<DateTime> ZauzetiDatumi { get; set; }
 

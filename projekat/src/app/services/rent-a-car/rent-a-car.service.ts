@@ -173,8 +173,35 @@ export class RentACarService {
       Lokacija: lokacija,
       Datum: datum,
     };
-    console.log(body);
+    //console.log(body);
     return this.http.put(this.BaseURI + '/RentACarServis/GetRentACarServisPosleAvio', body);
+  }
+
+  mesecniIzvestaj(id:Number)
+  {
+     return this.http.get<Number>(this.BaseURI + '/RentACarServis/GetMesecniIzvestaj/'+id);
+  }
+
+  nedeljniIzvestaj(id:Number)
+  {
+    return this.http.get<Number>(this.BaseURI + '/RentACarServis/GetNedeljniIzvestaj/'+id);
+  }
+
+  dnevniIzvestaj(id:Number)
+  {
+    return this.http.get<Number>(this.BaseURI + '/RentACarServis/GetDnevniIzvestaj/'+id);
+  }
+
+  odrediPrihode(id:Number,datumOd:String,DatumDo:string)
+  {
+    var body = {
+      IdRentACar: +id,
+      PocetniDatum: datumOd,
+      KrajnjiDatum: DatumDo
+    };
+
+    console.log(body);
+    return this.http.post(this.BaseURI + '/RentACarServis/Prihodi', body);
   }
   
 }

@@ -29,6 +29,8 @@ namespace WebApplication1.Models
 
         public int FilijalaID { get; set; }
 
+        public double Ocena { get; set; }
+
         [NotMapped]
         public List<DateTime> ZauzetiDatumi { get; set; }
 
