@@ -33,7 +33,7 @@ export class AvioProfilComponent implements OnInit {
   constructor(private airCompaniesServis: AircompaniesService, private rentService: RentACarService,private route: ActivatedRoute, private destinacijaService:DestinacijaService, private rezervacijaServis:RezervacijaDestinacijeService, private fb: FormBuilder,private router: Router) { 
     this.allProfiles = new Array<AirCompanies>();
     route.params.subscribe(params => { this.id = params['id']; });
-    this.profil = new AirCompanies(0, "", "", "", "", "", "", "", "", "");
+    this.profil = new AirCompanies(0, "", "", "", "", "", "", "", "", "", "");
   }
 
   ngOnInit(): void {
@@ -67,7 +67,7 @@ export class AvioProfilComponent implements OnInit {
       var temp = res;
       //temp.forEach(element => {
         
-        const ak = new AirCompanies(temp.id,temp.nazivAvioKompanije,temp.adresa,temp.promotivniOpis, temp.destNaKojimPosluje, temp.letovi, temp.spisakKarataSaPopustomZaBrzuRez, temp.konfigSegMesta, temp.cenovnik, temp.infoPrtljag);
+        const ak = new AirCompanies(temp.id,temp.nazivAvioKompanije,temp.adresa,temp.promotivniOpis, temp.destNaKojimPosluje, temp.letovi, temp.spisakKarataSaPopustomZaBrzuRez, temp.konfigSegMesta, temp.cenovnik, temp.infoPrtljag, temp.admin);
         console.log(temp);
         
         if(temp.destinacija!=null)

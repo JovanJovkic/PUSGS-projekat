@@ -27,6 +27,8 @@ namespace WebApplication1.Data
 
         public DbSet<RezervacijaDestinacije> RezervacijeDestinacija { get; set; }
 
+        public DbSet<BrzaRezervacijaDestinacija> BrzeRezervacijeDestinacije { get; set; }
+
         public DbSet<Filijala> Filijale { get; set; }
 
         public DbSet<RezervacijaVozila> RezervacijeVozila { get; set; }
