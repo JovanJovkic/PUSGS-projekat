@@ -12,9 +12,13 @@ export class AirCompanies {
     konfigSegMesta: string;
     cenovnik: string;
     infoPrtljag: string;
+    cenaPrviDan : number;
+    cenaSledeciDan : number;
+    odobreno:boolean;
+    admin:string;
     destinacija: Array<Destinacija>;
 
-    constructor(id:number, nazivAvioKompanije: string, adresa: string, promotivniOpis: string, destNaKojimPosluje: string,letovi: string,spisakKarataSaPopustomZaBrzuRez: string,konfigSegMesta: string,cenovnik: string,infoPrtljag: string) {
+    constructor(id:number, nazivAvioKompanije: string, adresa: string, promotivniOpis: string, destNaKojimPosluje: string,letovi: string,spisakKarataSaPopustomZaBrzuRez: string,konfigSegMesta: string,cenovnik: string,infoPrtljag: string, admin:string) {
         this.id = id;
         this.nazivAvioKompanije = nazivAvioKompanije;
         this.adresa = adresa;
@@ -25,6 +29,7 @@ export class AirCompanies {
         this.konfigSegMesta = konfigSegMesta;
         this.cenovnik = cenovnik;
         this.infoPrtljag = infoPrtljag;
+        this.admin = admin;
         this.destinacija = new Array<Destinacija>();
     }
 }

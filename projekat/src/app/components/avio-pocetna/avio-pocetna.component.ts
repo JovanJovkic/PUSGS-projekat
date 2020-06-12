@@ -6,7 +6,10 @@ import { TransformVisitor } from '@angular/compiler/src/render3/r3_ast';
 import { Destinacija } from 'src/app/entities/destinacija/destinacija';
 import { DestinacijaService } from 'src/app/services/destinacija-service/destinacija.service';
 import { AircompaniesService } from 'src/app/services/aircompanies-service/aircompanies.service';
-import { AirCompanies } from 'src/app/entities/aircompanies/aircompanies'; 
+import { AirCompanies } from 'src/app/entities/aircompanies/aircompanies';
+import { BrzaRezervacijaDestinacije } from 'src/app/entities/brzaRezervacijaDestinacije/brzaRezervacijaDestinacije';
+import { BrzaRezervacijaDestinacijeService } from 'src/app/services/brzaRezervacijaDestinacije/brza-rezervacija-destinacije.service'
+
 
 @Component({
   selector: 'app-avio-pocetna',
@@ -21,8 +24,11 @@ export class AvioPocetnaComponent implements OnInit {
   avionToEdit: AirCompanies;
   destinacijaToEdit: AirCompanies;
   destinacijaEdit: Destinacija;
+  destinacijeZaBrzuRezervaciju: Array<Destinacija>;
+  idZaBrzuRezervaciju;
+  brzeRez: Array<BrzaRezervacijaDestinacije>;
 
-  constructor(private avionService: AircompaniesService, private destinacijaService: DestinacijaService) {
+  constructor(private avionService: AircompaniesService, private destinacijaService: DestinacijaService, private brzaRezDesService: BrzaRezervacijaDestinacijeService) {
     //alert("Upravo se pozvao konstruktor komponente Avion");
     this.allAvion = new Array<AirCompanies>();
     //this.avionToEdit = new Avion("", "", "", "", "", "", "", "", "");
@@ -30,6 +36,7 @@ export class AvioPocetnaComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadAvion();
+    this.ucitajSveBrzeRezervacije();
     //alert("Upravo se pozvala OnInit metoda komponente Avion");
   }
 
@@ -75,6 +82,18 @@ export class AvioPocetnaComponent implements OnInit {
     this.avionToEdit = null;
   }
 
+  odobri(servis:AirCompanies):void{
+    this.avionService.odobri(servis.id).subscribe(
+      (res: any) => {
+        this.loadAvion();
+      },
+      err => {
+        alert('Morate popuni sve podatke o rent-a-car servisu!')
+
+      }
+    );
+  }
+
   EditAirCompany(avion: AirCompanies): void {
     this.avionToEdit = avion;
   }
@@ -90,11 +109,14 @@ export class AvioPocetnaComponent implements OnInit {
         temp.forEach(element => {
           console.log(element);
           const ak = new AirCompanies(element.id, element.nazivAvioKompanije, element.gradAvioKompanije, element.promotivniOpis, element.destnako
-            , element.letovi, element.spisakKarataSaPopustomZaBrzuRez, element.konfigSegMesta, element.cenovnik, element.infoPrtljag);
-          console.log(element);
+            , element.letovi, element.spisakKarataSaPopustomZaBrzuRez, element.konfigSegMesta, element.cenovnik, element.infoPrtljag, element.admin);
+          ak.cenaPrviDan = element.cenaPrviDan;
+          ak.cenaSledeciDan = element.cenaSledeciDan;
+          ak.odobreno = element.odobreno;
+            //console.log(element);
           if(ak.destinacija.length!=0)
           {
-            console.log(ak.destinacija);
+            //console.log(ak.destinacija);
             ak.destinacija=element.destinacija;
           }
          
@@ -216,6 +238,112 @@ export class AvioPocetnaComponent implements OnInit {
   }
 
 
+  destinacijaZaOdredjenuAvioKompaniju(aircompany:AirCompanies):void{
+
+    var id = aircompany.id ;
+    this.idZaBrzuRezervaciju =id;
+
+    this.destinacijeZaBrzuRezervaciju = new Array<Destinacija>();
+
+    this.destinacijaService.ucitajDestinacijaZaAviokompanijuOdredjenu(id).subscribe(
+      (res: any) => {
+
+        if (res != null ) {
+          //pravimo destinacije i stavljamo u neku listu
+          res.forEach(element => {
+            this.destinacijeZaBrzuRezervaciju.push(element);
+          });
+         
+        }
+
+      }
+    );
+
+  }
+
+  izmeniCenovnikInfo():void{
+    let cenaPrviDan = (<HTMLInputElement> document.getElementById("cenaPrviDanFo")).value;
+    let cenaSledeciDan = (<HTMLInputElement> document.getElementById("cenaSledeciDanFo")).value;
+
+    this.avionToEdit.cenaPrviDan = +cenaPrviDan;
+    this.avionToEdit.cenaSledeciDan = +cenaSledeciDan;
+
+    this.avionService.izmeniAirCompany(this.avionToEdit).subscribe(
+      (res: any) => {
+        if (res != null ) {
+          alert("Vasa izmena je sacuvana!");
+          this.loadAvion();
+          //this.loadVozila();
+          //(<HTMLInputElement> document.getElementById("naslovEditEdit")).value = "Vasa izmena je sacuvana!";
+        }
+      }
+    );
+    this.avionToEdit = null;
+
+  }
+
+  pogledajCenovnik(servis:AirCompanies):void{
+    this.avionToEdit = servis;
+  }
+
+  dodajBrzuRezervaciju():void{
+
+    let destinacijaNazivFo = (<HTMLInputElement> document.getElementById("destinacijaNazivFo")).value;
+    let pocetniDatFo = (<HTMLInputElement> document.getElementById("pocetniDatFo")).value;
+    let krajnjiDatFo = (<HTMLInputElement> document.getElementById("krajnjiDatFo")).value;
+    let popustFo = (<HTMLInputElement> document.getElementById("popustFo")).value;
+
+    var idRent = this.idZaBrzuRezervaciju;
+    var email = '';
+    //console.log(destinacijaNazivFo);
+    var rez = new BrzaRezervacijaDestinacije(0,idRent,+destinacijaNazivFo,email,+popustFo,0,0,pocetniDatFo,krajnjiDatFo,[]);
+
+    this.brzaRezDesService.dodajBrzuRez(rez).subscribe(
+      (res: any) => {
+
+        if (res != null ) {
+ 
+        }
+
+      }
+    );
+  } 
+
+  ucitajSveBrzeRezervacije(){
+   
+    this.brzaRezDesService.ucitajSveBrzeRez().subscribe(
+    (res: any) => {
+      if (res != null) {
+
+        this.brzeRez =  new Array<BrzaRezervacijaDestinacije>();  
+
+        res.forEach(element => {
+
+          element.krajnjiDatum =  element.krajnjiDatum.split('T')[0];
+          element.pocetniDatum =  element.pocetniDatum.split('T')[0];
+          this.brzeRez.push(element);
+          
+        });
+       
+      } else {
+        res.errors.forEach(element => {
+          switch (element.code) {
+            default:
+              break;
+          }
+        });
+      }
+    },
+    err => {
+      console.log('greska');
+      console.log(err);
+    }
+    
+  );
+
+  
+
+
 
   /*
   updateAvio(nazivAvioKompanije: string, adresa: string, promotivniOpis:string, destNaKojimPosluje:string, letovi:string, spisakKarataSaPopustomZaBrzuRez: string, konfigSegMesta:string, cenovnik: string, infoPrtljag: string  ): void {
@@ -274,4 +402,5 @@ export class AvioPocetnaComponent implements OnInit {
   }
   */
 
+}
 }

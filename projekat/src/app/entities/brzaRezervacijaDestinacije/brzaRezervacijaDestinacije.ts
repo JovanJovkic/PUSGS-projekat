@@ -10,8 +10,9 @@ export class BrzaRezervacijaDestinacije {
     popust:number;
     pocetniDatum: string;
     krajnjiDatum:string;
+    rowVersion:any[];
 
-    constructor(id:number, idAirCompany: number, idDestinacije: number, idKlijenta: string,popust: number,pocetnaCena: number, novaCena: number,pocetniDatum:string,krajnjiDatum:string) {
+    constructor(id:number, idAirCompany: number, idDestinacije: number, idKlijenta: string,popust: number,pocetnaCena: number, novaCena: number,pocetniDatum:string,krajnjiDatum:string, rowVersion:any[]) {
         this.id = id;
         this.idAirCompany = idAirCompany;
         this.idDestinacije = idDestinacije;
@@ -21,6 +22,7 @@ export class BrzaRezervacijaDestinacije {
         this.pocetnaCena = pocetnaCena;
         this.novaCena = novaCena;
         this.popust = popust;
+        this.rowVersion = rowVersion;
     }
 
 }
