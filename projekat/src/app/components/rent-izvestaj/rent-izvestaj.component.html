@@ -1,0 +1,75 @@
+<h1>Izvestaj o poslovanju</h1>
+
+<h2>Odredite ukupne prihode za odredjeni period</h2>
+<div class="form-row">
+
+  <div class="col-md-4">
+      <div class="input-group form-group">
+          <div class="input-group-prepend">
+              <span class="input-group-text"><i class="material-icons">Od</i></span>
+          </div>
+          <input type="date" class="form-control" placeholder="Vremenski period od" id="vremeFilterOd">
+      </div>
+  </div>
+
+  <div class="col-md-4">
+      <div class="input-group form-group">
+          <div class="input-group-prepend">
+              <span class="input-group-text"><i class="material-icons">Do</i></span>
+          </div>
+          <input type="date" class="form-control" placeholder="Vremenski period do" id="vremeFilterDo">
+      </div>
+  </div>
+
+  <div class="col-md-4">
+      <button type="button" class="btn btn-primary" style="margin-left: 30px" (click)="OdrediPrihode()">Odredi</button>
+  </div>
+</div>
+
+<h3>{{rezultat}}</h3>
+
+
+<h1>Graficki prikaz mesecnog izvestaja broja rezervacija</h1>
+
+<div style="display: block" class="bg-light">
+    <canvas mdbChart
+        [chartType]="chartType"
+        [datasets]="chartDatasetsMesecni"
+        [labels]="chartLabelsMesecni"
+        [colors]="chartColors"
+        [options]="chartOptions"
+        [legend]="true"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+    </canvas>
+  </div>
+
+  <h1>Graficki prikaz nedeljnog izvestaja broja rezervacija</h1>
+
+  <div style="display: block" class="bg-light">
+    <canvas mdbChart id="myChart" 
+        [chartType]="chartType"
+        [datasets]="chartDatasetsNedeljni"
+        [labels]="chartLabelsNedeljni"
+        [colors]="chartColors"
+        [options]="chartOptions"
+        [legend]="true"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+    </canvas>
+  </div>
+
+  <h1>Graficki prikaz dnevnog izvestaja broja rezervacija</h1>
+
+  <div style="display: block" class="bg-light">
+    <canvas mdbChart id="myChart" 
+        [chartType]="chartType"
+        [datasets]="chartDatasetsDnevni"
+        [labels]="chartLabelsDnevni"
+        [colors]="chartColors"
+        [options]="chartOptions"
+        [legend]="true"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+    </canvas>
+  </div>
