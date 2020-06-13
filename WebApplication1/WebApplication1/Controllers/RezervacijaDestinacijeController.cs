@@ -43,6 +43,39 @@ namespace WebApplication1.Controllers
             return rezervacija;
         }
 
+        [HttpGet]
+        [Route("GetRezervacijeDestinacijaZaOdredjenog/{email}")]
+        public async Task<ActionResult<IEnumerable<RezervacijaDestinacije>>> GetRezervacijeDestinacijaZaOdredjenog(string email)
+        {
+
+
+            List<RezervacijaDestinacije> rezervacija = _context.RezervacijeDestinacija.ToList();
+
+            if (rezervacija == null)
+            {
+                rezervacija = new List<RezervacijaDestinacije>();
+            }
+
+            foreach (RezervacijaDestinacije item in rezervacija.ToList())
+            {
+                if (item.IdKlijenta != email)
+                {
+                    rezervacija.Remove(item);
+                }
+            }
+
+            foreach (RezervacijaDestinacije item in rezervacija.ToList())
+            {
+                if (DateTime.Now < item.KrajnjiDatum)
+                {
+                    item.Zavrseno = true;
+                }
+            }
+
+            return rezervacija;
+
+        }
+
         [HttpDelete]
         [Route("DeleteRezervacijaDestinacija/{id}")]
         public async Task<ActionResult<RezervacijaDestinacije>> DeleteRezervacijaDestinacija(int id)
@@ -114,6 +147,30 @@ namespace WebApplication1.Controllers
             }
 
             return NoContent();
+        }
+
+
+        [HttpPost]
+        [Route("Oceni")]
+        public async Task<ActionResult> Oceni(Oceni oceni)
+        {
+            RezervacijaDestinacije rezervacija = _context.RezervacijeDestinacija.Find(oceni.IdRezervacije);
+
+            rezervacija.OcenaZaKomapaniju = oceni.OcenaKompanja;
+            rezervacija.OcenaZaDestinaciju = oceni.OcenaVozAvio;
+
+            _context.Entry(rezervacija).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                return NoContent();
+            }
+
+            return Ok();
         }
     }
 }

@@ -168,7 +168,7 @@ export class RentProfilComponent implements OnInit {
         var temp = res;
         //temp.forEach(element => {
           
-          const ak = new RentACarServis(temp.id,temp.naziv,temp.adresa,temp.promotivniOpis, 4, temp.admin);
+          const ak = new RentACarServis(temp.id,temp.naziv,temp.adresa,temp.promotivniOpis, temp.ocena, temp.admin);
           console.log(temp);
           
           if(temp.vozila!=null)
@@ -212,6 +212,7 @@ export class RentProfilComponent implements OnInit {
   rezervisi(vozilo:Vozilo):void{ 
     this.rezervacija.idVozila = vozilo.id;
     this.rezervacija.vozilo = vozilo;
+    this.rezervacija.idKlijenta = localStorage.getItem('userName');
     this.rezervacijaServis.rezervisiVozilo(this.rezervacija).subscribe(
       (res: any) => {
        /* res.forEach(element => {

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
 using WebApplication1.Models;
+using WebApplication1.Servis;
 
 namespace WebApplication1.Controllers
 {
@@ -15,16 +16,26 @@ namespace WebApplication1.Controllers
     public class VozilaController : ControllerBase
     {
         private readonly AuthenticationContext _context;
-
+        private RentServis servis;
         public VozilaController(AuthenticationContext context)
         {
             _context = context;
+            servis = new RentServis(context);
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Vozilo>>> GetVozila()
         {
-            return await _context.Vozila.ToListAsync();
+            //return await _context.Vozila.ToListAsync();
+
+            List<Vozilo> servisi = _context.Vozila.ToList();
+
+            foreach (Vozilo item in servisi.ToList())
+            {
+                item.Ocena = servis.ProsecnaOcenaZaVozilo(item.Id);
+            }
+
+            return servisi;
         }
 
         [HttpGet("{id}")]
@@ -36,6 +47,9 @@ namespace WebApplication1.Controllers
             {
                 return NotFound();
             }
+
+
+            vozilo.Ocena = servis.ProsecnaOcenaZaRentACar(id);
 
             return vozilo;
         }

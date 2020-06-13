@@ -39,7 +39,7 @@
             <th class="text-center">Godina proizvodnje</th>
             <th class="text-center">Broj sedišta</th>
             <th class="text-center">Tip vozila</th>
-            <th class="text-center">Filijala</th>
+            <th class="text-center">Ocena</th>
             <th></th>
         </thead>
         <tbody>
@@ -50,7 +50,7 @@
                 <td class="text-center">{{voz.godinaProizvodnje}}</td> 
                 <td class="text-center">{{voz.brojSedista}}</td>  
                 <td class="text-center">{{voz.tipVozila}}</td>
-                <td class="text-center">fil</td>  
+                <td class="text-center">{{voz.ocena}}</td>
                 <td class="btn-group-vertical">
                     <button class="btn btn-success" (click)="obrisiVozilo(voz)">Obriši</button>
                     <button class="btn btn-success" data-toggle="modal" data-target="#IzmeniVoziloForm" (click)="editVozilo(voz)">Izmeni</button>

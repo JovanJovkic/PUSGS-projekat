@@ -27,4 +27,20 @@ export class RezervacijaDestinacijeService {
     
     return this.http.post(this.BaseURI + '/RezervacijaDestinacije/AddRezervacijaDestinacija/', body);
   }
+
+  getRezervacijeZaOdredjenog(email:string)
+  {
+    return this.http.get<RezervacijaDestinacije>(this.BaseURI + '/RezervacijaDestinacije/GetRezervacijeDestinacijaZaOdredjenog/'+email);
+  }
+
+  oceni(id:number,ocenaKomp:number,ocenaAvio:number)
+  {
+    var body={
+       IdRezervacije:id,
+       OcenaKompanja:ocenaKomp,
+       OcenaVozAvio:ocenaAvio,
+    };
+
+    return this.http.post(this.BaseURI + '/RezervacijaDestinacije/Oceni/', body);
+  }
 }

@@ -10,7 +10,7 @@
 
     <br/>
 
-    <div> 
+    <div *ngIf="brzeRez"> 
         <h3 colspan="3" class="text-center">Spisak brzih rezervacija</h3>
         <table class=" table table-secondary" border="1">
             <thead class="thead-dark">
@@ -30,7 +30,7 @@
                     <td  class="text-center">{{rez.pocetnaCena}}</td> 
                     <td  class="text-center">{{rez.popust}}</td>  
                     <td  class="text-center">{{rez.novaCena}}</td>
-                    <button  class="btn btn-success"  (click)="RezervisiBrzuRezervaciju(rez)">Rezervisi</button>
+                    <button  *ngIf="Getuloga() == '1'"  class="btn btn-success"  (click)="RezervisiBrzuRezervaciju(rez)">Rezervisi</button>
                 </tr>
                 </tbody> 
         </table>

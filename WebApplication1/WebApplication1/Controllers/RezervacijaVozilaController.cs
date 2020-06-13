@@ -30,6 +30,39 @@ namespace WebApplication1.Controllers
             return await _context.RezervacijeVozila.ToListAsync();
         }
 
+        [HttpGet]
+        [Route("GetRezervacijeVozilaZaOdredjenog/{email}")]
+        public async Task<ActionResult<IEnumerable<RezervacijaVozila>>> GetRezervacijeVozilaZaOdredjenog(string email)
+        {
+
+
+            List<RezervacijaVozila> rezervacija = _context.RezervacijeVozila.ToList();
+
+            if(rezervacija==null)
+            {
+                rezervacija = new List<RezervacijaVozila>();
+            }
+
+            foreach (RezervacijaVozila item in rezervacija.ToList())
+            {
+                if(item.IdKlijenta != email)
+                {
+                    rezervacija.Remove(item);
+                }
+            }
+
+            foreach (RezervacijaVozila item in rezervacija.ToList())
+            {
+                if(DateTime.Now < item.KrajnjiDatum)
+                {
+                    item.Zavrseno = true;
+                }
+            }
+
+            return rezervacija;
+
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<RezervacijaVozila>> GetRezervacijaVozila(int id)
         {
@@ -117,6 +150,29 @@ namespace WebApplication1.Controllers
             return NoContent();
         }
 
-       
+        [HttpPost]
+        [Route("Oceni")]
+        public async Task<ActionResult> Oceni(Oceni oceni)
+        {
+            RezervacijaVozila rezervacija = _context.RezervacijeVozila.Find(oceni.IdRezervacije);
+
+            rezervacija.OcenaZaRentACar = oceni.OcenaKompanja;
+            rezervacija.OcenaZaVozilo = oceni.OcenaVozAvio;
+
+            _context.Entry(rezervacija).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch(Exception e)
+            {
+                return NoContent();
+            }
+
+            return Ok();
+        }
+
+
     }
 }

@@ -10,6 +10,7 @@ export class RezervacijaDestinacije {
     pocetniDatum: string;
     krajnjiDatum:string;
     destinacija:Destinacija;
+    zavrseno:boolean;
 
     constructor(id:number, idAirCompany: number, idDestinacije: number, idKlijenta: string, cena: number,pocetniDatum:string,krajnjiDatum:string,destinacija:Destinacija) {
         this.id = id;

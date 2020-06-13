@@ -25,4 +25,21 @@ export class RezervacijaVozilaService {
     
     return this.http.post(this.BaseURI + '/RezervacijaVozila/AddRezervacijaVozila/', body);
   }
+
+  getRezervacijeZaOdredjenog(email:string)
+  {
+    return this.http.get<RezervacijaVozila>(this.BaseURI + '/RezervacijaVozila/GetRezervacijeVozilaZaOdredjenog/'+email);
+  }
+
+  
+  oceni(id:number,ocenaServ:number,ocenaVoz:number)
+  {
+    var body={
+       IdRezervacije:id,
+       OcenaKompanja:ocenaServ,
+       OcenaVozAvio:ocenaVoz,
+    };
+
+    return this.http.post(this.BaseURI + '/RezervacijaVozila/Oceni/', body);
+  }
 }

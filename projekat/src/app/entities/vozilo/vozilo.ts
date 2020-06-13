@@ -12,6 +12,7 @@ export class Vozilo {
     rentACarId:number;
     filijalaId:number;
     rowVersion:any[];
+    ocena:number;
 
 
     constructor(id:number, naziv: string, marka: string, model: string, godinaProizvodnje: number, brojSedista: number, tipVozila: string, rowVersion:any[]) {

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication1.Data;
 
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(AuthenticationContext))]
-    partial class AuthenticationContextModelSnapshot : ModelSnapshot
+    [Migration("20200613123450_air-company")]
+    partial class aircompany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -494,12 +496,6 @@ namespace WebApplication1.Migrations
 
                     b.Property<DateTime>("KrajnjiDatum")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("OcenaZaDestinaciju")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OcenaZaKomapaniju")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("PocetniDatum")
                         .HasColumnType("datetime2");

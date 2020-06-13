@@ -92,7 +92,7 @@ export class RentPocetnaComponent implements OnInit {
         var temp = res;
         temp.forEach(element => {
           
-          const ak = new RentACarServis(element.id,element.naziv,element.adresa,element.promotivniOpis, 4,element.admin);
+          const ak = new RentACarServis(element.id,element.naziv,element.adresa,element.promotivniOpis, element.ocena,element.admin);
           console.log(element);
           if(ak.vozila.length!=0)
           {

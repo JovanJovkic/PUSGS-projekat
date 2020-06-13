@@ -27,7 +27,16 @@ namespace WebApplication1.Controllers
         public async Task<ActionResult<IEnumerable<RentACarServis>>> GetRentACarServisi()
         {
             //_context.RentACarServisi.Include("Vozila").ToList();
-            return await _context.RentACarServisi.ToListAsync();
+            //return await _context.RentACarServisi.ToListAsync();
+
+            List<RentACarServis> servisi = _context.RentACarServisi.ToList();
+
+            foreach (RentACarServis item in servisi.ToList())
+            {
+                item.Ocena = servis.ProsecnaOcenaZaRentACar(item.Id);
+            }
+
+            return servisi;
         }
 
         [HttpGet]
@@ -42,6 +51,11 @@ namespace WebApplication1.Controllers
                 {
                     servisi.Remove(item);
                 }
+            }
+
+            foreach (RentACarServis item in servisi.ToList())
+            {
+                item.Ocena = servis.ProsecnaOcenaZaRentACar(item.Id);
             }
 
             return servisi;
@@ -96,14 +110,16 @@ namespace WebApplication1.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<RentACarServis>> GetRentACarServis(int id)
         {
-            var servis = await _context.RentACarServisi.FindAsync(id);
+            var serviss = await _context.RentACarServisi.FindAsync(id);
 
-            if (servis == null)
+            if (serviss == null)
             {
                 return NotFound();
             }
 
-            return servis;
+            serviss.Ocena = servis.ProsecnaOcenaZaRentACar(id);
+
+            return serviss;
         }
 
         [HttpDelete]

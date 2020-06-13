@@ -10,6 +10,7 @@ export class RezervacijaVozila {
     pocetniDatum: string;
     krajnjiDatum:string;
     vozilo:Vozilo;
+    zavrseno:boolean;
 
     constructor(id:number, idRentACar: number, idVozila: number, idKlijenta: string, cena: number,pocetniDatum:string,krajnjiDatum:string,vozilo:Vozilo) {
         this.id = id;

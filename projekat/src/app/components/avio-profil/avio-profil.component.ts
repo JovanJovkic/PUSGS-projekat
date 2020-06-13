@@ -114,6 +114,7 @@ loadDestinacija()
     console.log(this.rezervacija);
     this.rezervacija = new RezervacijaDestinacije(1,1,1,"1",1,"2020-05-05","2020-06-06",destinacija);
     this.rezervacija.idDestinacije = destinacija.id;
+    this.rezervacija.idKlijenta = localStorage.getItem('userName');
     this.rezervacija.destinacija = destinacija;
     this.rezervacijaServis.rezervisiDestinaciju(this.rezervacija).subscribe(
       (res: any) => {

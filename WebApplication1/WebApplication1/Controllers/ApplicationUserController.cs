@@ -141,7 +141,7 @@ namespace WebApplication1.Controllers
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var securityToken = tokenHandler.CreateToken(tokenDescriptor);
                 var token = tokenHandler.WriteToken(securityToken);
-                return Ok(new { token });
+                return Ok(new { token, userModel.UserName, userModel.Uloga, userModel.IzmenjenaLozinka });
             }
 
             return Ok();

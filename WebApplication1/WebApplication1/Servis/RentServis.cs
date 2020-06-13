@@ -213,6 +213,11 @@ namespace WebApplication1.Servis
 
             rezultat = zbirOcena / brojOcena;
 
+            if(brojOcena==0)
+            {
+                return 0;
+            }
+
             rezultat = Math.Round(rezultat, 2);
 
             return rezultat;
@@ -245,6 +250,12 @@ namespace WebApplication1.Servis
             }
 
             rezultat = zbirOcena / brojOcena;
+
+            if (brojOcena == 0)
+            {
+                return 0;
+            }
+
 
             rezultat = Math.Round(rezultat, 2);
 
