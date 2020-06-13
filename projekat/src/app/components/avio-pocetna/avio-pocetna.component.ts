@@ -107,8 +107,8 @@ export class AvioPocetnaComponent implements OnInit {
       if (res != null ) {
         var temp = res;
         temp.forEach(element => {
-          console.log(element);
-          const ak = new AirCompanies(element.id, element.nazivAvioKompanije, element.gradAvioKompanije, element.promotivniOpis, element.destnako
+          //console.log(element);
+          const ak = new AirCompanies(element.id, element.nazivAvioKompanije, element.adresa, element.promotivniOpis, element.destNaKojimPosluje
             , element.letovi, element.spisakKarataSaPopustomZaBrzuRez, element.konfigSegMesta, element.cenovnik, element.infoPrtljag, element.admin);
           ak.cenaPrviDan = element.cenaPrviDan;
           ak.cenaSledeciDan = element.cenaSledeciDan;
@@ -180,7 +180,7 @@ export class AvioPocetnaComponent implements OnInit {
       (res: any) => {
         res.forEach(element => {
 
-          console.log(element);
+          //console.log(element);
           this.allAvion.forEach(item => {
 
             if(element.AirCompanyID == item.id)

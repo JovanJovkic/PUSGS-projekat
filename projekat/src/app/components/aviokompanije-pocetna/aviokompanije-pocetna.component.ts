@@ -7,6 +7,7 @@ import { NumberFilterParam } from 'src/app/entities/number-filter-param/number-f
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Destinacija } from 'src/app/entities/destinacija/destinacija';
 import { DestinacijaService } from 'src/app/services/destinacija-service/destinacija.service';
+import { ChartsModule, WavesModule } from 'angular-bootstrap-md'
 
 @Component({
   selector: 'app-aviokompanije-pocetna',
@@ -70,7 +71,7 @@ export class AviokompanijePocetnaComponent implements OnInit {
         var temp = res;
         temp.forEach(element => {
           
-          const ak = new AirCompanies(element.id, element.nazivAvioKompanije, element.gradAvioKompanije, element.promotivniOpis, element.destnako
+          const ak = new AirCompanies(element.id, element.nazivAvioKompanije, element.adresa, element.promotivniOpis, element.destNaKojimPosluje
             , element.letovi, element.spisakKarataSaPopustomZaBrzuRez, element.konfigSegMesta, element.cenovnik, element.infoPrtljag, element.admin);
           console.log(element);
           if(ak.destinacija.length!=0)

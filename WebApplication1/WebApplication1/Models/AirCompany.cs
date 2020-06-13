@@ -14,13 +14,29 @@ namespace WebApplication1.Models
 
         public string NazivAvioKompanije { get; set; }
 
-        public string GradAvioKompanije { get; set; }
+        //public string GradAvioKompanije { get; set; }
 
-        public string ProsecnaOcena { get; set; }
+        //public string ProsecnaOcena { get; set; }
 
         public string Admin { get; set; }
 
         public ICollection<Destinacija> Destinacije { get; set; }
+
+        public string Adresa { get; set; }
+
+        public string PromotivniOpis { get; set; }
+
+        public string DestNaKojimPosluje { get; set; }
+
+        public string Letovi { get; set; }
+
+        public string SpisakKarataSaPopustomZaBrzuRez { get; set; }
+
+        public string KonfigSegMesta { get; set; }
+
+        public string Cenovnik { get; set; }
+
+        public string InfoPrtljag { get; set; }
 
         public double cenaPrviDan { get; set; }
 

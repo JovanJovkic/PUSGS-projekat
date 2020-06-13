@@ -26,7 +26,8 @@ export class AircompaniesService {
   dodaj() {
     var body = {
       NazivAvioKompanije: this.formModel.value.naziv,
-      GradAvioKompanije: this.formModel.value.adresa,
+      //GradAvioKompanije: this.formModel.value.adresa,
+      Adresa: this.formModel.value.adresa,
       Admin: this.formModel.value.admin,
       Odobreno: false
     };
