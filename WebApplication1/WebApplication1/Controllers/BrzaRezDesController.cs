@@ -121,24 +121,24 @@ namespace WebApplication1.Controllers
         {
             return _context.BrzeRezervacijeDestinacije.Any(e => e.Id == id);
         }
-        /*
+        
         [HttpPost]
         [Route("AddBrzaRezervacijaDestinacije")]
         public async Task<ActionResult<BrzaRezervacijaDestinacija>> AddBrzaRezervacijaDestinacije(BrzaRezervacijaDestinacija rezervacija)
         {
             AirCompany rentservis = _context.AvioKompanije.Find(rezervacija.IdAirCompany);
 
-            rezervacija.PocetnaCena = servis.ukupnaCena(rezervacija);
-            rezervacija.NovaCena = rezervacija.PocetnaCena - rezervacija.PocetnaCena * rezervacija.Popust / 100;
+            //rezervacija.PocetnaCena = servis.ukupnaCena(rezervacija);
+            //rezervacija.NovaCena = rezervacija.PocetnaCena - rezervacija.PocetnaCena * rezervacija.Popust / 100;
 
             _context.BrzeRezervacijeDestinacije.Add(rezervacija);
 
-            servis.dodajDatumeDestinaciji(rezervacija);
+           // servis.dodajDatumeDestinaciji(rezervacija);
 
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetBrzaRezervacijaVozila", new { id = rezervacija.Id }, rezervacija);
-        }*/
+        }
 
         [Route("UpdateBrzaRezervacijaVozila")]
         public async Task<IActionResult> UpdateBrzaRezervacijaVozila(BrzaRezervacijaVozila rezervacija)

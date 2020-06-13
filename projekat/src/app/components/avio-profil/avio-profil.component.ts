@@ -12,6 +12,7 @@ import { environment }  from 'src/environments/environment';
 import { RezervacijaDestinacije } from 'src/app/entities/rezervacijaDestinacije/rezervacijaDestinacije';
 import { RezervacijaDestinacijeService } from 'src/app/services/rezervacijaDestinacije/rezervacija-destinacije.service';
 import { RentACarService } from 'src/app/services/rent-a-car/rent-a-car.service';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-avio-profil',
@@ -41,9 +42,10 @@ export class AvioProfilComponent implements OnInit {
     this.loadAirCompanies();
   }
 
+  /*
   Getuloga():string{
     return environment.uloga;
-  }
+  }*/
 
   /*
   loadAvioCompanies(): void {
@@ -107,6 +109,10 @@ loadDestinacija()
 
   resetFilter(): void {
     this.filteredDestinacija = this.allDestinacija;
+  }
+
+  Getuloga(){
+    return NavbarComponent.uloga
   }
 
   rezervisi(destinacija:Destinacija):void{ 

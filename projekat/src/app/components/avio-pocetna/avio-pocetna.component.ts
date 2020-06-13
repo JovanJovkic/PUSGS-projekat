@@ -182,11 +182,13 @@ export class AvioPocetnaComponent implements OnInit {
 
           //console.log(element);
           this.allAvion.forEach(item => {
-
-            if(element.AirCompanyID == item.id)
+           // console.log(element);
+            if(element.airCompanyID == item.id)
             {
               item.destinacija.push(element);
             }
+
+            //console.log(this.allAvion);
 
           });
 
@@ -251,6 +253,7 @@ export class AvioPocetnaComponent implements OnInit {
         if (res != null ) {
           //pravimo destinacije i stavljamo u neku listu
           res.forEach(element => {
+              console.log(element);
             this.destinacijeZaBrzuRezervaciju.push(element);
           });
          

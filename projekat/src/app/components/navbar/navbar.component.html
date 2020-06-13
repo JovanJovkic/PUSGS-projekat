@@ -22,6 +22,11 @@
         <li *ngIf="Getuloga == '2'">
             <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/profilAdminAvio">Profil administratora avio-kompanije</a>
         </li>
+
+        <li *ngIf="Getuloga != '0' ">
+          <a class="btn btn-outline-light my-2 my-sm-0" type="btn" routerLink="/homepage-forma">Homepage</a>
+      </li>
+
         <li class="nav-item" *ngIf="Getuloga == '0'">
             <a class="btn btn-outline-light my-2 ml-5 my-sm-0" type="btn" routerLink="/registracija" style="margin-left :5px">Registracija</a>
         </li>

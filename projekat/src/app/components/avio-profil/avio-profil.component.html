@@ -30,7 +30,7 @@
                  <td>{{item.brojPresedanja}}</td>
                  <td>{{item.lokacijaPresedanja}}</td>
                  <td>{{item.cenaKarte}}</td>
-                 <td><button class="btn btn-success" (click)="rezervisi(item)">Rezerviši</button></td>
+                 <td><button   *ngIf="Getuloga() == '1'"  class="btn btn-success" (click)="rezervisi(item)">Rezerviši</button></td>
              </tr>
           </tbody>
     </table>
